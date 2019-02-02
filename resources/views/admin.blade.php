@@ -175,8 +175,6 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col">
-                        {{-- <h5 class="card-title text-uppercase text-muted mb-0">ผู้ใช้งานที่ได้รับการยืนยันแล้ว</h5>
-                        --}}
                         <span class="h2 font-weight-bold mb-0">{{ $users_confirm->count() }} คน</span>
                     </div>
                     <div class="col-auto">
@@ -195,8 +193,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col">
-                        {{-- <h5 class="card-title text-uppercase text-muted mb-0">ผู้ใช้งานที่ยังไม่ได้รับการยืนยัน</h5>
-                        --}}
+                    
                         <span class="h2 font-weight-bold mb-0">{{ $users_new->count() }} คน</span>
                     </div>
                     <div class="col-auto">

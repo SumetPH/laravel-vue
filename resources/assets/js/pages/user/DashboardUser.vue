@@ -29,7 +29,7 @@
                       <td>
                         <router-link :to="'user/post/' + item.id">{{item.title}}</router-link>
                       </td>
-                      <td>xxx</td>
+                      <td>{{item.firstname}}</td>
                       <td>{{ item.created_at }}</td>
                       <td>กำลังดำเนินการ</td>
                       <td>
@@ -52,11 +52,6 @@
             </div>
 
             <div class="card-body">
-              <!-- @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
-              @endif-->
               <button
                 @click="modalHandle"
                 type="button"
@@ -89,7 +84,7 @@
                       <td>
                         <router-link :to="'/user/post/' + item.id">{{ item.title }}</router-link>
                       </td>
-                      <td>xxx</td>
+                      <td>{{item.firstname}}</td>
                       <td>{{ item.created_at }}</td>
                       <td>ผ่านการตรวจสอบแล้ว</td>
                       <td>
@@ -167,8 +162,8 @@
 
 
 <script>
-import Layout from "./Layout.vue";
-import Card from "../../components/Card.vue";
+import Layout from "./LayoutUser";
+import Card from "../../components/Card";
 
 export default {
   components: {

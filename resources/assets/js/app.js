@@ -14,16 +14,17 @@ Vue.use(Notifications)
 axios.defaults.baseURL = "http://localhost:8000/api"
 
 import App from "./App.vue"
-import Home from "./components/Home.vue"
-import Register from "./components/Register.vue"
-import Login from "./components/Login.vue"
+import Home from "./components/Home"
+import Register from "./components/Register"
+import Login from "./components/Login"
 
 // User
-import User from "./pages/user/User.vue"
-import Post from "./pages/user/Post.vue"
+import DashboardUser from "./pages/user/DashboardUser"
+import PostUser from "./pages/user/PostUser"
 
 // Admin
-import Admin from "./pages/admin/Admin.vue"
+import DashboardAdmin from "./pages/admin/DashboardAdmin"
+import PostAdmin from "./pages/admin/PostAdmin"
 
 const routes = [{
         name: "home",
@@ -43,17 +44,22 @@ const routes = [{
     {
         name: "user",
         path: "/user",
-        component: User
+        component: DashboardUser
     },
     {
         name: "user-post-id",
         path: "/user/post/:id",
-        component: Post
+        component: PostUser
     },
     {
         name: "admin",
         path: "/admin",
-        component: Admin
+        component: DashboardAdmin
+    },
+    {
+        name: "admin-post-id",
+        path: "/admin/post/:id",
+        component: PostAdmin
     }
 ]
 

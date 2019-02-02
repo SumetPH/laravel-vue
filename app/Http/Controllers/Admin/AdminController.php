@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Post;
+use DB;
 
 class AdminController extends Controller
 {
@@ -17,11 +18,17 @@ class AdminController extends Controller
 
         $posts = Post::all();
 
-        $posts_checking = Post::where('step1','!=','ผ่านการตรวจสอบแล้ว')
+        $posts_checking = DB::table('posts')
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->select('posts.*', 'users.firstname')
+            ->where('step1','!=','ผ่านการตรวจสอบแล้ว')
             ->orWhere('step3','!=','ผ่านการตรวจสอบแล้ว')
             ->get();
 
-        $posts_checked = Post::where('step1','=','ผ่านการตรวจสอบแล้ว')
+        $posts_checked = DB::table('posts')
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->select('posts.*', 'users.firstname')
+            ->where('step1','=','ผ่านการตรวจสอบแล้ว')
             ->where('step3','=','ผ่านการตรวจสอบแล้ว')
             ->get();
 

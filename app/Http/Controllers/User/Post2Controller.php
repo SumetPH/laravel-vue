@@ -48,12 +48,11 @@ class Post2Controller extends Controller
      */
     public function show($id)
     {
-        $post2 = Post2::where('post_id',$id)->first();
+        $post2 = Post2::where('post_id',$id)->get();
         $data = [
             'post2' => $post2
         ];
         return response()->json($data);
-        // return view('user.post2.show')->with($data);  
     }
 
     /**

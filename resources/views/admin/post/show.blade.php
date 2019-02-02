@@ -10,9 +10,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card shadow
-                {{-- @if ($post->status == 'ผ่านการตรวจสอบแล้ว') panel-primary
-                @else panel-danger
-                @endif  --}}
+ 
                 ">
                 <div class="card-header">
                     @if ($post->status == 'ผ่านการตรวจสอบแล้ว')
@@ -28,20 +26,14 @@
                     <hr>
                     <div class="col-md-9 form-group">
                         <label for="file">ฟอร์มบันทึกข้อความ</label>
-                        {{-- <a target="_blank" class="form-control" href="/files/{{ $post->file }}">{{ $post->filename }}</a> --}}
                         <br>
                         เอกสาร : <a target="_blank" href="/files/{{ $post->file }}">{{ $post->filename }}</a>
                     </div>
                     <hr>
-                    {{-- @if($post->created_at == $post->updated_at)
-                    <small>สร้าง : {{ $post->created_at }}</small>
-                    @else
-                    <small>แก้ไข : {{ $post->updated_at }}</small>
-                    @endif --}}
+  
                     <form class="col-md-9" action="/admin/post/{{ $post->id }}" method="post">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" name="_method" value="put">
-                        {{-- สถานะ : --}}
                         <div class="form-group">
                             <label for="status">ผลการประเมิน</label>
                             <select class="form-control" name="status" onchange="this.form.submit()">

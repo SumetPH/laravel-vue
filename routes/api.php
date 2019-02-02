@@ -33,13 +33,13 @@ Route::prefix('/user')->group(function(){
 
 // Admin
 Route::prefix('admin')->group(function(){
-        Route::get('/','Admin\AdminController@index');
+    Route::get('/','Admin\AdminController@index');
+    Route::resource('/post','Admin\PostController');
+    Route::resource('/post2','Admin\Post2Controller');
 //     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
 //     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
 //     Route::post('/logout', 'Auth\AdminLoginController@logout');
 //     Route::resource('/user','Admin\UserController');
-//     Route::resource('/post','Admin\PostController');
-//     Route::resource('/post2','Admin\Post2Controller');
 //     Route::resource('/post3','Admin\Post3Controller');
 //     Route::resource('/changepassword','Admin\ChangePasswordController');
 });

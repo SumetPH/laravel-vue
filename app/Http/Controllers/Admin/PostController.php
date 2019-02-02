@@ -5,16 +5,10 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Post;
-use App\Post2;
 use App\PostComment;
 
 class PostController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:admin');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -56,14 +50,12 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-        $post2 = Post2::where('post_id',$id)->get();
-        $postcomments = PostComment::where('post_id',$id)->orderBy('created_at','asc')->get();
+        $comments = PostComment::where('post_id',$id)->orderBy('created_at','asc')->get();
         $data = [
            'post' => $post,
-           'post2' => $post2,
-           'postcomments' => $postcomments
+           'comments' => $comments
        ];
-        return view('admin.post.show')->with($data);
+       return response()->json($data);
     }
 
     /**
@@ -88,21 +80,25 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $post->status = $req->status;
-        $post->save();
 
         if($req->status == 'ผ่านการตรวจสอบแล้ว'){
             $post->step1 = 'ผ่านการตรวจสอบแล้ว';
-            $post->save();
         }else{
             $post->step1 = 'กำลังดำเนินการ';
-            $post->save();
         }
 
-        $alerts = [
-            'alert_text' => 'ทำการบันทึกผลการประเมิณเรียบร้อยแล้ว',
-            'alert_color' => 'success'
-        ];
-        return redirect()->back()->with($alerts);
+        if($post->save()){
+            return response()->json('success');
+        } else {
+            return response()->json('error');
+        }
+    
+
+        // $alerts = [
+        //     'alert_text' => 'ทำการบันทึกผลการประเมิณเรียบร้อยแล้ว',
+        //     'alert_color' => 'success'
+        // ];
+        // return redirect()->back()->with($alerts);
     }
 
     /**

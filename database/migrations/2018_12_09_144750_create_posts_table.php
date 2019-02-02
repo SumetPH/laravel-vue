@@ -21,8 +21,8 @@ class CreatePostsTable extends Migration
             $table->text('file');
             $table->text('filename');
             $table->string('status')->default('ยังไม่ได้รับการตรวจสอบ');
-            $table->string('step1')->default('กำลังดำเนินการ');
-            $table->string('step3')->default('กำลังดำเนินการ');
+            $table->string('step1')->default('ยังไม่ได้รับการตรวจสอบ');
+            $table->string('step3')->default('ยังไม่ได้รับการตรวจสอบ');
             $table->timestamps();
         });
     }

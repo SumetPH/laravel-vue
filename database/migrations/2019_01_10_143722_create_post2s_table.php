@@ -16,10 +16,9 @@ class CreatePost2sTable extends Migration
         Schema::create('post2s', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('post_id');
-            $table->text('file3name')->nullable();
-            $table->text('file3path')->nullable();
-            $table->text('file4name')->nullable();
-            $table->text('file4path')->nullable();
+            $table->text('title')->nullable();
+            $table->text('file_name')->nullable();
+            $table->text('file_path')->nullable();
             $table->timestamps();
         });
     }

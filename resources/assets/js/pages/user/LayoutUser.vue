@@ -5,7 +5,7 @@
     <!-- Main content -->
     <div class="main-content">
       <!-- Top navbar -->
-      <Topnav :who="who" :data="admin"></Topnav>
+      <Topnav :who="who" :data="user"></Topnav>
       <!-- Header -->
       <Header :bg-color="bgColor">
         <!-- slot card -->
@@ -23,10 +23,10 @@
 </template>
 
 <script>
-import Sidenav from "../../components/Sidenav.vue";
-import Topnav from "../../components/Topnav.vue";
-import Header from "../../components/Header.vue";
-import Footer from "../../components/Footer.vue";
+import Sidenav from "../../components/Sidenav";
+import Topnav from "../../components/Topnav";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 export default {
   components: {
@@ -37,16 +37,16 @@ export default {
   },
   data() {
     return {
-      admin: {},
-      who: "admin",
-      bgColor: "danger"
+      user: {},
+      who: "user",
+      bgColor: "primary"
     };
   },
   created() {
-    if (!localStorage.getItem("admin")) {
+    if (!localStorage.getItem("user")) {
       this.$router.push("/login");
     } else {
-      this.admin = JSON.parse(localStorage.getItem("admin"));
+      this.user = JSON.parse(localStorage.getItem("user"));
     }
   }
 };

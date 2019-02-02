@@ -1,17 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
 use App\Post;
 use DB;
 
-class UserController extends Controller
+class DashboardController extends Controller
 {
     public function index(Request $req)
     {
-        $posts = Post::where('user_id',$req->id)->get();
+        $users_confirm = User::where('active','1')->get();
+
+        $users_new = User::where('active','0')->get();
+
+        $posts = Post::all();
 
         $posts_checking = DB::table('posts')
             ->join('users', 'posts.user_id', '=', 'users.id')
@@ -28,9 +33,11 @@ class UserController extends Controller
             ->get();
 
         $data = [
+            'users_confirm' => $users_confirm,
+            'users_new' => $users_new,
             'posts' => $posts,
             'posts_checking' => $posts_checking,
-            'posts_checked' => $posts_checked
+            'posts_checked' => $posts_checked   
         ];
 
         return response()->json($data);

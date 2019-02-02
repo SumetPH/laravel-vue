@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Post;
 use App\PostComment;
 
-class PostController extends Controller
+class Post1Controller extends Controller
 {
     /**
      * Display a listing of the resource.

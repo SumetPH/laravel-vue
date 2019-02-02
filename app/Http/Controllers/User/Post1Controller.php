@@ -11,7 +11,7 @@ use App\PostComment;
 use Auth;
 use Storage;
 
-class PostController extends Controller
+class Post1Controller extends Controller
 {
     /**
      * Display a listing of the resource.

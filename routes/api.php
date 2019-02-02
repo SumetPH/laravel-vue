@@ -22,8 +22,8 @@ Route::post('/login','Api\AuthController@login');
 
  // User
 Route::prefix('/user')->group(function(){
-    Route::post('/','User\UserController@index');
-    Route::resource('/post','User\PostController');
+    Route::post('/','User\DashboardController@index');
+    Route::resource('/post','User\Post1Controller');
     Route::resource('/post2','User\Post2Controller');
 //     Route::post('/logout', 'Auth\LoginController@logout');
 //     Route::resource('/profile','User\ProfileController');
@@ -33,8 +33,8 @@ Route::prefix('/user')->group(function(){
 
 // Admin
 Route::prefix('admin')->group(function(){
-    Route::get('/','Admin\AdminController@index');
-    Route::resource('/post','Admin\PostController');
+    Route::get('/','Admin\DashboardController@index');
+    Route::resource('/post','Admin\Post1Controller');
     Route::resource('/post2','Admin\Post2Controller');
 //     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
 //     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');

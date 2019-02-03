@@ -270,13 +270,16 @@ export default {
 
       axios.post("/login", formData).then(res => {
         console.log(res);
-        this.$notify("Login");
         if (res.data.status === "user") {
+          this.$notify("เข้าสู่ระบบ");
           localStorage.setItem("user", JSON.stringify(res.data.user));
           this.$router.push("/user");
-        } else {
+        } else if (res.data.status === "admin") {
+          this.$notify("เข้าสู่ระบบ");
           localStorage.setItem("admin", JSON.stringify(res.data.admin));
           this.$router.push("/admin");
+        } else {
+          this.$notify("กรุณาลองใหม่อีกครั้ง");
         }
       });
     }

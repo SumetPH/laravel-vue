@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Storage;
+use App\Post;
 use App\Post2;
 
 class Post2Controller extends Controller
@@ -53,6 +54,12 @@ class Post2Controller extends Controller
         $post2->file_name = $file_name;
         $post2->file_path = $file_path;
         if($post2->save()){
+            $post = Post::find($req->post_id);
+            $post2 = Post2::where('post_id', $req->post_id)->whereNotNull('file_name')->get();
+            if($post2->count() == 2){
+                $post->step2 = '1';
+                $post->save();
+            }
             return response()->json('success');
         } else {
             return response()->json('error');

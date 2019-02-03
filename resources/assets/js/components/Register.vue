@@ -437,6 +437,12 @@ export default {
 
       axios.post("/register", formData).then(res => {
         console.log(res);
+        if (res.data === "success") {
+          this.$notify("กรุณารอการยืนยันจากเจ้าหน้าที่ ก่อนเข้าใช้งาน");
+          this.$router.push("/login");
+        } else {
+          this.$notify("กรุณาลองใหม่อีกครั้ง");
+        }
       });
     }
   }

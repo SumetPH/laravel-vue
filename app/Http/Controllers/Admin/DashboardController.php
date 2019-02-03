@@ -21,15 +21,15 @@ class DashboardController extends Controller
         $posts_checking = DB::table('posts')
             ->join('users', 'posts.user_id', '=', 'users.id')
             ->select('posts.*', 'users.firstname')
-            ->where('step1','!=','ผ่านการตรวจสอบแล้ว')
-            ->orWhere('step3','!=','ผ่านการตรวจสอบแล้ว')
+            ->where('step1','=','0')
+            ->orWhere('step3','=','0')
             ->get();
 
         $posts_checked = DB::table('posts')
             ->join('users', 'posts.user_id', '=', 'users.id')
             ->select('posts.*', 'users.firstname')
-            ->where('step1','=','ผ่านการตรวจสอบแล้ว')
-            ->where('step3','=','ผ่านการตรวจสอบแล้ว')
+            ->where('step1','=','1')
+            ->where('step3','=','1 ')
             ->get();
 
         $data = [

@@ -12,21 +12,26 @@ class AuthController extends Controller
 {
     public function register(Request $req)
     {
-        $user = new User([
-            'firstname' => $req->firstname,
-            'lastname' => $req->lastname,
-            'email' => $req->email,
-            'password' => bcrypt($req->password),
-            'education' => $req->education,
-            'position' => $req->position,
-            'branch' => $req->branch,
-            'faculty' => $req->faculty,
-            'university' => $req->university,
-            'campus' => $req->campus,
-            'number' => $req->number,
-        ]);
-        if($user->save()){
-            return response()->json('success');
+        $user = User::where('email',$req->email)->get();
+        if($user->count() === 0){
+            $user = new User([
+                'firstname' => $req->firstname,
+                'lastname' => $req->lastname,
+                'email' => $req->email,
+                'password' => bcrypt($req->password),
+                'education' => $req->education,
+                'position' => $req->position,
+                'branch' => $req->branch,
+                'faculty' => $req->faculty,
+                'university' => $req->university,
+                'campus' => $req->campus,
+                'number' => $req->number,
+            ]);
+            if($user->save()){
+                return response()->json('success');
+            } else {
+                return response()->json('error');
+            }
         } else {
             return response()->json('error');
         }
@@ -44,7 +49,9 @@ class AuthController extends Controller
                         'admin' => $admin
                     ]);
                 } else {
-                    return response()->json('error');
+                    return response()->json([
+                        'status' => 'error'
+                    ]);
                 }
             }
             else {
@@ -63,17 +70,21 @@ class AuthController extends Controller
         } else {
             // User
             $user = User::where('email',$req->email)->first();
-            if($user->active != 0){
+            if($user->active == 1){
                 if(Hash::check($req->password,$user->password)){
                     return response()->json([
                         'status' => 'user',
                         'user' => $user
                     ]);
                 } else {
-                    return response()->json('error');
+                    return response()->json([
+                        'status' => 'error'
+                    ]);
                 }
             } else {
-                return response()->json('not access');
+                return response()->json([
+                    'status' => 'error'
+                ]);
             }
         }
     }

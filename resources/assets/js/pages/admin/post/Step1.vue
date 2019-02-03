@@ -4,9 +4,15 @@
       <div class="card shadow">
         <div class="card-header">
           <h3
+            v-if="post.step1 === '0'"
             class="card-title mb-0"
-            :style="post.status === 'ผ่านการตรวจสอบแล้ว' ? 'color: #2dce89' : 'color: #f5365c'"
-          >ขั้นตอนที่ 1 : {{ post.status }}</h3>
+            style="color: #f5365c"
+          >ขั้นตอนที่ 1 : ยังไม่ผ่านการตรวจสอบ</h3>
+          <h3
+            v-else
+            class="card-title mb-0"
+            style="color: #2dce89"
+          >ขั้นตอนที่ 1 : ผ่านการตรวจสอบแล้ว</h3>
         </div>
         <div class="card-body">
           <p>โดย : {{ post.firstname }} {{ post.lastname }}</p>
@@ -16,7 +22,7 @@
           <div class="col-md-9 form-group">
             <label for="file">ฟอร์มบันทึกข้อความ</label>
             <br>เอกสาร :
-            <a target="_blank" :href="'/files/' + post.file">{{ post.filename }}</a>
+            <a target="_blank" :href="'/files/' + post.file_path">{{ post.file_name }}</a>
           </div>
           <hr>
 
@@ -25,16 +31,12 @@
               <label for="status">ผลการประเมิน</label>
               <select class="form-control" name="status" @change="selectChange">
                 <option
-                  :selected="post.status === 'ยังไม่ได้รับการตรวจสอบ' ? 'selected' : ''"
-                  value="ยังไม่ได้รับการตรวจสอบ"
-                >ยังไม่ได้รับการตรวจสอบ</option>
-                <option
-                  :selected="post.status === 'ยังไม่ผ่านการตรวจสอบ' ? 'selected' : ''"
-                  value="ยังไม่ผ่านการตรวจสอบ"
+                  :selected="post.step1 === '0' ? 'selected' : ''"
+                  value="0"
                 >ยังไม่ผ่านการตรวจสอบ</option>
                 <option
-                  :selected="post.status === 'ผ่านการตรวจสอบแล้ว' ? 'selected' : ''"
-                  value="ผ่านการตรวจสอบแล้ว"
+                  :selected="post.step1 === '1' ? 'selected' : ''"
+                  value="1"
                 >ผ่านการตรวจสอบแล้ว</option>
               </select>
             </div>
@@ -56,7 +58,7 @@ export default {
     ...mapActions(["loadPostAdmin"]),
     selectChange(e) {
       axios
-        .put(`/admin/post/${this.$route.params.id}`, { status: e.target.value })
+        .put(`/admin/post/${this.$route.params.id}`, { step1: e.target.value })
         .then(res => {
           console.log(res);
           this.$notify("Saving...");

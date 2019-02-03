@@ -57,8 +57,8 @@ class Post1Controller extends Controller
         $post->title = 'ขอแต่งตั้งผู้ทรงคุณวุฒิภายนอก';
         $post->description = $req->description;
         $post->user_id = $req->user_id;
-        $post->file = $path;
-        $post->filename = $filename;
+        $post->file_path = $path;
+        $post->file_name = $filename;
         if($post->save()){
             return response()->json('success');
         } else {
@@ -124,8 +124,8 @@ class Post1Controller extends Controller
             $filename = pathinfo($fileCON, PATHINFO_FILENAME) . '_' . time() . '.' . pathinfo($fileCON, PATHINFO_EXTENSION);
             $folder = 'post';
             $path = Storage::putFileAs($folder,$file,$filename);
-            $post->file = $path;
-            $post->filename = $filename;
+            $post->file_path = $path;
+            $post->file_name = $filename;
         } 
         
         $post->description = $req->description;

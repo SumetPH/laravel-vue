@@ -15,14 +15,15 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
             $table->text('title');
             $table->text('description')->nullable();
-            $table->integer('user_id');
-            $table->text('file');
-            $table->text('filename');
-            $table->string('status')->default('ยังไม่ได้รับการตรวจสอบ');
-            $table->string('step1')->default('ยังไม่ได้รับการตรวจสอบ');
-            $table->string('step3')->default('ยังไม่ได้รับการตรวจสอบ');
+            $table->text('file_path');
+            $table->text('file_name');
+            $table->integer('step1')->default(0);
+            $table->integer('step2')->default(0);
+            $table->integer('step3')->default(0);
+            $table->integer('step3check')->default(0);
             $table->timestamps();
         });
     }

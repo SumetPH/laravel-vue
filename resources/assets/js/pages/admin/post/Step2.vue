@@ -38,8 +38,13 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
+
 export default {
-  props: ["post2", "loadPost2"],
+  computed: {
+    ...mapState({ post2: "post2" })
+  },
+
   data() {
     return {
       title: "",
@@ -55,6 +60,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["loadPost2Admin"]),
     update(id, file) {
       let formData = new FormData();
       formData.append("id", id);
@@ -64,10 +70,13 @@ export default {
         console.log(res);
         this.$notify("Update...");
         if (res.data === "success") {
-          this.loadPost2();
+          this.loadPost2Admin(this.$route.params.id);
         }
       });
     }
+  },
+  mounted() {
+    this.loadPost2Admin(this.$route.params.id);
   }
 };
 </script>

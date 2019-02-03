@@ -46,9 +46,14 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
+
 export default {
-  props: ["post", "loadPost"],
+  computed: {
+    ...mapState({ post: "post" })
+  },
   methods: {
+    ...mapActions(["loadPostAdmin"]),
     selectChange(e) {
       axios
         .put(`/admin/post/${this.$route.params.id}`, { status: e.target.value })
@@ -56,10 +61,13 @@ export default {
           console.log(res);
           this.$notify("Saving...");
           if (res.data === "success") {
-            this.loadPost();
+            this.loadPostAdmin();
           }
         });
     }
+  },
+  mounted() {
+    this.loadPostAdmin();
   }
 };
 </script>

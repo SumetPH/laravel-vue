@@ -31,7 +31,17 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
+
 export default {
-  props: ["post2"]
+  computed: {
+    ...mapState({ post2: "post2" })
+  },
+  methods: {
+    ...mapActions(["loadPost2User"])
+  },
+  mounted() {
+    this.loadPost2User();
+  }
 };
 </script>

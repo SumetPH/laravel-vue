@@ -64,6 +64,16 @@
 
 <script>
 export default {
-  props: ["posts", "posts_checking", "posts_checked"]
+  props: {
+    posts: {
+      default: 0
+    },
+    posts_checking: {
+      default: 0
+    },
+    posts_checked: {
+      default: 0
+    }
+  }
 };
 </script>

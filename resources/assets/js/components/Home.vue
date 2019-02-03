@@ -141,8 +141,16 @@
   </div>
 </template>
 
+
 <script>
-export default {
-  mounted() {}
-};
+// import { mapState, mapActions } from "vuex";
+
+// export default {
+//   methods: {
+//     ...mapActions(["actionAdd", "addJsonAction"])
+//   },
+//   computed: {
+//     ...mapState(["num", "data"])
+//   }
+// };
 </script>

@@ -173,7 +173,7 @@ export default {
   data() {
     return {
       user: JSON.parse(localStorage.getItem("user")),
-      posts: {},
+      posts: [],
       posts_checking: [],
       posts_checked: [],
       title: "ขอแต่งตั้งผู้ทรงคุณวุฒิภายนอก",
@@ -204,7 +204,7 @@ export default {
     deletePost(id) {
       if (confirm("คุณต้องการลบคำร้องขอนี้ใช่หรือไม่")) {
         axios.delete(`/user/post/${id}`).then(res => {
-          console.log(res);
+          console.log(res, "deletePost");
           if (res.data === "success") {
             this.loadData();
             this.$notify("Deleted");

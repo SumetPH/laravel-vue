@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Post2;
 use App\Post3;
-use App\PostComment;
 use Auth;
 use Storage;
 
@@ -20,11 +19,7 @@ class Post1Controller extends Controller
      */
     public function index()
     {
-        // $posts = Post::where('user_id',Auth::id())->orderBy('created_at','desc')->get();
-        // $data = [
-        //     'posts' => $posts,
-        // ];
-        // return view('user.post.index')->with($data);
+        // 
     }
 
     /**
@@ -64,12 +59,6 @@ class Post1Controller extends Controller
         } else {
             return response()->json('error');
         }
-
-        // $alert = [
-        //     'alert_text' => 'ทำการบันทึกเรียบร้อยแล้ว',
-        //     'alert_color' => 'success'
-        // ];
-        // return redirect()->back()->with($alert);
     }
 
     /**
@@ -81,12 +70,11 @@ class Post1Controller extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-        $comments = PostComment::where('post_id',$id)->orderBy('created_at','asc')->get();
+
         $data = [
             'post' => $post,
-            'comments' => $comments
         ];
-        //  return view('user.post.show')->with($data);
+
         return response()->json($data);
     }
 
@@ -113,13 +101,13 @@ class Post1Controller extends Controller
     {
         $post = Post::find($id);
 
-        if($req->editfile == 'checked')
+        if($req->hasFile('file'))
         {
             // delete old file
             Storage::delete($post->file);
 
             // file
-            $file = $req->file('new_file');
+            $file = $req->file('file');
             $fileCON = $file->getClientOriginalName();
             $filename = pathinfo($fileCON, PATHINFO_FILENAME) . '_' . time() . '.' . pathinfo($fileCON, PATHINFO_EXTENSION);
             $folder = 'post';
@@ -129,14 +117,11 @@ class Post1Controller extends Controller
         } 
         
         $post->description = $req->description;
-        $post->save();
-
-        
-        $alert = [
-            'alert_text' => 'บันทึกการแก้ไขเรียบร้อยแล้ว',
-            'alert_color' => 'success'
-        ];
-        return redirect()->back()->with($alert);
+        if($post->save()){
+            return response()->json('success');
+        } else {
+            return response()->json('error');
+        }        
     }
 
     /**
@@ -177,14 +162,6 @@ class Post1Controller extends Controller
             Post3::where('post_id',$id)->delete();    
         }
             
-        PostComment::where('post_id',$id)->delete();    
-
         return response()->json('success');
-
-        // $alert = [
-        //     'alert_text' => 'ลบคำร้องขอสำเร็จ',
-        //     'alert_color' => 'success'
-        // ];
-        // return redirect('/home')->with($alert);
     }
 }

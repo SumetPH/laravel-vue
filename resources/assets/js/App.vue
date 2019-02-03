@@ -1,11 +1,31 @@
 <template>
   <div>
+    <div class="vld-parent">
+      <loading :active.sync="isLoading"></loading>
+    </div>
     <!-- <transition name="fade"> -->
     <router-view></router-view>
     <!-- </transition> -->
     <notifications position="bottom right"/>
   </div>
 </template>
+
+<script>
+import { mapState, mapActions } from "vuex";
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
+
+export default {
+  components: {
+    Loading
+  },
+  computed: {
+    ...mapState({
+      isLoading: "isLoading"
+    })
+  }
+};
+</script>
 
 <style>
 .fade-enter-active,
@@ -46,7 +66,3 @@
 }
 </style>
 
-
-<script>
-export default {};
-</script>

@@ -44,7 +44,6 @@ class HomeController extends Controller
             'posts_checking' => $posts_checking,
             'posts_checked' => $posts_checked
         ];
-        // return view('home')->with($data);
 
         return response()->json($data);
     }

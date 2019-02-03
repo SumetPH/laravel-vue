@@ -3,17 +3,20 @@ import VueRouter from "vue-router"
 
 Vue.use(VueRouter)
 
-import Home from "./components/Home"
-import Register from "./components/Register"
-import Login from "./components/Login"
+import Home from "./components/Home.vue"
+import Register from "./components/Register.vue"
+import Login from "./components/Login.vue"
+import PasswordReset from "./pages/password/Reset.vue"
 
 // User
-import DashboardUser from "./pages/user/DashboardUser"
-import PostUser from "./pages/user/PostUser"
+import DashboardUser from "./pages/user/DashboardUser.vue"
+import PostUser from "./pages/user/PostUser.vue"
+import PasswordUser from "./pages/user/PasswordUser.vue"
 
 // Admin
-import DashboardAdmin from "./pages/admin/DashboardAdmin"
-import PostAdmin from "./pages/admin/PostAdmin"
+import DashboardAdmin from "./pages/admin/DashboardAdmin.vue"
+import PostAdmin from "./pages/admin/PostAdmin.vue"
+import UserAdmin from "./pages/admin/UserAdmin.vue"
 
 
 export default new VueRouter({
@@ -34,6 +37,11 @@ export default new VueRouter({
 			component: Login
 		},
 		{
+			name: "password-reset",
+			path: "/password/reset",
+			component: PasswordReset
+		},
+		{
 			name: "user",
 			path: "/user",
 			component: DashboardUser
@@ -44,6 +52,11 @@ export default new VueRouter({
 			component: PostUser
 		},
 		{
+			name: "user-password",
+			path: "/user/password",
+			component: PasswordUser
+		},
+		{
 			name: "admin",
 			path: "/admin",
 			component: DashboardAdmin
@@ -52,6 +65,11 @@ export default new VueRouter({
 			name: "admin-post-id",
 			path: "/admin/post/:id",
 			component: PostAdmin
+		},
+		{
+			name: 'admin-user',
+			path: '/admin/user',
+			component: UserAdmin
 		}
 	]
 })

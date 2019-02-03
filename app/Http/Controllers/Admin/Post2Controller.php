@@ -10,10 +10,6 @@ use App\Post2;
 
 class Post2Controller extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth:admin');
-    // }
     /**
      * Display a listing of the resource.
      *
@@ -64,67 +60,6 @@ class Post2Controller extends Controller
         } else {
             return response()->json('error');
         }
-
-        // $post2 = Post2::where('title',$req->title)->first();
-        // if($post2){
-        //     return response()->json('put');
-        // } else {
-        //     $file = $req->file('file');
-        //     $fileCON = $file->getClientOriginalName();
-        //     $file_name = pathinfo($fileCON, PATHINFO_FILENAME) . '_' . time() . '.' . pathinfo($fileCON, PATHINFO_EXTENSION);
-        //     $folder = 'post2';
-        //     $file_path = Storage::putFileAs($folder,$file,$file_name);
-
-        //     $post2 = new Post2();
-        //     $post2->post_id = $req->post_id;
-        //     $post2->title = $req->title;
-        //     $post2->file_name = $file_name;
-        //     $post2->file_path = $file_path;
-
-        //     if($post2->save()){
-        //         return response()->json('success');
-        //     } else {
-        //         return response()->json('error');
-        //     }
-        // }
-        
-        // return response()->json($req->file('file'));
-        // $file3name = '';
-        // $file3path = '';
-        // $file4name = '';
-        // $file4path = '';
-        // // file3
-        // if($req->hasFile('file3')){
-        //     $file3 = $req->file('file3');
-        //     $fileCON3 = $file3->getClientOriginalName();
-        //     $file3name = pathinfo($fileCON3, PATHINFO_FILENAME) . '_' . time() . '.' . pathinfo($fileCON3, PATHINFO_EXTENSION);
-        //     $folder = 'post2';
-        //     $file3path = Storage::putFileAs($folder,$file3,$file3name);
-        // }
-
-        // // file4
-        // if($req->hasFile('file4')){
-        //     $file4 = $req->file('file4');
-        //     $fileCON4 = $file4->getClientOriginalName();
-        //     $file4name = pathinfo($fileCON4, PATHINFO_FILENAME) . '_' . time() . '.' . pathinfo($fileCON4, PATHINFO_EXTENSION);
-        //     $folder = 'post2';
-        //     $file4path = Storage::putFileAs($folder,$file4,$file4name);
-        // }
-
-        // $post2 = new Post2;
-        // $post2->post_id = $req->post_id;
-        // $post2->file3name = $file3name;
-        // $post2->file3path = $file3path;
-        // $post2->file4name = $file4name;
-        // $post2->file4path = $file4path;
-        // $post2->save();
-
-        // $alert = [
-        //     'alert_text' => 'ทำการบันทึกเรียบร้อยแล้ว',
-        //     'alert_color' => 'success'
-        // ];
-        // return redirect()->back()->with($alert);
-    
     }
 
     /**
@@ -178,45 +113,7 @@ class Post2Controller extends Controller
      */
     public function update(Request $req, $id)
     {
-     
-
-        // // file3
-        // if($req->hasFile('file3')){
-        //     $post2 = Post2::find($id);
-        //     Storage::delete($post2->file3path);
-
-        //     $file3 = $req->file('file3');
-        //     $fileCON3 = $file3->getClientOriginalName();
-        //     $file3name = pathinfo($fileCON3, PATHINFO_FILENAME) . '_' . time() . '.' . pathinfo($fileCON3, PATHINFO_EXTENSION);
-        //     $folder = 'post2';
-        //     $file3path = Storage::putFileAs($folder,$file3,$file3name);
-
-        //     $post2->file3name = $file3name;
-        //     $post2->file3path = $file3path;
-        //     $post2->save();
-        // }
-
-        // // file4
-        // if($req->hasFile('file4')){
-        //     $post2 = Post2::find($id);
-        //     Storage::delete($post2->file4path);
-
-        //     $file4 = $req->file('file4');
-        //     $fileCON4 = $file4->getClientOriginalName();
-        //     $file4name = pathinfo($fileCON4, PATHINFO_FILENAME) . '_' . time() . '.' . pathinfo($fileCON4, PATHINFO_EXTENSION);
-        //     $folder = 'post2';
-        //     $file4path = Storage::putFileAs($folder,$file4,$file4name);
-            
-        //     $post2->file4path = $file4path;
-        //     $post2->file4name = $file4name;
-        //     $post2->save();
-        // }
-
-        // $alert = [
-        //     'alert_text' => 'ทำการบันทึกเรียบร้อยแล้ว',
-        //     'alert_color' => 'success'
-        // ];
-        // return redirect()->back()->with($alert);
+        //
     }
 
     /**
@@ -227,6 +124,6 @@ class Post2Controller extends Controller
      */
     public function destroy($id)
     {
-        
+        //
     }
 }

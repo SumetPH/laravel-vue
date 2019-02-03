@@ -106,8 +106,8 @@
           <div class="header-body text-center mb-7">
             <div class="row justify-content-center">
               <div class="col-lg-5 col-md-6">
-                <h1 class="text-white">เข้าสู่ระบบ</h1>
-                <p class="text-lead text-white">สำหรับบุคลากร และ ผู้ดูแล</p>
+                <h1 class="text-white">ลืมรหัสผ่าน</h1>
+                <p class="text-lead text-white">สำหรับบุคลากร</p>
               </div>
             </div>
           </div>
@@ -153,45 +153,26 @@
                 <!-- <div class="text-center text-muted mb-4">
                   <small>Or sign in with credentials</small>
                 </div>-->
-                <form role="form" @submit.prevent="submit">
-                  <div class="form-group">
-                    <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="ni ni-email-83"></i>
-                        </span>
-                      </div>
-                      <input
-                        class="form-control"
-                        name="email"
-                        placeholder="อีเมล หรือ ชื่อผู้ใช้"
-                        type="text"
-                        required
-                        v-model="email"
-                      >
+                <div class="form-group mb-3">
+                  <div class="text-center mb-3" for="email">อีเมลของคุณ</div>
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="ni ni-email-83"></i>
+                      </span>
                     </div>
+                    <input
+                      class="form-control"
+                      name="email"
+                      placeholder="อีเมล"
+                      type="email"
+                      required
+                    >
                   </div>
-                  <div class="form-group">
-                    <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="ni ni-lock-circle-open"></i>
-                        </span>
-                      </div>
-                      <input
-                        class="form-control"
-                        name="password"
-                        placeholder="รหัสผ่าน"
-                        type="password"
-                        required
-                        v-model="password"
-                      >
-                    </div>
-                  </div>
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-primary my-4">เข้าสู่ระบบ</button>
-                  </div>
-                </form>
+                </div>
+                <div class="text-center">
+                  <button class="btn btn-primary" type="submit">ส่ง</button>
+                </div>
               </div>
             </div>
             <div class="row mt-3">
@@ -201,9 +182,9 @@
                 </a>-->
               </div>
               <div class="col-6 text-right">
-                <router-link to="/password/reset" class="text-light">
+                <!-- <router-link to="/password/reset" class="text-light">
                   <small>ลืมรหัสผ่าน</small>
-                </router-link>
+                </router-link>-->
               </div>
             </div>
           </div>
@@ -232,40 +213,3 @@
     </footer>
   </div>
 </template>
-
-<script>
-import { mapActions } from "vuex";
-export default {
-  data() {
-    return {
-      email: "",
-      password: ""
-    };
-  },
-  methods: {
-    ...mapActions(["loading"]),
-    submit() {
-      this.loading(true);
-      let formData = new FormData();
-      formData.append("email", this.email);
-      formData.append("password", this.password);
-
-      axios.post("/login", formData).then(res => {
-        console.log(res);
-        this.loading(false);
-        if (res.data.status === "user") {
-          this.$notify("เข้าสู่ระบบ");
-          localStorage.setItem("user", JSON.stringify(res.data.user));
-          this.$router.push("/user");
-        } else if (res.data.status === "admin") {
-          this.$notify("เข้าสู่ระบบ");
-          localStorage.setItem("admin", JSON.stringify(res.data.admin));
-          this.$router.push("/admin");
-        } else {
-          this.$notify("กรุณาลองใหม่อีกครั้ง");
-        }
-      });
-    }
-  }
-};
-</script>

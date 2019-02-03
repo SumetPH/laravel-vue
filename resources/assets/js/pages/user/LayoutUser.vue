@@ -12,7 +12,7 @@
         <slot name="card"></slot>
       </Header>
       <!-- Page content -->
-      <div class="container-fluid mt--7">
+      <div class="container mt--7">
         <!-- slot -->
         <slot></slot>
         <!-- Footer -->
@@ -23,10 +23,10 @@
 </template>
 
 <script>
-import Sidenav from "../../components/Sidenav";
-import Topnav from "../../components/Topnav";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
+import Sidenav from "../../components/Sidenav.vue";
+import Topnav from "../../components/Topnav.vue";
+import Header from "../../components/Header.vue";
+import Footer from "../../components/Footer.vue";
 
 export default {
   components: {

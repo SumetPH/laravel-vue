@@ -13,8 +13,8 @@ export default new Vuex.Store({
 		}, {
 			file_path: null
 		}],
-		post3: []
-
+		post3: [],
+		isLoading: false
 	},
 	mutations: {
 		addPost(state, post) {
@@ -25,11 +25,16 @@ export default new Vuex.Store({
 		},
 		addPost3(state, post3) {
 			state.post3 = post3
+		},
+		addLoading(state, status) {
+			state.isLoading = status
 		}
 	},
 	actions: {
 		loadPostAdmin(c) {
+			c.commit('addLoading', true)
 			axios.get(`/admin/post/${router.currentRoute.params.id}`).then(res => {
+				c.commit('addLoading', false)
 				console.log(res, "loadPost");
 				c.commit('addPost', res.data.post);
 			});
@@ -47,9 +52,11 @@ export default new Vuex.Store({
 			});
 		},
 		loadPostUser(c) {
+			c.commit('addLoading', true)
 			axios.get(`/user/post/${router.currentRoute.params.id}`).then(res => {
 				console.log(res, "loadPost");
 				c.commit('addPost', res.data.post);
+				c.commit('addLoading', false)
 			});
 		},
 		loadPost2User(c) {
@@ -63,6 +70,9 @@ export default new Vuex.Store({
 				console.log(res, "loadPost3");
 				c.commit('addPost3', res.data.post3);
 			});
+		},
+		loading(c, status) {
+			c.commit('addLoading', status)
 		}
 	}
 })

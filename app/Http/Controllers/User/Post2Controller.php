@@ -5,7 +5,6 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Post2;
-use App\PostComment;
 
 class Post2Controller extends Controller
 {

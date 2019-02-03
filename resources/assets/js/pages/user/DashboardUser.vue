@@ -136,7 +136,7 @@
                 </div>
                 <div class="form-group">
                   <label for="description">รายละเอียด</label>
-                  <textarea class="form-control" rows="5" v-model="discription"></textarea>
+                  <textarea class="form-control" rows="5" v-model="description"></textarea>
                 </div>
                 <div class="form-group">
                   <label for="file">ฟอร์มบันทึกข้อความ</label>
@@ -144,7 +144,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">ส่ง</button>
+                <button type="submit" class="btn btn-primary">บันทึก</button>
                 <button
                   @click="modalHandle"
                   type="button"
@@ -162,8 +162,8 @@
 
 
 <script>
-import Layout from "./LayoutUser";
-import Card from "../../components/Card";
+import Layout from "./LayoutUser.vue";
+import Card from "../../components/Card.vue";
 
 export default {
   components: {
@@ -177,7 +177,7 @@ export default {
       posts_checking: [],
       posts_checked: [],
       title: "ขอแต่งตั้งผู้ทรงคุณวุฒิภายนอก",
-      discription: "",
+      description: "",
       file: "",
       modal: false
     };
@@ -190,7 +190,7 @@ export default {
       let formData = new FormData();
       formData.append("user_id", this.user.id);
       formData.append("title", this.title);
-      formData.append("discription", this.discription);
+      formData.append("description", this.description);
       formData.append("file", this.file);
 
       axios.post("/user/post", formData).then(res => {

@@ -9,10 +9,6 @@ use App\User;
 
 class UserController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:admin');
-    }
 
     /**
      * Display a listing of the resource.
@@ -22,7 +18,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('admin.user.index')->with('users',$users );
+        return response()->json($users);
     }
 
     /**
@@ -41,9 +37,15 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $req)
     {
-        //
+        $user = User::find($req->id);
+        $user->active = $req->active;
+        if($user->save()){
+            return response()->json('success');
+        } else {
+            return response()->json('error');
+        }
     }
 
     /**
@@ -78,15 +80,7 @@ class UserController extends Controller
      */
     public function update(Request $req, $id)
     {
-        $alert = [
-            'alert_text' => 'ทำการบันทึกเรียบร้อยแล้ว',
-            'alert_color' => 'success'
-        ];
-
-        $user = User::find($id);
-        $user->active = $req->active;
-        $user->save();
-        return redirect('/admin/user')->with($alert);
+        //
     }
 
     /**
@@ -97,24 +91,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $alert = [
-            'alert_text' => 'ลบบัญชีผู้ใช้งานเรียบร้อยแล้ว',
-            'alert_color' => 'success'
-        ];
-
-        // delete user in users table.
         $user = User::find($id);
-        $user->delete();
-        return redirect()->back()->with($alert);
-        
-        // delete files from posts of user
-        // $posts = Post::where('user_id',$id)->get();
-        // foreach ($posts as $post)
-        // {
-        //     Storage::delete($post->file);
-        // }
-        
-        // delete posts in post1s table by user_id.
-        // Post::where('user_id',$id)->delete();
+        if($user->delete()){
+            return response()->json('success');            
+        } else {
+            return response()->json('error');
+        }
     }
 }

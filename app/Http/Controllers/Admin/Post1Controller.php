@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Post;
-use App\PostComment;
 use DB;
 
 class Post1Controller extends Controller
@@ -50,24 +49,17 @@ class Post1Controller extends Controller
      */
     public function show($id)
     {
-    //     $post = Post::find($id);
-    //     $comments = PostComment::where('post_id',$id)->orderBy('created_at','asc')->get();
-    //     $data = [
-    //        'post' => $post,
-    //        'comments' => $comments
-    //    ];
-
-    $post = DB::table('posts')
-        ->join('users', 'posts.user_id', '=', 'users.id')
-        ->select('posts.*', 'users.firstname')
-        ->where('posts.id','=',$id)
-        ->first();
+        $post = DB::table('posts')
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->select('posts.*', 'users.firstname')
+            ->where('posts.id','=',$id)
+            ->first();
 
         $data = [
             'post' => $post
         ];
 
-       return response()->json($data);
+        return response()->json($data);
     }
 
     /**
@@ -98,13 +90,6 @@ class Post1Controller extends Controller
         } else {
             return response()->json('error');
         }
-    
-
-        // $alerts = [
-        //     'alert_text' => 'ทำการบันทึกผลการประเมิณเรียบร้อยแล้ว',
-        //     'alert_color' => 'success'
-        // ];
-        // return redirect()->back()->with($alerts);
     }
 
     /**

@@ -129,16 +129,62 @@
           </div>
         </form>
         <!-- Navigation -->
-        <ul class="navbar-nav">
+        <ul v-if="who === 'user'" class="navbar-nav">
           <li class="nav-item">
-            <router-link class="nav-link" :to="who === 'user' ? '/user' : '/admin'">
+            <router-link class="nav-link" to="/user">
               <i class="ni ni-tv-2 text-primary"></i> หน้าแรก
             </router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="examples/icons.html">
-              <i class="ni ni-planet text-blue"></i> Icons
+            <router-link class="nav-link" to="/user/password">
+              <i class="ni ni-planet text-blue"></i> เปลี่ยนรหัสผ่าน
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="examples/maps.html">
+              <i class="ni ni-pin-3 text-orange"></i> Maps
             </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="examples/profile.html">
+              <i class="ni ni-single-02 text-yellow"></i> User profile
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="examples/tables.html">
+              <i class="ni ni-bullet-list-67 text-red"></i> Tables
+            </a>
+          </li>
+          <li class="nav-item">
+            <router-link to="/login" class="nav-link">
+              <i class="ni ni-key-25 text-info"></i>
+              Login
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/register">
+              <i class="ni ni-circle-08 text-pink"></i>
+              Register
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <a @click.prevent="logout" class="nav-link" href>
+              <i class="ni ni-user-run text-green"></i>
+              ออกจากระบบ
+            </a>
+          </li>
+        </ul>
+
+        <ul v-if="who === 'admin'" class="navbar-nav">
+          <li class="nav-item">
+            <router-link class="nav-link" to="/admin">
+              <i class="ni ni-tv-2 text-primary"></i> หน้าแรก
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/admin/user">
+              <i class="ni ni-planet text-blue"></i> จัดการผู้ใช้
+            </router-link>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="examples/maps.html">

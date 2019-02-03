@@ -12,10 +12,10 @@
 <script>
 import { mapState } from "vuex";
 
-import Layout from "./LayoutAdmin";
-import Step1 from "./post/Step1";
-import Step2 from "./post/Step2";
-import Step3 from "./post/Step3";
+import Layout from "./LayoutAdmin.vue";
+import Step1 from "./post/Step1.vue";
+import Step2 from "./post/Step2.vue";
+import Step3 from "./post/Step3.vue";
 
 export default {
   components: {

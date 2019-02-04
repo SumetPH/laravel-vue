@@ -162,7 +162,7 @@
 
 
 <script>
-import Layout from "./LayoutUser.vue";
+import Layout from "../../components/Layout";
 import Card from "../../components/Card.vue";
 
 export default {

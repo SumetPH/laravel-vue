@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from "vue-router"
+import store from './store'
 
 Vue.use(VueRouter)
 
@@ -19,7 +20,7 @@ import PostAdmin from "./pages/admin/PostAdmin.vue"
 import UserAdmin from "./pages/admin/UserAdmin.vue"
 
 
-export default new VueRouter({
+const router = new VueRouter({
 	mode: "history",
 	routes: [{
 			name: "home",
@@ -73,3 +74,27 @@ export default new VueRouter({
 		}
 	]
 })
+
+router.beforeEach((to, from, next) => {
+	store.dispatch('fetchUser')
+	store.dispatch('fetchAdmin')
+	if (to.name === 'user' || to.name === 'user-post-id' || to.name === 'user-password') {
+		if (store.state.user.auth) {
+			store.commit('who', 'user')
+			next()
+		} else {
+			next('/login')
+		}
+	} else if (to.name === 'admin' || to.name === 'admin-post-id' || to.name === 'admin-user') {
+		if (store.state.admin.auth) {
+			store.commit('who', 'admin')
+			next()
+		} else {
+			next('/login')
+		}
+	} else {
+		next()
+	}
+})
+
+export default router

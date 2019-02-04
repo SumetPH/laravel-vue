@@ -19,8 +19,8 @@ import App from "./App.vue"
 
 const app = new Vue(
     Vue.util.extend({
+            store,
             router,
-            store
         },
         App
     )

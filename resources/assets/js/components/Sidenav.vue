@@ -168,7 +168,7 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <a @click.prevent="logout" class="nav-link" href>
+            <a @click.prevent="logout('user')" class="nav-link" href>
               <i class="ni ni-user-run text-green"></i>
               ออกจากระบบ
             </a>
@@ -214,7 +214,7 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <a @click.prevent="logout" class="nav-link" href>
+            <a @click.prevent="logout('admin')" class="nav-link" href>
               <i class="ni ni-user-run text-green"></i>
               ออกจากระบบ
             </a>
@@ -257,15 +257,13 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   props: {
     who: String
   },
   methods: {
-    logout() {
-      localStorage.removeItem(this.who);
-      this.$router.push("/login");
-    }
+    ...mapActions(["logout"])
   }
 };
 </script>

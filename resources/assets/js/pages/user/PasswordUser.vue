@@ -1,5 +1,5 @@
 <template>
-  <LayoutUser>
+  <Layout>
     <div class="row justify-content-center">
       <div class="col-md-9">
         <div class="card">
@@ -29,14 +29,14 @@
         </div>
       </div>
     </div>
-  </LayoutUser>
+  </Layout>
 </template>
 
 <script>
-import LayoutUser from "./LayoutUser";
+import Layout from "../../components/Layout";
 export default {
   components: {
-    LayoutUser
+    Layout
   }
 };
 </script>

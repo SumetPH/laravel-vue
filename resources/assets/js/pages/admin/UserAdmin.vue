@@ -1,5 +1,5 @@
 <template>
-  <LayoutAdmin>
+  <Layout>
     <div class="row">
       <div class="col-md-12">
         <div class="card">
@@ -216,15 +216,15 @@
         </div>
       </div>
     </div>
-  </LayoutAdmin>
+  </Layout>
 </template>
 
 <script>
-import LayoutAdmin from "./LayoutAdmin.vue";
+import Layout from "../../components/Layout";
 
 export default {
   components: {
-    LayoutAdmin
+    Layout
   },
   data() {
     return {

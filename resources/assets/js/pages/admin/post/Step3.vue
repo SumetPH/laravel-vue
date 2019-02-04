@@ -6,7 +6,7 @@
           <div class="card-header">
             <h3
               class="card-title mb-0"
-              style="color : #2dce89"
+              :style="post.step3check === '1' ? 'color : #2dce89' : 'color: #fb6340'"
             >ขั้นตอนที่ 3 : เอกสารประกอบการเสนอขอกำหนดตำแหน่งทางวิชาการ</h3>
           </div>
           <div class="card-body">

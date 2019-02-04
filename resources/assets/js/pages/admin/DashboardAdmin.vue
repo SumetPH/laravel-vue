@@ -116,7 +116,7 @@
 
 
 <script>
-import Layout from "./LayoutAdmin.vue";
+import Layout from "../../components/Layout";
 import Card from "../../components/Card.vue";
 
 export default {

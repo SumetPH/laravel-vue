@@ -19,12 +19,14 @@
             <p>หัวข้อ : {{ post.title }}</p>
             <p>รายละเอียด : {{ post.description }}</p>
             <hr>
-            <div class="col-md-9 form-group">
-              <label>ฟอร์มบันทึกข้อความ</label>
-              <br>เอกสาร :
-              <a target="_blank" :href="'/files/' + post.file_path">{{post.file_name}}</a>
-              <p></p>
-              <button v-if="post.step1 === '0'" @click="modalHandle" class="btn btn-warning">แก้ไข</button>
+            <div class="row justify-content-center">
+              <div class="col-md-12">
+                <label>ฟอร์มบันทึกข้อความ</label>
+                <br>เอกสาร :
+                <a target="_blank" :href="'/files/' + post.file_path">{{post.file_name}}</a>
+                <p></p>
+                <button v-if="post.step1 === '0'" @click="modalHandle" class="btn btn-warning">แก้ไข</button>
+              </div>
             </div>
           </div>
         </div>
@@ -127,6 +129,7 @@ export default {
         }
         this.loadPostUser();
         this.modal = false;
+        this.file = false;
       });
     }
   },

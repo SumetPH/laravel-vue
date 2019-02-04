@@ -4,6 +4,7 @@ import store from './store'
 
 Vue.use(VueRouter)
 
+import Test from "./test/Test.vue"
 import Home from "./components/Home.vue"
 import Register from "./components/Register.vue"
 import Login from "./components/Login.vue"
@@ -23,6 +24,10 @@ import UserAdmin from "./pages/admin/UserAdmin.vue"
 const router = new VueRouter({
 	mode: "history",
 	routes: [{
+			name: 'test',
+			path: '/test',
+			component: Test
+		}, {
 			name: "home",
 			path: "/",
 			component: Home

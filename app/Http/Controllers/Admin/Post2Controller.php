@@ -38,28 +38,7 @@ class Post2Controller extends Controller
      */
     public function store(Request $req)
     {
-        $post2 = Post2::find($req->id);
-        Storage::delete($post2->file_path);
-
-        $file = $req->file('file');
-        $fileCON = $file->getClientOriginalName();
-        $file_name = pathinfo($fileCON, PATHINFO_FILENAME) . '_' . time() . '.' . pathinfo($fileCON, PATHINFO_EXTENSION);
-        $folder = 'post2';
-        $file_path = Storage::putFileAs($folder,$file,$file_name);
-
-        $post2->file_name = $file_name;
-        $post2->file_path = $file_path;
-        if($post2->save()){
-            $post = Post::find($req->post_id);
-            $post2 = Post2::where('post_id', $req->post_id)->whereNotNull('file_name')->get();
-            if($post2->count() == 2){
-                $post->step2 = '1';
-                $post->save();
-            }
-            return response()->json('success');
-        } else {
-            return response()->json('error');
-        }
+       //
     }
 
     /**
@@ -113,7 +92,28 @@ class Post2Controller extends Controller
      */
     public function update(Request $req, $id)
     {
-        //
+        $post2 = Post2::find($id);
+        Storage::delete($post2->file_path);
+
+        $file = $req->file('file');
+        $fileCON = $file->getClientOriginalName();
+        $file_name = pathinfo($fileCON, PATHINFO_FILENAME) . '_' . time() . '.' . pathinfo($fileCON, PATHINFO_EXTENSION);
+        $folder = 'post2';
+        $file_path = Storage::putFileAs($folder,$file,$file_name);
+
+        $post2->file_name = $file_name;
+        $post2->file_path = $file_path;
+        if($post2->save()){
+            $post = Post::find($req->post_id);
+            $post2 = Post2::where('post_id', $req->post_id)->whereNotNull('file_name')->get();
+            if($post2->count() == 2){
+                $post->step2 = '1';
+                $post->save();
+            }
+            return response()->json('success');
+        } else {
+            return response()->json('error');
+        }
     }
 
     /**

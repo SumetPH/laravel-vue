@@ -33,12 +33,23 @@
 
               <div v-else class="form-group">
                 <label>{{ item.title }}</label>
+                <file-pond
+                  name="file"
+                  ref="pond"
+                  label-idle="เลือกเอกสาร"
+                  :server="{process}"
+                  @addfilestart="addfilestart(item.id)"
+                />
+              </div>
+
+              <!-- <div v-else class="form-group">
+                <label>{{ item.title }}</label>
                 <input
                   type="file"
                   class="form-control"
                   @change="(e) => update(item.id, item.post_id, e.target.files[0])"
                 >
-              </div>
+              </div>-->
               <hr>
             </div>
           </div>
@@ -54,27 +65,53 @@ import { mapState, mapActions } from "vuex";
 export default {
   data() {
     return {
+      id: "",
       title: "",
       file: ""
     };
   },
   methods: {
     ...mapActions(["loadPostUser", "loadPost3User"]),
-    update(id, post_id, file) {
-      let formData = new FormData();
-      formData.append("id", id);
-      formData.append("post_id", post_id);
+    addfilestart(id) {
+      this.id = id;
+    },
+    process(fieldName, file, metadata, load, error, progress, abort) {
+      const formData = new FormData();
+      formData.append("_method", "put");
       formData.append("file", file);
 
-      axios.post(`/user/post3`, formData).then(res => {
-        console.log(res);
-        this.$notify("Update...");
-        if (res.data === "success") {
-          this.loadPostUser();
-          this.loadPost3User();
+      // the request itself
+      axios({
+        method: "post",
+        url: `/user/post3/${this.id}`,
+        data: formData,
+        onUploadProgress: e => {
+          // updating progress indicator
+          progress(e.lengthComputable, e.loaded, e.total);
         }
+      }).then(res => {
+        console.log(res);
+        // passing the file id to FilePond
+        load("100");
+        this.loadPostUser();
+        this.loadPost3User();
       });
     }
+    // update(id, post_id, file) {
+    //   let formData = new FormData();
+    //   formData.append("id", id);
+    //   formData.append("post_id", post_id);
+    //   formData.append("file", file);
+
+    //   axios.post(`/user/post3`, formData).then(res => {
+    //     console.log(res);
+    //     this.$notify("Update...");
+    //     if (res.data === "success") {
+    //       this.loadPostUser();
+    //       this.loadPost3User();
+    //     }
+    //   });
+    // }
   },
   computed: {
     ...mapState({ post: "post", post3: "post3" })

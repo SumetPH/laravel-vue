@@ -38,28 +38,7 @@ class Post3Controller extends Controller
      */
     public function store(Request $req)
     {
-        $post3 = Post3::find($req->id);
-        Storage::delete($post3->file_path);
-
-        $file = $req->file('file');
-        $fileCON = $file->getClientOriginalName();
-        $file_name = pathinfo($fileCON, PATHINFO_FILENAME) . '_' . time() . '.' . pathinfo($fileCON, PATHINFO_EXTENSION);
-        $folder = 'post3';
-        $file_path = Storage::putFileAs($folder,$file,$file_name);
-
-        $post3->file_name = $file_name;
-        $post3->file_path = $file_path;
-        if($post3->save()){
-            $post = Post::find($req->post_id);
-            $post3 = Post3::where('post_id', $req->post_id)->whereNotNull('file_name')->get();
-            if($post3->count() == 12){
-                $post->step3 = '1';
-                $post->save();
-            }
-            return response()->json('success');
-        } else {
-            return response()->json('error');
-        }
+        //
     }
 
     /**
@@ -123,7 +102,28 @@ class Post3Controller extends Controller
      */
     public function update(Request $req, $id)
     {
-        //
+        $post3 = Post3::find($id);
+        Storage::delete($post3->file_path);
+
+        $file = $req->file('file');
+        $fileCON = $file->getClientOriginalName();
+        $file_name = pathinfo($fileCON, PATHINFO_FILENAME) . '_' . time() . '.' . pathinfo($fileCON, PATHINFO_EXTENSION);
+        $folder = 'post3';
+        $file_path = Storage::putFileAs($folder,$file,$file_name);
+
+        $post3->file_name = $file_name;
+        $post3->file_path = $file_path;
+        if($post3->save()){
+            $post = Post::find($req->post_id);
+            $post3 = Post3::where('post_id', $req->post_id)->whereNotNull('file_name')->get();
+            if($post3->count() == 12){
+                $post->step3 = '1';
+                $post->save();
+            }
+            return response()->json('success');
+        } else {
+            return response()->json('error');
+        }
     }
 
     /**

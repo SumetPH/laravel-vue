@@ -3129,6 +3129,21 @@ filenamify@^2.0.0:
     strip-outer "^1.0.0"
     trim-repeated "^1.0.0"
 
+filepond-plugin-file-validate-type@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-file-validate-type/-/filepond-plugin-file-validate-type-1.2.1.tgz#02f5ca2411db0bf23c4afd81355f15c5a57b2c3a"
+  integrity sha512-DPgkHQ9n88kUAJcgozTqMwmmt9k3Ibn8xBatv91krpLnbQiVgRszocx7v3NMySw2R2Pil9fgPF7opAYaTpwlfA==
+
+filepond-plugin-image-preview@^3.1.6:
+  version "3.1.6"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-image-preview/-/filepond-plugin-image-preview-3.1.6.tgz#0188300f952e76976741d8b88ddd03d1b4ce8214"
+  integrity sha512-IpIHUi0/IIc4Rbo2nxfA+AXzUu0JPfWU2HneuM0NjpNG4s0I0BVv5tw9CgFaqWQ7+Dr9ULJy4SdMmlP9vnyN1g==
+
+filepond@^3.9.0:
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/filepond/-/filepond-3.9.0.tgz#a11457ea432420585406b2511f67f2516246add8"
+  integrity sha512-6XqRwzdpCOHYvnp7hqPpYbOH03zweOcGkgv5ixQlihbRxLFUw2AJId4lHwLdbKW7LX9EaQPqZ6qRF+3T0dkDVw==
+
 fill-range@^2.1.0:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/fill-range/-/fill-range-2.2.4.tgz#eb1e773abb056dcd8df2bfdf6af59b8b3a936565"
@@ -8252,6 +8267,11 @@ vue-axios@^2.1.4:
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/vue-axios/-/vue-axios-2.1.4.tgz#a9d298f7e876f9a87feb336b37adcbce34ff9f9f"
   integrity sha512-DS8Q+WFT3i7nS0aZ/NMmTPf2yhbtlXhj4QEZmY69au/BshsGzGjC6dXaniZaPQlErP3J3Sv1HtQ4RVrXaUTkxA==
+
+vue-filepond@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/vue-filepond/-/vue-filepond-4.0.3.tgz#180e66210402ea8ddbbc3effcce4f2fc5b0cc4f9"
+  integrity sha512-Y6hYSYWbqRQfz2HOpnRN9dn1mGxqkhP6Cv7pqBPw3EEeKEGwEfxT36h9A0o4va1KGVrfV/OjjfjMqTnQShUx6g==
 
 vue-hot-reload-api@^2.2.0:
   version "2.3.1"

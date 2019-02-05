@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('campus');
             $table->string('number');
             $table->integer('active')->default(0);
+            $table->string('image')->default('image/profile.png');
             $table->rememberToken();
             $table->timestamps();
         });

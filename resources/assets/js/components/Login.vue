@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-default animated fadeIn" style="height: 100vh">
+  <div class="bg-default animated fadeIn">
     <div class="main-content">
       <!-- Navbar -->
       <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">

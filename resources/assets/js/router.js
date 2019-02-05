@@ -14,6 +14,7 @@ import PasswordReset from "./pages/password/Reset.vue"
 import DashboardUser from "./pages/user/DashboardUser.vue"
 import PostUser from "./pages/user/PostUser.vue"
 import PasswordUser from "./pages/user/PasswordUser.vue"
+import ProfileUser from "./pages/user/ProfileUser.vue"
 
 // Admin
 import DashboardAdmin from "./pages/admin/DashboardAdmin.vue"
@@ -63,6 +64,11 @@ const router = new VueRouter({
 			component: PasswordUser
 		},
 		{
+			name: "user-profile",
+			path: "/user/profile",
+			component: ProfileUser
+		},
+		{
 			name: "admin",
 			path: "/admin",
 			component: DashboardAdmin
@@ -83,7 +89,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
 	store.dispatch('fetchUser')
 	store.dispatch('fetchAdmin')
-	if (to.name === 'user' || to.name === 'user-post-id' || to.name === 'user-password') {
+	if (to.name === 'user' || to.name === 'user-post-id' || to.name === 'user-password' || to.name === 'user-profile') {
 		if (store.state.user.auth) {
 			store.commit('who', 'user')
 			next()

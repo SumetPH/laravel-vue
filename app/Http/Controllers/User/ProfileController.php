@@ -5,14 +5,10 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use Storage;
 
 class ProfileController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -53,7 +49,7 @@ class ProfileController extends Controller
     public function show($id)
     {
         $profile = User::find($id);
-        return view('user.profile')->with('profile',$profile);
+        return response()->json($profile);
     }
 
     /**
@@ -76,21 +72,45 @@ class ProfileController extends Controller
      */
     public function update(Request $req, $id)
     {
-        $profile = User::find($id);
-        $profile->firstname = $req->firstname;
-        $profile->lastname = $req->lastname;
-        $profile->education = $req->education;
-        $profile->position = $req->position;
-        $profile->branch = $req->branch;
-        $profile->faculty = $req->faculty;
-        $profile->number = $req->number;
-        $profile->save();
-
-        $alert = [
-            'alert_text' => 'ทำการบันทึกเรียบร้อยแล้ว',
-            'alert_color' => 'success'
-        ];
-        return redirect()->back()->with($alert);
+        if($req->hasFile('image')){
+            $file = $req->file('image');
+            $fileCON = $file->getClientOriginalName();
+            $folder = 'image';
+            $path = Storage::putFileAs($folder,$file,$fileCON);
+            $profile = User::find($id);
+            $profile->image = $path;
+            if($profile->save()){
+                return response()->json([
+                    'status' => 'success',
+                    'data' => $profile
+                ]);
+            } else {
+                return response()->json([
+                    'status' => 'error',
+                    'data' => $profile
+                ]);
+            }
+        } else {
+            $profile = User::find($id);
+            $profile->firstname = $req->firstname;
+            $profile->lastname = $req->lastname;
+            $profile->education = $req->education;
+            $profile->position = $req->position;
+            $profile->branch = $req->branch;
+            $profile->faculty = $req->faculty;
+            $profile->number = $req->number;
+            if($profile->save()){
+                return response()->json([
+                    'status' => 'success',
+                    'data' => $profile
+                ]);
+            } else {
+                return response()->json([
+                    'status' => 'error',
+                    'data' => $profile
+                ]);
+            }
+        }
     }
 
     /**

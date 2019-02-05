@@ -22,12 +22,23 @@
       <!-- User -->
       <ul class="navbar-nav align-items-center d-none d-md-flex">
         <li class="nav-item dropdown">
-          <a
+          <router-link class="nav-link pr-0" :to="who === 'user' ? '/user/profile' : ''">
+            <div class="media align-items-center">
+              <span class="avatar avatar-sm rounded-circle">
+                <img v-if="who === 'user'" alt="Image placeholder" :src="'/files/' + data.image">
+                <img v-else alt="Image placeholder" src="/files/image/profile.png">
+              </span>
+              <div class="media-body ml-2 d-none d-lg-block">
+                <span class="mb-0 text-sm font-weight-bold">{{data.firstname}}</span>
+              </div>
+            </div>
+          </router-link>
+          <!-- <a
             class="nav-link pr-0"
             href="#"
             role="button"
             data-toggle="dropdown"
-            aria-haspopup="true"
+            aria-haspopup="false"
             aria-expanded="false"
           >
             <div class="media align-items-center">
@@ -38,7 +49,7 @@
                 <span class="mb-0 text-sm font-weight-bold">{{data.firstname}}</span>
               </div>
             </div>
-          </a>
+          </a>-->
           <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
             <div class="dropdown-header noti-title">
               <h6 class="text-overflow m-0">Welcome!</h6>

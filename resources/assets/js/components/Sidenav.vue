@@ -54,7 +54,8 @@
           >
             <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" src="/assets/img/theme/team-1-800x800.jpg">
+                <img v-if="who === 'user'" alt="Image placeholder" :src="'/files/' + data.image">
+                <img v-else alt="Image placeholder" src="/files/image/profile.png">
               </span>
             </div>
           </a>
@@ -92,9 +93,9 @@
         <div class="navbar-collapse-header d-md-none">
           <div class="row">
             <div class="col-6 collapse-brand">
-              <a href="index.html">
-                <img src="/assets/img/brand/blue.png">
-              </a>
+              <router-link to="/">
+                <img src="/assets/img/brand/dds-primary.png">
+              </router-link>
             </div>
             <div class="col-6 collapse-close">
               <button
@@ -136,6 +137,11 @@
             </router-link>
           </li>
           <li class="nav-item">
+            <router-link class="nav-link" to="/user/profile">
+              <i class="ni ni-single-02 text-yellow"></i> ข้อมูลผู้ใช้
+            </router-link>
+          </li>
+          <li class="nav-item">
             <router-link class="nav-link" to="/user/password">
               <i class="ni ni-planet text-blue"></i> เปลี่ยนรหัสผ่าน
             </router-link>
@@ -143,11 +149,6 @@
           <li class="nav-item">
             <a class="nav-link" href="examples/maps.html">
               <i class="ni ni-pin-3 text-orange"></i> Maps
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="examples/profile.html">
-              <i class="ni ni-single-02 text-yellow"></i> User profile
             </a>
           </li>
           <li class="nav-item">
@@ -259,9 +260,7 @@
 <script>
 import { mapActions } from "vuex";
 export default {
-  props: {
-    who: String
-  },
+  props: ["who", "data"],
   methods: {
     ...mapActions(["logout"])
   }

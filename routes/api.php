@@ -26,8 +26,8 @@ Route::prefix('/user')->group(function(){
     Route::resource('/post','User\Post1Controller');
     Route::resource('/post2','User\Post2Controller');
     Route::resource('/post3','User\Post3Controller');
+    Route::resource('/profile','User\ProfileController');
 //     Route::post('/logout', 'Auth\LoginController@logout');
-//     Route::resource('/profile','User\ProfileController');
 //     Route::resource('/changepassword','User\ChangePasswordController');
 });
 

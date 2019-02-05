@@ -1,7 +1,7 @@
 <template>
   <div class="animated fadeIn">
     <!-- Sidenav -->
-    <Sidenav :who="who"></Sidenav>
+    <Sidenav :who="who" :data="data"></Sidenav>
     <!-- Main content -->
     <div class="main-content">
       <!-- Top navbar -->

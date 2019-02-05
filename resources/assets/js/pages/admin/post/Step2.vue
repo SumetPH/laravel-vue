@@ -34,7 +34,7 @@
                   ref="pond"
                   label-idle="เลือกเอกสาร"
                   :server="{process}"
-                  @addfilestart="addfilestart(item.id)"
+                  @addfilestart="addfilestart(item.id,item.post_id)"
                 />
               </div>
               <!-- <div v-else class="form-group">
@@ -68,18 +68,21 @@ export default {
   data() {
     return {
       id: "",
+      post_id: "",
       title: "",
       file: ""
     };
   },
   methods: {
     ...mapActions(["loadPostAdmin", "loadPost2Admin"]),
-    addfilestart(id) {
+    addfilestart(id, post_id) {
       this.id = id;
+      this.post_id = post_id;
     },
     process(fieldName, file, metadata, load, error, progress, abort) {
       const formData = new FormData();
       formData.append("_method", "put");
+      formData.append("post_id", this.post_id);
       formData.append("file", file);
 
       // the request itself

@@ -18,6 +18,7 @@
           <div class="card-body">
             <p>หัวข้อ : {{ post.title }}</p>
             <p>รายละเอียด : {{ post.description }}</p>
+            <small>เวลา ​: {{post.updated_at}}</small>
             <hr>
             <div class="row justify-content-center">
               <div class="col-md-12">
@@ -64,16 +65,21 @@
               </button>
               <h4 class="modal-title" id="myModalLabel">คำร้องขอ</h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body bg-secondary">
               <div class="form-group">
                 <label for="description">รายละเอียด</label>
-                <textarea class="form-control" rows="5" v-model="description"></textarea>
+                <textarea
+                  class="form-control form-control-alternative"
+                  rows="5"
+                  v-model="description"
+                ></textarea>
               </div>
               <div class="form-group">
                 <label for="file">ฟอร์มบันทึกข้อความ</label>
                 <br>
                 <button v-if="!file" @click="file = true" class="btn btn-warning">แก้ไขเอกสาร</button>
-                <input v-if="file" class="form-control" type="file" @change="changeFile">
+                <!-- <input v-if="file" class="form-control" type="file" @change="changeFile"> -->
+                <file-pond v-if="file" label-idle="เลือกเอกสาร" :server="{process,revert}"/>
               </div>
             </div>
             <div class="modal-footer">
@@ -114,6 +120,14 @@ export default {
     },
     changeFile(e) {
       this.file = e.target.files[0];
+    },
+    process(fieldName, file, metadata, load, error, progress, abort) {
+      this.file = file;
+      load();
+    },
+    revert(uniqueFileId, load, error) {
+      this.file = false;
+      load();
     },
     updatePost() {
       let formData = new FormData();

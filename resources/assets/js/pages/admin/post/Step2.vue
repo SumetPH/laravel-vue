@@ -19,9 +19,10 @@
             <div v-for="(item, index) in post2" :key="index" class="col-md-9">
               <div v-if="item.file_path != null" class="form-group">
                 <label>{{ item.title }}</label>
-
                 <br>เอกสาร :
                 <a target="_blank" :href="'/files/' + item.file_path">{{ item.file_name }}</a>
+                <br>
+                <small>เวลา ​: {{item.updated_at}}</small>
                 <p></p>
                 <!-- <button @click="item.file_path = null" class="btn btn-warning">แก้ไข</button> -->
                 <button @click="item.file_path = null" class="btn btn-warning">แก้ไข</button>

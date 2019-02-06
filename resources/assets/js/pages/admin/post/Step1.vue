@@ -18,6 +18,7 @@
           <p>โดย : {{ post.firstname }} {{ post.lastname }}</p>
           <p>หัวข้อ : {{ post.title }}</p>
           <p>รายละเอียด : {{ post.description }}</p>
+          <small>เวลา ​: {{post.updated_at}}</small>
           <hr>
           <div class="col-md-9 form-group">
             <label for="file">ฟอร์มบันทึกข้อความ</label>

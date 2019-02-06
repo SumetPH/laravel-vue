@@ -129,18 +129,33 @@
               <h4 class="modal-title" id="myModalLabel">คำร้องขอ</h4>
             </div>
             <form @submit.prevent="submit">
-              <div class="modal-body">
+              <div class="modal-body bg-secondary">
                 <div class="form-group">
                   <label for="title">หัวข้อ</label>
-                  <input type="text" class="form-control" disabled v-model="title">
+                  <input
+                    type="text"
+                    class="form-control form-control-alternative"
+                    disabled
+                    v-model="title"
+                  >
                 </div>
                 <div class="form-group">
                   <label for="description">รายละเอียด</label>
-                  <textarea class="form-control" rows="5" v-model="description"></textarea>
+                  <textarea
+                    class="form-control form-control-alternative"
+                    rows="3"
+                    v-model="description"
+                  ></textarea>
                 </div>
                 <div class="form-group">
                   <label for="file">ฟอร์มบันทึกข้อความ</label>
-                  <input class="form-control" type="file" required @change="changeFile">
+                  <!-- <input class="form-control" type="file" required @change="changeFile"> -->
+                  <file-pond
+                    name="file"
+                    ref="pond"
+                    label-idle="เลือกเอกสาร"
+                    :server="{process,revert}"
+                  />
                 </div>
               </div>
               <div class="modal-footer">
@@ -185,6 +200,14 @@ export default {
   methods: {
     changeFile(e) {
       this.file = e.target.files[0];
+    },
+    process(fieldName, file, metadata, load, error, progress, abort) {
+      this.file = file;
+      load();
+    },
+    revert(uniqueFileId, load, error) {
+      this.file = "";
+      load();
     },
     submit() {
       let formData = new FormData();
@@ -232,3 +255,18 @@ export default {
 };
 </script>
 
+<style scoped>
+.modal {
+  display: block !important; /* I added this to see the modal, you don't need this */
+}
+
+/* Important part */
+.modal-dialog {
+  width: 700px;
+  overflow-y: initial !important;
+}
+.modal-body {
+  height: 380px;
+  overflow-y: auto;
+}
+</style>

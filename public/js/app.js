@@ -62806,17 +62806,21 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(148)
+}
 var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(72)
 /* template */
-var __vue_template__ = __webpack_require__(88)
+var __vue_template__ = __webpack_require__(150)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-42300710"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -63021,6 +63025,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -63046,6 +63065,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   methods: {
     changeFile: function changeFile(e) {
       this.file = e.target.files[0];
+    },
+    process: function process(fieldName, file, metadata, load, error, progress, abort) {
+      this.file = file;
+      load();
+    },
+    revert: function revert(uniqueFileId, load, error) {
+      this.file = "";
+      load();
     },
     submit: function submit() {
       var _this = this;
@@ -65073,388 +65100,7 @@ if (false) {
 }
 
 /***/ }),
-/* 88 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c(
-        "layout",
-        [
-          _c(
-            "template",
-            { slot: "card" },
-            [
-              _c("Card", {
-                attrs: {
-                  posts: _vm.posts,
-                  posts_checking: _vm.posts_checking,
-                  posts_checked: _vm.posts_checked
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-xl-9 mb-5 mb-xl-0" }, [
-              _c("div", { staticClass: "card shadow" }, [
-                _c("div", { staticClass: "card-header" }, [
-                  _c("h3", { staticClass: "card-title text-muted mb-0" }, [
-                    _vm._v("คำร้องขอที่รอการตรวจสอบ")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-body" }, [
-                  _c("div", { staticClass: "table-responsive" }, [
-                    _c("table", { staticClass: "table" }, [
-                      _c("thead", { staticClass: "thead-light" }, [
-                        _c("tr", [
-                          _c("th", [_vm._v("หัวข้อ")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("ผู้ส่ง")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("เวลา")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("สถานะ")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("ลบ")])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "tbody",
-                        _vm._l(_vm.posts_checking, function(item, index) {
-                          return _c("tr", { key: index }, [
-                            _c(
-                              "td",
-                              [
-                                _c(
-                                  "router-link",
-                                  { attrs: { to: "user/post/" + item.id } },
-                                  [_vm._v(_vm._s(item.title))]
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(item.firstname))]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(item.created_at))]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v("กำลังดำเนินการ")]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-danger btn-sm",
-                                  on: {
-                                    click: function($event) {
-                                      $event.preventDefault()
-                                      _vm.deletePost(item.id)
-                                    }
-                                  }
-                                },
-                                [_vm._v("ลบคำร้องขอ")]
-                              )
-                            ])
-                          ])
-                        }),
-                        0
-                      )
-                    ])
-                  ])
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-xl-3" }, [
-              _c("div", { staticClass: "card shadow" }, [
-                _c("div", { staticClass: "card-header" }, [
-                  _c("h4", { staticClass: "card-title text-muted mb-0" }, [
-                    _vm._v("สำหรับบุคลากร")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-body" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass:
-                        "btn btn-primary btn-block animated pulse delay-1s",
-                      attrs: { type: "button" },
-                      on: { click: _vm.modalHandle }
-                    },
-                    [_vm._v("เพิ่มคำร้องขอ")]
-                  )
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row mt-5" }, [
-            _c("div", { staticClass: "col-md-12 mb-5 mb-xl-0" }, [
-              _c("div", { staticClass: "card shadow" }, [
-                _c("div", { staticClass: "card-header" }, [
-                  _c("h3", { staticClass: "card-title text-muted mb-0" }, [
-                    _vm._v("คำร้องขอที่ผ่านการตรวจสอบแล้ว")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-body" }, [
-                  _c("div", { staticClass: "table-responsive" }, [
-                    _c("table", { staticClass: "table" }, [
-                      _c("thead", { staticClass: "thead-light" }, [
-                        _c("tr", [
-                          _c("th", [_vm._v("หัวข้อ")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("ผู้ส่ง")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("เวลา")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("สถานะ")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("ลบ")])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "tbody",
-                        _vm._l(_vm.posts_checked, function(item, index) {
-                          return _c("tr", { key: index }, [
-                            _c(
-                              "td",
-                              [
-                                _c(
-                                  "router-link",
-                                  { attrs: { to: "/user/post/" + item.id } },
-                                  [_vm._v(_vm._s(item.title))]
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(item.firstname))]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(item.created_at))]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v("ผ่านการตรวจสอบแล้ว")]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-danger btn-sm",
-                                  on: {
-                                    click: function($event) {
-                                      $event.preventDefault()
-                                      _vm.deletePost(item.id)
-                                    }
-                                  }
-                                },
-                                [_vm._v("ลบคำร้องขอ")]
-                              )
-                            ])
-                          ])
-                        }),
-                        0
-                      )
-                    ])
-                  ])
-                ])
-              ])
-            ])
-          ])
-        ],
-        2
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _vm.modal
-          ? _c(
-              "div",
-              {
-                staticClass: "modal animated slideInDown",
-                staticStyle: { display: "block" },
-                attrs: {
-                  id: "myModal",
-                  tabindex: "-1",
-                  role: "dialog",
-                  "aria-labelledby": "myModalLabel"
-                }
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass: "modal-dialog",
-                    attrs: { role: "document", "data-show": "true" }
-                  },
-                  [
-                    _c("div", { staticClass: "modal-content" }, [
-                      _c("div", { staticClass: "modal-header" }, [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "close",
-                            attrs: {
-                              type: "button",
-                              "data-dismiss": "modal",
-                              "aria-label": "Close"
-                            },
-                            on: { click: _vm.modalHandle }
-                          },
-                          [
-                            _c("span", { attrs: { "aria-hidden": "true" } }, [
-                              _vm._v("×")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "h4",
-                          {
-                            staticClass: "modal-title",
-                            attrs: { id: "myModalLabel" }
-                          },
-                          [_vm._v("คำร้องขอ")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "form",
-                        {
-                          on: {
-                            submit: function($event) {
-                              $event.preventDefault()
-                              return _vm.submit($event)
-                            }
-                          }
-                        },
-                        [
-                          _c("div", { staticClass: "modal-body" }, [
-                            _c("div", { staticClass: "form-group" }, [
-                              _c("label", { attrs: { for: "title" } }, [
-                                _vm._v("หัวข้อ")
-                              ]),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.title,
-                                    expression: "title"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: { type: "text", disabled: "" },
-                                domProps: { value: _vm.title },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.title = $event.target.value
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "form-group" }, [
-                              _c("label", { attrs: { for: "description" } }, [
-                                _vm._v("รายละเอียด")
-                              ]),
-                              _vm._v(" "),
-                              _c("textarea", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.description,
-                                    expression: "description"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: { rows: "5" },
-                                domProps: { value: _vm.description },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.description = $event.target.value
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "form-group" }, [
-                              _c("label", { attrs: { for: "file" } }, [
-                                _vm._v("ฟอร์มบันทึกข้อความ")
-                              ]),
-                              _vm._v(" "),
-                              _c("input", {
-                                staticClass: "form-control",
-                                attrs: { type: "file", required: "" },
-                                on: { change: _vm.changeFile }
-                              })
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "modal-footer" }, [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-primary",
-                                attrs: { type: "submit" }
-                              },
-                              [_vm._v("บันทึก")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-default",
-                                attrs: {
-                                  type: "button",
-                                  "data-dismiss": "modal"
-                                },
-                                on: { click: _vm.modalHandle }
-                              },
-                              [_vm._v("ยกเลิก")]
-                            )
-                          ])
-                        ]
-                      )
-                    ])
-                  ]
-                )
-              ]
-            )
-          : _vm._e()
-      ])
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-42300710", module.exports)
-  }
-}
-
-/***/ }),
+/* 88 */,
 /* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -65694,6 +65340,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -65714,6 +65366,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     changeFile: function changeFile(e) {
       this.file = e.target.files[0];
+    },
+    process: function process(fieldName, file, metadata, load, error, progress, abort) {
+      this.file = file;
+      load();
+    },
+    revert: function revert(uniqueFileId, load, error) {
+      this.file = false;
+      load();
     },
     updatePost: function updatePost() {
       var _this = this;
@@ -65776,6 +65436,8 @@ var render = function() {
             _c("p", [_vm._v("หัวข้อ : " + _vm._s(_vm.post.title))]),
             _vm._v(" "),
             _c("p", [_vm._v("รายละเอียด : " + _vm._s(_vm.post.description))]),
+            _vm._v(" "),
+            _c("small", [_vm._v("เวลา ​: " + _vm._s(_vm.post.updated_at))]),
             _vm._v(" "),
             _c("hr"),
             _vm._v(" "),
@@ -65871,7 +65533,7 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "modal-body" }, [
+                    _c("div", { staticClass: "modal-body bg-secondary" }, [
                       _c("div", { staticClass: "form-group" }, [
                         _c("label", { attrs: { for: "description" } }, [
                           _vm._v("รายละเอียด")
@@ -65886,7 +65548,7 @@ var render = function() {
                               expression: "description"
                             }
                           ],
-                          staticClass: "form-control",
+                          staticClass: "form-control form-control-alternative",
                           attrs: { rows: "5" },
                           domProps: { value: _vm.description },
                           on: {
@@ -65900,36 +65562,45 @@ var render = function() {
                         })
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("label", { attrs: { for: "file" } }, [
-                          _vm._v("ฟอร์มบันทึกข้อความ")
-                        ]),
-                        _vm._v(" "),
-                        _c("br"),
-                        _vm._v(" "),
-                        !_vm.file
-                          ? _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-warning",
-                                on: {
-                                  click: function($event) {
-                                    _vm.file = true
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", { attrs: { for: "file" } }, [
+                            _vm._v("ฟอร์มบันทึกข้อความ")
+                          ]),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          !_vm.file
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-warning",
+                                  on: {
+                                    click: function($event) {
+                                      _vm.file = true
+                                    }
+                                  }
+                                },
+                                [_vm._v("แก้ไขเอกสาร")]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.file
+                            ? _c("file-pond", {
+                                attrs: {
+                                  "label-idle": "เลือกเอกสาร",
+                                  server: {
+                                    process: _vm.process,
+                                    revert: _vm.revert
                                   }
                                 }
-                              },
-                              [_vm._v("แก้ไขเอกสาร")]
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm.file
-                          ? _c("input", {
-                              staticClass: "form-control",
-                              attrs: { type: "file" },
-                              on: { change: _vm.changeFile }
-                            })
-                          : _vm._e()
-                      ])
+                              })
+                            : _vm._e()
+                        ],
+                        1
+                      )
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "modal-footer" }, [
@@ -66071,6 +65742,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 
@@ -66138,7 +65811,13 @@ var render = function() {
                           }
                         },
                         [_vm._v(_vm._s(item.file_name))]
-                      )
+                      ),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("small", [
+                        _vm._v("เวลา ​: " + _vm._s(item.updated_at))
+                      ])
                     ]),
                     _vm._v(" "),
                     _c("hr")
@@ -66218,6 +65897,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+//
+//
 //
 //
 //
@@ -66416,6 +66097,12 @@ var render = function() {
                             },
                             [_vm._v(_vm._s(item.file_name))]
                           ),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("small", [
+                            _vm._v("เวลา ​: " + _vm._s(item.updated_at))
+                          ]),
                           _vm._v(" "),
                           _c("p"),
                           _vm._v(" "),
@@ -67804,8 +67491,8 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-9" }, [
+      _c("div", { staticClass: "row justify-content-center" }, [
+        _c("div", { staticClass: "col-md-10" }, [
           _c("div", { staticClass: "card shadow" }, [
             _c("div", { staticClass: "card-header" }, [
               _c("h3", { staticClass: "card-title text-muted mb-0" }, [
@@ -68132,6 +67819,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 
@@ -68199,6 +67887,8 @@ var render = function() {
           _c("p", [_vm._v("หัวข้อ : " + _vm._s(_vm.post.title))]),
           _vm._v(" "),
           _c("p", [_vm._v("รายละเอียด : " + _vm._s(_vm.post.description))]),
+          _vm._v(" "),
+          _c("small", [_vm._v("เวลา ​: " + _vm._s(_vm.post.updated_at))]),
           _vm._v(" "),
           _c("hr"),
           _vm._v(" "),
@@ -68391,6 +68081,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 
@@ -68523,6 +68214,12 @@ var render = function() {
                             },
                             [_vm._v(_vm._s(item.file_name))]
                           ),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("small", [
+                            _vm._v("เวลา ​: " + _vm._s(item.updated_at))
+                          ]),
                           _vm._v(" "),
                           _c("p"),
                           _vm._v(" "),
@@ -68695,6 +68392,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -68780,7 +68479,13 @@ var render = function() {
                             }
                           },
                           [_vm._v(_vm._s(item.file_name))]
-                        )
+                        ),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("small", [
+                          _vm._v("เวลา ​: " + _vm._s(item.updated_at))
+                        ])
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "form-group" }, [
@@ -68838,7 +68543,7 @@ var render = function() {
         ])
       : _vm._e(),
     _vm._v(" "),
-    _vm.post.step2 === "1" && _vm.post.step3 === "0"
+    _vm.post.step1 === "1" && _vm.post.step2 === "1" && _vm.post.step3 === "0"
       ? _c("div", { staticClass: "row mt-5" }, [_vm._m(0)])
       : _vm._e()
   ])
@@ -68976,7 +68681,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.modal[data-v-03ec5fd7] {\n  display: block !important; /* I added this to see the modal, you don't need this */\n}\n\n/* Important part */\n.modal-dialog[data-v-03ec5fd7] {\n  width: 700px;\n  overflow-y: initial !important;\n}\n.modal-body[data-v-03ec5fd7] {\n  height: 500px;\n  overflow-y: auto;\n}\n", ""]);
+exports.push([module.i, "\n.modal[data-v-03ec5fd7] {\n  display: block !important; /* I added this to see the modal, you don't need this */\n}\n\n/* Important part */\n.modal-dialog[data-v-03ec5fd7] {\n  width: 700px;\n  overflow-y: initial !important;\n}\n.modal-body[data-v-03ec5fd7] {\n  height: 390px;\n  overflow-y: auto;\n}\n", ""]);
 
 // exports
 
@@ -69022,6 +68727,13 @@ module.exports = function listToStyles (parentId, list) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Layout__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Layout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Layout__);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -69380,9 +69092,7 @@ var render = function() {
                         _c("td", [
                           user.active === "0"
                             ? _c("span", [_vm._v("ยังไม่ได้รับการอนุมัติ")])
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _c("span", [_vm._v("ได้รับการอนุมัติแล้ว")])
+                            : _c("span", [_vm._v("ได้รับการอนุมัติแล้ว")])
                         ]),
                         _vm._v(" "),
                         _c("td", { staticClass: "p-2" }, [
@@ -69491,8 +69201,20 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "modal-body" }, [
+                    _c("div", { staticClass: "modal-body bg-secondary" }, [
                       _c("div", { staticClass: "row justify-content-center" }, [
+                        _c("div", [
+                          _c("img", {
+                            staticClass: "rounded-circle",
+                            attrs: {
+                              src: _vm.modalUser.image
+                                ? "/files/" + _vm.modalUser.image
+                                : "/files/image/profile.png",
+                              width: "180px"
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
                         _c("div", { staticClass: "col-md-9" }, [
                           _c("div", { staticClass: "form-group" }, [
                             _c(
@@ -69505,7 +69227,8 @@ var render = function() {
                             ),
                             _vm._v(" "),
                             _c("input", {
-                              staticClass: "form-control",
+                              staticClass:
+                                "form-control form-control-alternative",
                               attrs: {
                                 type: "text",
                                 name: "firstname",
@@ -69526,7 +69249,8 @@ var render = function() {
                             ),
                             _vm._v(" "),
                             _c("input", {
-                              staticClass: "form-control",
+                              staticClass:
+                                "form-control form-control-alternative",
                               attrs: {
                                 type: "text",
                                 name: "lastname",
@@ -69547,7 +69271,8 @@ var render = function() {
                             ),
                             _vm._v(" "),
                             _c("input", {
-                              staticClass: "form-control",
+                              staticClass:
+                                "form-control form-control-alternative",
                               attrs: {
                                 type: "text",
                                 name: "email",
@@ -69568,7 +69293,8 @@ var render = function() {
                             ),
                             _vm._v(" "),
                             _c("input", {
-                              staticClass: "form-control",
+                              staticClass:
+                                "form-control form-control-alternative",
                               attrs: {
                                 type: "text",
                                 name: "education",
@@ -69589,7 +69315,8 @@ var render = function() {
                             ),
                             _vm._v(" "),
                             _c("input", {
-                              staticClass: "form-control",
+                              staticClass:
+                                "form-control form-control-alternative",
                               attrs: {
                                 type: "text",
                                 name: "position",
@@ -69610,7 +69337,8 @@ var render = function() {
                             ),
                             _vm._v(" "),
                             _c("input", {
-                              staticClass: "form-control",
+                              staticClass:
+                                "form-control form-control-alternative",
                               attrs: {
                                 type: "text",
                                 name: "branch",
@@ -69631,7 +69359,8 @@ var render = function() {
                             ),
                             _vm._v(" "),
                             _c("input", {
-                              staticClass: "form-control",
+                              staticClass:
+                                "form-control form-control-alternative",
                               attrs: {
                                 type: "text",
                                 name: "faculty",
@@ -69652,7 +69381,8 @@ var render = function() {
                             ),
                             _vm._v(" "),
                             _c("input", {
-                              staticClass: "form-control",
+                              staticClass:
+                                "form-control form-control-alternative",
                               attrs: {
                                 type: "text",
                                 name: "university",
@@ -69673,7 +69403,8 @@ var render = function() {
                             ),
                             _vm._v(" "),
                             _c("input", {
-                              staticClass: "form-control",
+                              staticClass:
+                                "form-control form-control-alternative",
                               attrs: {
                                 type: "text",
                                 name: "campus",
@@ -69694,7 +69425,8 @@ var render = function() {
                             ),
                             _vm._v(" "),
                             _c("input", {
-                              staticClass: "form-control",
+                              staticClass:
+                                "form-control form-control-alternative",
                               attrs: {
                                 type: "text",
                                 name: "number",
@@ -71208,6 +70940,452 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 141 */,
+/* 142 */,
+/* 143 */,
+/* 144 */,
+/* 145 */,
+/* 146 */,
+/* 147 */,
+/* 148 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(149);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(10)("4e2e7192", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-42300710\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DashboardUser.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-42300710\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DashboardUser.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 149 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.modal[data-v-42300710] {\n  display: block !important; /* I added this to see the modal, you don't need this */\n}\n\n/* Important part */\n.modal-dialog[data-v-42300710] {\n  width: 700px;\n  overflow-y: initial !important;\n}\n.modal-body[data-v-42300710] {\n  height: 380px;\n  overflow-y: auto;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 150 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "layout",
+        [
+          _c(
+            "template",
+            { slot: "card" },
+            [
+              _c("Card", {
+                attrs: {
+                  posts: _vm.posts,
+                  posts_checking: _vm.posts_checking,
+                  posts_checked: _vm.posts_checked
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-xl-9 mb-5 mb-xl-0" }, [
+              _c("div", { staticClass: "card shadow" }, [
+                _c("div", { staticClass: "card-header" }, [
+                  _c("h3", { staticClass: "card-title text-muted mb-0" }, [
+                    _vm._v("คำร้องขอที่รอการตรวจสอบ")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "table-responsive" }, [
+                    _c("table", { staticClass: "table" }, [
+                      _c("thead", { staticClass: "thead-light" }, [
+                        _c("tr", [
+                          _c("th", [_vm._v("หัวข้อ")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("ผู้ส่ง")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("เวลา")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("สถานะ")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("ลบ")])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.posts_checking, function(item, index) {
+                          return _c("tr", { key: index }, [
+                            _c(
+                              "td",
+                              [
+                                _c(
+                                  "router-link",
+                                  { attrs: { to: "user/post/" + item.id } },
+                                  [_vm._v(_vm._s(item.title))]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(item.firstname))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(item.created_at))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("กำลังดำเนินการ")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-danger btn-sm",
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      _vm.deletePost(item.id)
+                                    }
+                                  }
+                                },
+                                [_vm._v("ลบคำร้องขอ")]
+                              )
+                            ])
+                          ])
+                        }),
+                        0
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-xl-3" }, [
+              _c("div", { staticClass: "card shadow" }, [
+                _c("div", { staticClass: "card-header" }, [
+                  _c("h4", { staticClass: "card-title text-muted mb-0" }, [
+                    _vm._v("สำหรับบุคลากร")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "btn btn-primary btn-block animated pulse delay-1s",
+                      attrs: { type: "button" },
+                      on: { click: _vm.modalHandle }
+                    },
+                    [_vm._v("เพิ่มคำร้องขอ")]
+                  )
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row mt-5" }, [
+            _c("div", { staticClass: "col-md-12 mb-5 mb-xl-0" }, [
+              _c("div", { staticClass: "card shadow" }, [
+                _c("div", { staticClass: "card-header" }, [
+                  _c("h3", { staticClass: "card-title text-muted mb-0" }, [
+                    _vm._v("คำร้องขอที่ผ่านการตรวจสอบแล้ว")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "table-responsive" }, [
+                    _c("table", { staticClass: "table" }, [
+                      _c("thead", { staticClass: "thead-light" }, [
+                        _c("tr", [
+                          _c("th", [_vm._v("หัวข้อ")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("ผู้ส่ง")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("เวลา")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("สถานะ")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("ลบ")])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.posts_checked, function(item, index) {
+                          return _c("tr", { key: index }, [
+                            _c(
+                              "td",
+                              [
+                                _c(
+                                  "router-link",
+                                  { attrs: { to: "/user/post/" + item.id } },
+                                  [_vm._v(_vm._s(item.title))]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(item.firstname))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(item.created_at))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("ผ่านการตรวจสอบแล้ว")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-danger btn-sm",
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      _vm.deletePost(item.id)
+                                    }
+                                  }
+                                },
+                                [_vm._v("ลบคำร้องขอ")]
+                              )
+                            ])
+                          ])
+                        }),
+                        0
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _vm.modal
+          ? _c(
+              "div",
+              {
+                staticClass: "modal animated slideInDown",
+                staticStyle: { display: "block" },
+                attrs: {
+                  id: "myModal",
+                  tabindex: "-1",
+                  role: "dialog",
+                  "aria-labelledby": "myModalLabel"
+                }
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "modal-dialog",
+                    attrs: { role: "document", "data-show": "true" }
+                  },
+                  [
+                    _c("div", { staticClass: "modal-content" }, [
+                      _c("div", { staticClass: "modal-header" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "close",
+                            attrs: {
+                              type: "button",
+                              "data-dismiss": "modal",
+                              "aria-label": "Close"
+                            },
+                            on: { click: _vm.modalHandle }
+                          },
+                          [
+                            _c("span", { attrs: { "aria-hidden": "true" } }, [
+                              _vm._v("×")
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "h4",
+                          {
+                            staticClass: "modal-title",
+                            attrs: { id: "myModalLabel" }
+                          },
+                          [_vm._v("คำร้องขอ")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "form",
+                        {
+                          on: {
+                            submit: function($event) {
+                              $event.preventDefault()
+                              return _vm.submit($event)
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "modal-body bg-secondary" },
+                            [
+                              _c("div", { staticClass: "form-group" }, [
+                                _c("label", { attrs: { for: "title" } }, [
+                                  _vm._v("หัวข้อ")
+                                ]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.title,
+                                      expression: "title"
+                                    }
+                                  ],
+                                  staticClass:
+                                    "form-control form-control-alternative",
+                                  attrs: { type: "text", disabled: "" },
+                                  domProps: { value: _vm.title },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.title = $event.target.value
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "form-group" }, [
+                                _c("label", { attrs: { for: "description" } }, [
+                                  _vm._v("รายละเอียด")
+                                ]),
+                                _vm._v(" "),
+                                _c("textarea", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.description,
+                                      expression: "description"
+                                    }
+                                  ],
+                                  staticClass:
+                                    "form-control form-control-alternative",
+                                  attrs: { rows: "3" },
+                                  domProps: { value: _vm.description },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.description = $event.target.value
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group" },
+                                [
+                                  _c("label", { attrs: { for: "file" } }, [
+                                    _vm._v("ฟอร์มบันทึกข้อความ")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("file-pond", {
+                                    ref: "pond",
+                                    attrs: {
+                                      name: "file",
+                                      "label-idle": "เลือกเอกสาร",
+                                      server: {
+                                        process: _vm.process,
+                                        revert: _vm.revert
+                                      }
+                                    }
+                                  })
+                                ],
+                                1
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "modal-footer" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-primary",
+                                attrs: { type: "submit" }
+                              },
+                              [_vm._v("บันทึก")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-default",
+                                attrs: {
+                                  type: "button",
+                                  "data-dismiss": "modal"
+                                },
+                                on: { click: _vm.modalHandle }
+                              },
+                              [_vm._v("ยกเลิก")]
+                            )
+                          ])
+                        ]
+                      )
+                    ])
+                  ]
+                )
+              ]
+            )
+          : _vm._e()
+      ])
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-42300710", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

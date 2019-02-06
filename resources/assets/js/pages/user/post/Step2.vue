@@ -21,6 +21,8 @@
                 <label>{{ item.title }}</label>
                 <br>เอกสาร :
                 <a target="_blank" :href="'/files/' + item.file_path">{{ item.file_name }}</a>
+                <br>
+                <small>เวลา ​: {{item.updated_at}}</small>
               </div>
               <hr>
             </div>

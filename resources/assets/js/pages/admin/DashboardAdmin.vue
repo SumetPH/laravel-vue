@@ -5,8 +5,8 @@
       <Card :posts="posts" :posts_checking="posts_checking" :posts_checked="posts_checked"></Card>
     </template>
     <!-- Content -->
-    <div class="row">
-      <div class="col-md-9">
+    <div class="row justify-content-center">
+      <div class="col-md-10">
         <div class="card shadow">
           <div class="card-header">
             <h3 class="card-title text-muted mb-0">คำร้องขอที่รอการตรวจสอบ</h3>

@@ -18,6 +18,8 @@
                   <label>{{ item.title }}</label>
                   <br>เอกสาร :
                   <a target="_blank" :href="'/files/' + item.file_path">{{ item.file_name }}</a>
+                  <br>
+                  <small>เวลา ​: {{item.updated_at}}</small>
                 </div>
                 <div class="form-group">
                   <label for="status">ผลการประเมิน</label>
@@ -43,7 +45,7 @@
         </div>
       </div>
     </div>
-    <div v-if="post.step2 === '1' && post.step3 === '0'" class="row mt-5">
+    <div v-if="post.step1 === '1' && post.step2 === '1' && post.step3 === '0'" class="row mt-5">
       <div class="col-md-12">
         <div
           class="alert alert-warning text-center"

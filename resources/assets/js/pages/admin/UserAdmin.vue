@@ -30,7 +30,7 @@
                     </td>
                     <td>
                       <span v-if="user.active === '0'">ยังไม่ได้รับการอนุมัติ</span>
-                      <span>ได้รับการอนุมัติแล้ว</span>
+                      <span v-else>ได้รับการอนุมัติแล้ว</span>
                     </td>
                     <td class="p-2">
                       <button
@@ -81,14 +81,21 @@
               </button>
               <h4 class="modal-title" id="myModalLabel">คำร้องขอ</h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body bg-secondary">
               <div class="row justify-content-center">
+                <div>
+                  <img
+                    :src="modalUser.image ? '/files/' + modalUser.image : '/files/image/profile.png'"
+                    width="180px"
+                    class="rounded-circle"
+                  >
+                </div>
                 <div class="col-md-9">
                   <div class="form-group">
                     <label for="firstname" class="control-label">ชื่อ</label>
                     <input
                       type="text"
-                      class="form-control"
+                      class="form-control form-control-alternative"
                       name="firstname"
                       disabled
                       :value="modalUser.firstname"
@@ -99,7 +106,7 @@
                     <label for="lastname" class="control-label">นามสกุล</label>
                     <input
                       type="text"
-                      class="form-control"
+                      class="form-control form-control-alternative"
                       name="lastname"
                       disabled
                       :value="modalUser.lastname"
@@ -109,7 +116,7 @@
                   <div class="form-group">
                     <label for="email" class="control-label">อีเมล</label>
                     <input
-                      class="form-control"
+                      class="form-control form-control-alternative"
                       type="text"
                       name="email"
                       :value="modalUser.email"
@@ -121,7 +128,7 @@
                     <label for="education" class="control-label">วุฒิ</label>
                     <input
                       type="text"
-                      class="form-control"
+                      class="form-control form-control-alternative"
                       name="education"
                       disabled
                       :value="modalUser.education"
@@ -132,7 +139,7 @@
                     <label for="position" class="control-label">ตำแหน่ง</label>
                     <input
                       type="text"
-                      class="form-control"
+                      class="form-control form-control-alternative"
                       name="position"
                       disabled
                       :value="modalUser.position"
@@ -143,7 +150,7 @@
                     <label for="branch" class="control-label">สาขา</label>
                     <input
                       type="text"
-                      class="form-control"
+                      class="form-control form-control-alternative"
                       name="branch"
                       disabled
                       :value="modalUser.branch"
@@ -154,7 +161,7 @@
                     <label for="faculty" class="control-label">คณะ</label>
                     <input
                       type="text"
-                      class="form-control"
+                      class="form-control form-control-alternative"
                       name="faculty"
                       disabled
                       :value="modalUser.faculty"
@@ -164,7 +171,7 @@
                     <label for="university" class="control-label">มหาวิทยาลัย</label>
                     <input
                       type="text"
-                      class="form-control"
+                      class="form-control form-control-alternative"
                       name="university"
                       disabled
                       :value="modalUser.university"
@@ -174,7 +181,7 @@
                     <label for="campus" class="control-label">วิทยาเขต</label>
                     <input
                       type="text"
-                      class="form-control"
+                      class="form-control form-control-alternative"
                       name="campus"
                       disabled
                       :value="modalUser.campus"
@@ -184,7 +191,7 @@
                     <label for="number" class="control-label">เบอร์โทรศัพท์</label>
                     <input
                       type="text"
-                      class="form-control"
+                      class="form-control form-control-alternative"
                       name="number"
                       disabled
                       :value="modalUser.number"
@@ -286,7 +293,7 @@ export default {
   overflow-y: initial !important;
 }
 .modal-body {
-  height: 500px;
+  height: 390px;
   overflow-y: auto;
 }
 </style>

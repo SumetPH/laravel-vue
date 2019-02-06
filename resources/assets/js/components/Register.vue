@@ -156,6 +156,23 @@
                 </div>-->
                 <form role="form" @submit.prevent="submit">
                   <div class="form-group mb-3">
+                    <label class="control-label">คำนำหน้า</label>
+                    <select class="form-control form-control-alternative" v-model="title">
+                      <option value="นาย">นาย</option>
+                      <option value="นาง">นาง</option>
+                      <option value="นางสาว">นางสาว</option>
+                    </select>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="control-label">ตำแหน่งทางวิชาการ</label>
+                    <select class="form-control form-control-alternative" v-model="academic">
+                      <option value="-">-</option>
+                      <option value="ผู้ช่วยศาสตราจารย์">ผู้ช่วยศาสตราจารย์</option>
+                      <option value="รองศาสตราจารย์">รองศาสตราจารย์</option>
+                      <option value="ศาสตราจารย์">ศาสตราจารย์</option>
+                    </select>
+                  </div>
+                  <div class="form-group mb-3">
                     <label for="firstname" class="control-label">ชื่อ</label>
                     <div class="input-group input-group-alternative">
                       <div class="input-group-prepend">
@@ -383,6 +400,8 @@
 export default {
   data() {
     return {
+      title: "นาย",
+      academic: "-",
       firstname: "",
       lastname: "",
       email: "",
@@ -399,6 +418,8 @@ export default {
   methods: {
     submit() {
       let formData = new FormData();
+      formData.append("title", this.title);
+      formData.append("academic", this.academic);
       formData.append("firstname", this.firstname);
       formData.append("lastname", this.lastname);
       formData.append("email", this.email);

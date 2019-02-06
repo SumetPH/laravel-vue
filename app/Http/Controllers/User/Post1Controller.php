@@ -49,6 +49,7 @@ class Post1Controller extends Controller
 
         // add infomation to posts table
         $post = new Post;
+        $post->academic= $req->academic;
         $post->title = 'ขอแต่งตั้งผู้ทรงคุณวุฒิภายนอก';
         $post->description = $req->description;
         $post->user_id = $req->user_id;

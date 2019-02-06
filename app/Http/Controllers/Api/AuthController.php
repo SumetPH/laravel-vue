@@ -14,19 +14,20 @@ class AuthController extends Controller
     {
         $user = User::where('email',$req->email)->get();
         if($user->count() === 0){
-            $user = new User([
-                'firstname' => $req->firstname,
-                'lastname' => $req->lastname,
-                'email' => $req->email,
-                'password' => bcrypt($req->password),
-                'education' => $req->education,
-                'position' => $req->position,
-                'branch' => $req->branch,
-                'faculty' => $req->faculty,
-                'university' => $req->university,
-                'campus' => $req->campus,
-                'number' => $req->number,
-            ]);
+            $user = new User;
+            $user->title = $req->title;
+            $user->academic = $req->academic;
+            $user->firstname = $req->firstname;
+            $user->lastname = $req->lastname;
+            $user->email = $req->email;
+            $user->password = bcrypt($req->password);
+            $user->education = $req->education;
+            $user->position = $req->position;
+            $user->branch = $req->branch;
+            $user->faculty = $req->faculty;
+            $user->university = $req->university;
+            $user->campus = $req->campus;
+            $user->number = $req->number;
             if($user->save()){
                 return response()->json('success');
             } else {

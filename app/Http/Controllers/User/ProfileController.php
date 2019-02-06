@@ -92,6 +92,8 @@ class ProfileController extends Controller
             }
         } else {
             $profile = User::find($id);
+            $profile->title = $req->title;
+            $profile->academic = $req->academic;
             $profile->firstname = $req->firstname;
             $profile->lastname = $req->lastname;
             $profile->education = $req->education;

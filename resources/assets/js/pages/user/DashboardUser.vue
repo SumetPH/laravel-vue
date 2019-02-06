@@ -18,7 +18,7 @@
                   <thead class="thead-light">
                     <tr>
                       <th>หัวข้อ</th>
-                      <th>ผู้ส่ง</th>
+                      <th>ตำแหน่งที่ร้องขอ</th>
                       <th>เวลา</th>
                       <th>สถานะ</th>
                       <th>ลบ</th>
@@ -29,7 +29,7 @@
                       <td>
                         <router-link :to="'user/post/' + item.id">{{item.title}}</router-link>
                       </td>
-                      <td>{{item.firstname}}</td>
+                      <td>{{item.academic}}</td>
                       <td>{{ item.created_at }}</td>
                       <td>กำลังดำเนินการ</td>
                       <td>
@@ -73,7 +73,7 @@
                   <thead class="thead-light">
                     <tr>
                       <th>หัวข้อ</th>
-                      <th>ผู้ส่ง</th>
+                      <th>ตำแหน่งที่ร้องขอ</th>
                       <th>เวลา</th>
                       <th>สถานะ</th>
                       <th>ลบ</th>
@@ -84,7 +84,7 @@
                       <td>
                         <router-link :to="'/user/post/' + item.id">{{ item.title }}</router-link>
                       </td>
-                      <td>{{item.firstname}}</td>
+                      <td>{{item.academic}}</td>
                       <td>{{ item.created_at }}</td>
                       <td>ผ่านการตรวจสอบแล้ว</td>
                       <td>
@@ -130,6 +130,14 @@
             </div>
             <form @submit.prevent="submit">
               <div class="modal-body bg-secondary">
+                <div class="form-group">
+                  <label class="control-label">ตำแหน่งที่ร้องขอ</label>
+                  <select class="form-control form-control-alternative" v-model="academic">
+                    <option value="ผู้ช่วยศาสตราจารย์">ผู้ช่วยศาสตราจารย์</option>
+                    <option value="รองศาสตราจารย์">รองศาสตราจารย์</option>
+                    <option value="ศาสตราจารย์">ศาสตราจารย์</option>
+                  </select>
+                </div>
                 <div class="form-group">
                   <label for="title">หัวข้อ</label>
                   <input
@@ -191,6 +199,7 @@ export default {
       posts: [],
       posts_checking: [],
       posts_checked: [],
+      academic: "ผู้ช่วยศาสตราจารย์",
       title: "ขอแต่งตั้งผู้ทรงคุณวุฒิภายนอก",
       description: "",
       file: "",
@@ -212,6 +221,7 @@ export default {
     submit() {
       let formData = new FormData();
       formData.append("user_id", this.user.id);
+      formData.append("academic", this.academic);
       formData.append("title", this.title);
       formData.append("description", this.description);
       formData.append("file", this.file);

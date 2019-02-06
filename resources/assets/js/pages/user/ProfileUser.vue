@@ -87,6 +87,27 @@
               <div class="col-md-9">
                 <form @submit.prevent="updateProfile">
                   <div class="form-group">
+                    <label class="control-label">คำนำหน้า</label>
+                    <select class="form-control form-control-alternative" v-model="user.data.title">
+                      <option value="นาย">นาย</option>
+                      <option value="นาง">นาง</option>
+                      <option value="นางสาว">นางสาว</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label">ตำแหน่งทางวิชาการ</label>
+                    <select
+                      class="form-control form-control-alternative"
+                      v-model="user.data.academic"
+                    >
+                      <option value="-">-</option>
+                      <option value="ผู้ช่วยศาสตราจารย์">ผู้ช่วยศาสตราจารย์</option>
+                      <option value="รองศาสตราจารย์">รองศาสตราจารย์</option>
+                      <option value="ศาสตราจารย์">ศาสตราจารย์</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
                     <label for="firstname" class="col-md-4 control-label">ชื่อ</label>
                     <input
                       type="text"

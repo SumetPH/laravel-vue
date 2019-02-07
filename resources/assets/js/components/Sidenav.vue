@@ -18,13 +18,8 @@
       </button>
       <!-- Brand -->
       <router-link class="navbar-brand pt-0" to="/">
-        <img src="/assets/img/brand/dds-primary.png" class="navbar-brand-img" alt="...">
-        <!-- <img
-          src="https://ess.rmuti.ac.th/RMUTI/s1800/images/Logo/Logo_RMUTI_128X235.png"
-          height="400px"
-          class="navbar-brand-img"
-          alt="..."
-        >-->
+        <!-- <img src="/assets/img/brand/dds-primary.png" class="navbar-brand-img" alt="..."> -->
+        <img src="/assets/img/brand/rmuti-black.png" class="navbar-brand-img" alt="...">
       </router-link>
       <!-- User -->
       <ul class="nav align-items-center d-md-none">
@@ -272,3 +267,10 @@ export default {
   }
 };
 </script>
+
+
+<style scoped>
+.navbar-brand-img {
+  max-height: 10rem !important;
+}
+</style>

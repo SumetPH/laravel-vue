@@ -142,6 +142,7 @@
             <router-link class="nav-link" to="/user/report">
               <i class="ni ni-bullet-list-67 text-red"></i>
               รายงาน
+              <span class="badge badge-warning ml-2">{{reports.length}}</span>
             </router-link>
           </li>
           <li class="nav-item">
@@ -156,7 +157,7 @@
               เปลี่ยนรหัสผ่าน
             </router-link>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="examples/maps.html">
               <i class="ni ni-pin-3 text-orange"></i> Maps
             </a>
@@ -166,13 +167,7 @@
               <i class="ni ni-circle-08 text-pink"></i>
               Register
             </router-link>
-          </li>
-          <li class="nav-item">
-            <a @click.prevent="logout('user')" class="nav-link" href>
-              <i class="ni ni-user-run text-green"></i>
-              ออกจากระบบ
-            </a>
-          </li>
+          </li>-->
         </ul>
 
         <ul v-if="who === 'admin'" class="navbar-nav">
@@ -194,7 +189,7 @@
               เปลี่ยนรหัสผ่าน
             </router-link>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="examples/maps.html">
               <i class="ni ni-pin-3 text-orange"></i> Maps
             </a>
@@ -209,7 +204,14 @@
               <i class="ni ni-circle-08 text-pink"></i>
               Register
             </router-link>
-          </li>
+          </li>-->
+        </ul>
+        <!-- Divider -->
+        <hr class="my-3">
+        <!-- Heading -->
+        <h6 class="navbar-heading text-muted">เพิ่มเติม</h6>
+        <!-- Navigation -->
+        <ul v-if="who === 'admin'" class="navbar-nav mb-md-3">
           <li class="nav-item">
             <a @click.prevent="logout('admin')" class="nav-link" href>
               <i class="ni ni-user-run text-green"></i>
@@ -217,13 +219,15 @@
             </a>
           </li>
         </ul>
-        <!-- Divider -->
-        <hr class="my-3">
-        <!-- Heading -->
-        <h6 class="navbar-heading text-muted">Documentation</h6>
-        <!-- Navigation -->
-        <ul class="navbar-nav mb-md-3">
+        <ul v-else class="navbar-nav mb-md-3">
           <li class="nav-item">
+            <a @click.prevent="logout('user')" class="nav-link" href>
+              <i class="ni ni-user-run text-green"></i>
+              ออกจากระบบ
+            </a>
+          </li>
+        </ul>
+        <!-- <li class="nav-item">
             <a
               class="nav-link"
               href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html"
@@ -246,8 +250,7 @@
             >
               <i class="ni ni-ui-04"></i> Components
             </a>
-          </li>
-        </ul>
+        </li>-->
       </div>
     </div>
   </nav>
@@ -256,9 +259,12 @@
 <script>
 import { mapActions } from "vuex";
 export default {
-  props: ["who", "data"],
+  props: ["who", "data", "reports"],
   methods: {
-    ...mapActions(["logout"])
+    ...mapActions(["logout", "loadReports"])
+  },
+  mounted() {
+    this.loadReports(this.data.id);
   }
 };
 </script>

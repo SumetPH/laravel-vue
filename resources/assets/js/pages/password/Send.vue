@@ -107,47 +107,29 @@
           <div class="col-lg-5 col-md-7">
             <div class="card bg-secondary shadow border-0">
               <div class="card-body px-lg-5 py-lg-5">
-                <div class="form-group">
-                  <div class="text-center mb-3">รหัสผ่านใหม่</div>
-                  <div class="input-group input-group-alternative">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="ni ni-lock-circle-open"></i>
-                      </span>
+                <form @submit.prevent="sendEmail">
+                  <div class="form-group mb-3">
+                    <div class="text-center mb-3" for="email">อีเมลของคุณ</div>
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="ni ni-email-83"></i>
+                        </span>
+                      </div>
+                      <input
+                        class="form-control"
+                        name="email"
+                        placeholder="อีเมล"
+                        type="email"
+                        required
+                        v-model="email"
+                      >
                     </div>
-                    <input
-                      class="form-control"
-                      placeholder="รหัสผ่านใหม่"
-                      type="password"
-                      required
-                      v-model="new_password"
-                    >
                   </div>
-                </div>
-                <div class="form-group">
-                  <div class="text-center mb-3">รหัสผ่านใหม่ (อีกครัง)</div>
-                  <div class="input-group input-group-alternative">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="ni ni-lock-circle-open"></i>
-                      </span>
-                    </div>
-                    <input
-                      class="form-control"
-                      placeholder="รหัสผ่านใหม่ (อีกครัง)"
-                      type="password"
-                      required
-                      v-model="confirm_password"
-                    >
+                  <div class="text-center">
+                    <button class="btn btn-primary" type="submit">ส่ง</button>
                   </div>
-                </div>
-                <div class="text-center">
-                  <button
-                    @click="resetPassword"
-                    class="btn btn-primary"
-                    :disabled="new_password !== confirm_password || new_password === ''"
-                  >บันทึก</button>
-                </div>
+                </form>
               </div>
             </div>
             <div class="row mt-3">
@@ -187,35 +169,29 @@ import { mapActions } from "vuex";
 export default {
   data() {
     return {
-      new_password: "",
-      confirm_password: ""
+      email: ""
     };
   },
   methods: {
     ...mapActions(["loading"]),
-    resetPassword() {
+    sendEmail() {
       this.loading(true);
-      axios
-        .post("/password/reset", {
-          hash: this.$route.params.hash,
-          new_password: this.new_password
-        })
-        .then(res => {
-          console.log(res, "sendEmail");
-          if (res.data === "success") {
-            this.$notify({
-              type: "success",
-              text: "ทำการเปลี่ยนรหัสผ่านเรียบร้อยแล้ว"
-            });
-            this.$router.push("/login");
-          } else {
-            this.$notify({
-              type: "error",
-              text: "มีข้อผิดผลาดในการเปลียนรหัสผ่าน"
-            });
-          }
-          this.loading(false);
-        });
+      axios.post("/password/forgot", { email: this.email }).then(res => {
+        console.log(res, "sendEmail");
+        if (res.data === "success") {
+          this.$notify({
+            type: "success",
+            text: "ทำการส่งการรีเซ็ตรหัสผ่านไปยังอีเมลของท่านแล้ว"
+          });
+          this.email = "";
+        } else {
+          this.$notify({
+            type: "error",
+            text: "อีเมลของคุณยังไม่ได้ทำการลงทะเบียน"
+          });
+        }
+        this.loading(false);
+      });
     }
   }
 };

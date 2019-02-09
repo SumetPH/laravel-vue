@@ -142,20 +142,6 @@
 </template>
 
 
-<script>
-// import { mapState, mapActions } from "vuex";
-
-// export default {
-//   methods: {
-//     ...mapActions(["actionAdd", "addJsonAction"])
-//   },
-//   computed: {
-//     ...mapState(["num", "data"])
-//   }
-// };
-</script>
-
-
 <style scoped>
 .navbar-horizontal .navbar-brand img {
   height: 130px;

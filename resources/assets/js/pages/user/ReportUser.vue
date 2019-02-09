@@ -19,12 +19,12 @@
                 </thead>
                 <tbody>
                   <tr v-for="(item, index) in reports" :key="index">
-                    <td v-if="item.report !== null">
+                    <td>
                       <router-link :to="'/user/post/' + item.id">{{item.title}}</router-link>
                     </td>
-                    <td v-if="item.report !== null">{{ item.academic }}</td>
-                    <td v-if="item.report !== null">{{ item.created_at }}</td>
-                    <td v-if="item.report !== null">{{ item.report }}</td>
+                    <td>{{ item.academic }}</td>
+                    <td>{{ item.created_at }}</td>
+                    <td>{{ item.report }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -45,24 +45,8 @@ export default {
   components: {
     Layout
   },
-  data() {
-    return {
-      reports: []
-    };
-  },
-  methods: {
-    loadReports() {
-      axios.get(`/report/${this.user.data.id}`).then(res => {
-        console.log(res, "loadReports");
-        this.reports = res.data;
-      });
-    }
-  },
   computed: {
-    ...mapState(["user"])
-  },
-  mounted() {
-    this.loadReports();
+    ...mapState(["reports"])
   }
 };
 </script>

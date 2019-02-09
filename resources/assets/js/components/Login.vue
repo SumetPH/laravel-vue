@@ -1,11 +1,11 @@
 <template>
-  <div class="bg-default animated fadeIn">
+  <div class="bg-default animated fadeIn" style="height: 100vh">
     <div class="main-content">
       <!-- Navbar -->
       <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
         <div class="container px-4">
           <router-link class="navbar-brand" to="/">
-            <img src="/assets/img/brand/logo-white.png">
+            <img src="/assets/img/brand/rmuti-white.png">
           </router-link>
           <button
             class="navbar-toggler"
@@ -201,7 +201,7 @@
                 </a>-->
               </div>
               <div class="col-6 text-right">
-                <router-link to="/password/reset" class="text-light">
+                <router-link to="/password/send" class="text-light">
                   <small>ลืมรหัสผ่าน</small>
                 </router-link>
               </div>
@@ -269,3 +269,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.navbar-horizontal .navbar-brand img {
+  height: 130px;
+}
+</style>

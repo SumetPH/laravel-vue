@@ -1,7 +1,7 @@
 <template>
   <div class="animated fadeIn">
     <!-- Sidenav -->
-    <Sidenav :who="who" :data="data"></Sidenav>
+    <Sidenav :who="who" :data="data" :reports="reports"></Sidenav>
     <!-- Main content -->
     <div class="main-content">
       <!-- Top navbar -->
@@ -44,7 +44,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["who", "user", "admin"])
+    ...mapState(["who", "user", "admin", "reports"])
   },
   created() {
     if (this.who === "user") {

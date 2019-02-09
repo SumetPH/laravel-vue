@@ -29,6 +29,6 @@ class ResetPassword extends Mailable
      */
     public function build()
     {
-        return $this->view('user.mail.mail');
+        return $this->view('mail');
     }
 }

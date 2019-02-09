@@ -10,11 +10,6 @@ use Hash;
 
 class ForgotPasswordController extends Controller
 {
-    public function index()
-    {
-        return view('user.mail.index');
-    }
-
     public function send(Request $req)
     {   
         $email = $req->email;
@@ -22,52 +17,27 @@ class ForgotPasswordController extends Controller
         if($user){
             $hash = $this->encrypt_decrypt('encrypt',$user->id);
             Mail::to($user->email)->send(new ResetPassword($hash));
-            
-            $alert = [
-                'alert_text' => 'ทำการส่งการรีเซ็ตรหัสผ่านไปยังอีเมลของท่านแล้ว',
-                'alert_color' => 'success'
-            ];
-            return redirect()->back()->with($alert);
+            return response()->json('success');
         } else {
-            $alert = [
-                'alert_text' => 'อีเมลของคุณยังไม่ได้ทำการสมัครสมาชิก',
-                'alert_color' => 'danger'
-            ];
-            return redirect()->back()->with($alert);
+            return response()->json('error');
         }
     }
 
     public function hash($hash)
     {
-        $id = $this->encrypt_decrypt('decrypt',$hash);
-        return view('user.mail.reset')->with('id',$id);
+        return response()->json($id);
     }
-
+    
     public function reset(Request $req)
     {
-        if($req->password1 == $req->password2){
-            $user = User::find($req->id);
+        $id = $this->encrypt_decrypt('decrypt',$req->hash);
+        $user = User::find($id);
 
-            $user->password = Hash::make($req->password1);
-            if($user->save()){
-                $alert = [
-                    'alert_text' => 'ทำการเปลี่ยนรหัสผ่านเรียบร้อยแล้ว',
-                    'alert_color' => 'success'
-                ];
-                return redirect('/login')->with($alert);
-            } else {
-                $alert = [
-                    'alert_text' => 'มีข้อผิดผลาดในการเปลียนรหัสผ่าน',
-                    'alert_color' => 'danger'
-                ];
-                return redirect()->back()->with($alert);
-            }
+        $user->password = Hash::make($req->new_password);
+        if($user->save()){
+            return response()->json('success');
         } else {
-            $alert = [
-                'alert_text' => 'รหัสผ่านใหม่ไม่ตรงกัน',
-                'alert_color' => 'danger'
-            ];
-            return redirect()->back()->with($alert);
+            return response()->json('error');
         }
         
     }

@@ -23,6 +23,7 @@ const store = new Vuex.Store({
 			file_path: null
 		}],
 		post3: [],
+		reports: [],
 		isLoading: false
 	},
 	mutations: {
@@ -60,6 +61,9 @@ const store = new Vuex.Store({
 		},
 		post3(state, post3) {
 			state.post3 = post3
+		},
+		reports(state, reports) {
+			state.reports = reports
 		},
 		loading(state, status) {
 			state.isLoading = status
@@ -125,6 +129,12 @@ const store = new Vuex.Store({
 			axios.get(`/user/post3/${router.currentRoute.params.id}`).then(res => {
 				console.log(res, "post3");
 				c.commit('post3', res.data.post3);
+			});
+		},
+		loadReports(c, user_id) {
+			axios.get(`/report/${user_id}`).then(res => {
+				console.log(res, "loadReports");
+				c.commit('reports', res.data)
 			});
 		},
 		loading(c, status) {

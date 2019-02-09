@@ -8,7 +8,8 @@ import Test from "./test/Test.vue"
 import Home from "./components/Home.vue"
 import Register from "./components/Register.vue"
 import Login from "./components/Login.vue"
-import PasswordReset from "./pages/password/Reset.vue"
+import Send from "./pages/password/Send.vue"
+import Reset from "./pages/password/Reset.vue"
 
 // User
 import DashboardUser from "./pages/user/DashboardUser.vue"
@@ -46,9 +47,14 @@ const router = new VueRouter({
 			component: Login
 		},
 		{
+			name: "password-send",
+			path: "/password/send",
+			component: Send
+		},
+		{
 			name: "password-reset",
-			path: "/password/reset",
-			component: PasswordReset
+			path: "/password/reset/:hash",
+			component: Reset
 		},
 		{
 			name: "user",

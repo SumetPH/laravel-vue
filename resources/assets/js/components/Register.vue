@@ -5,7 +5,7 @@
       <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
         <div class="container px-4">
           <router-link class="navbar-brand" to="/">
-            <img src="/assets/img/brand/logo-white.png">
+            <img src="/assets/img/brand/rmuti-white.png">
           </router-link>
           <button
             class="navbar-toggler"
@@ -446,3 +446,8 @@ export default {
 };
 </script>
 
+<style scoped>
+.navbar-horizontal .navbar-brand img {
+  height: 130px;
+}
+</style>

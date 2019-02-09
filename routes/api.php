@@ -45,3 +45,7 @@ Route::resource('/comment','CommentController');
 
 // Report
 Route::resource('/report','ReportController');
+
+// // Mail
+Route::post('/password/forgot','ForgotPasswordController@send');
+Route::post('/password/reset','ForgotPasswordController@reset');

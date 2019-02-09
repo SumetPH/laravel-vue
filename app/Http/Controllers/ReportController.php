@@ -46,7 +46,9 @@ class ReportController extends Controller
      */
     public function show($id)
     {
-        $post = Post::where('user_id', $id)->get();
+        $post = Post::where('user_id', $id)
+            ->where('report', '!=', '')
+            ->get();
         return response()->json($post);
     }
 

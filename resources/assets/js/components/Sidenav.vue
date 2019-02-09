@@ -139,6 +139,12 @@
             </router-link>
           </li>
           <li class="nav-item">
+            <router-link class="nav-link" to="/user/report">
+              <i class="ni ni-bullet-list-67 text-red"></i>
+              รายงาน
+            </router-link>
+          </li>
+          <li class="nav-item">
             <router-link class="nav-link" to="/user/profile">
               <i class="ni ni-single-02 text-yellow"></i>
               ข้อมูลผู้ใช้
@@ -153,11 +159,6 @@
           <li class="nav-item">
             <a class="nav-link" href="examples/maps.html">
               <i class="ni ni-pin-3 text-orange"></i> Maps
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="examples/tables.html">
-              <i class="ni ni-bullet-list-67 text-red"></i> Tables
             </a>
           </li>
           <li class="nav-item">

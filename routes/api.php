@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/register','Api\AuthController@register');
 Route::post('/login','Api\AuthController@login');
 
- // User
+// User
 Route::prefix('/user')->group(function(){
     Route::post('/','User\DashboardController@index');
     Route::resource('/post','User\Post1Controller');
@@ -28,7 +28,6 @@ Route::prefix('/user')->group(function(){
     Route::resource('/post3','User\Post3Controller');
     Route::resource('/profile','User\ProfileController');
     Route::resource('/changepassword','User\ChangePasswordController');
-//     Route::post('/logout', 'Auth\LoginController@logout');
 });
 
 // Admin
@@ -39,10 +38,10 @@ Route::prefix('admin')->group(function(){
     Route::resource('/post3','Admin\Post3Controller');
     Route::resource('/user','Admin\UserController');
     Route::resource('/changepassword','Admin\ChangePasswordController');
-//     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
-//     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
-//     Route::post('/logout', 'Auth\AdminLoginController@logout');
 });
 
 // Comment
 Route::resource('/comment','CommentController');
+
+// Report
+Route::resource('/report','ReportController');

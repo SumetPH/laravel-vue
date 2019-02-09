@@ -6,18 +6,67 @@
           <h3 class="card-title text-muted mb-0">รายงาน</h3>
         </div>
         <div class="card-body">
-          <div class="row">
-            <div class="col-md-10">
-              <input class="form-control form-control-alternative" type="text" placeholder="รายงาน">
+          <form @submit.prevent="saveReport">
+            <div class="row">
+              <div class="col-md-10">
+                <input
+                  class="form-control form-control-alternative"
+                  type="text"
+                  placeholder="รายงาน"
+                  v-model="post.report"
+                >
+              </div>
+              <div class="col-md-2 text-center">
+                <button type="submit" class="btn btn-success">บันทีก</button>
+              </div>
             </div>
-            <div class="col-md-2 text-center">
-              <button class="btn btn-success">บันทีก</button>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      post: ""
+    };
+  },
+  methods: {
+    loadReport() {
+      axios.get(`/report/${this.$route.params.id}/edit`).then(res => {
+        console.log(res, "report");
+        this.post = res.data;
+      });
+    },
+    saveReport() {
+      let formData = new FormData();
+      formData.append("_method", "put");
+      formData.append("report", this.post.report);
+
+      axios.post(`/report/${this.$route.params.id}`, formData).then(res => {
+        console.log(res, "saveReport");
+        if (res.data === "success") {
+          this.$notify({
+            type: "success",
+            text: "บันทึกข้อมูลเรียบร้อยแล้ว"
+          });
+        } else {
+          this.$notify({
+            type: "error",
+            text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
+          });
+        }
+        this.loadReport();
+      });
+    }
+  },
+  mounted() {
+    this.loadReport();
+  }
+};
+</script>
 
 

@@ -25,6 +25,7 @@ class CreatePostsTable extends Migration
             $table->integer('step2')->default(0);
             $table->integer('step3')->default(0);
             $table->integer('step3check')->default(0);
+            $table->text('report')->nullable();
             $table->timestamps();
         });
     }

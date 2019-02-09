@@ -13,6 +13,7 @@ import PasswordReset from "./pages/password/Reset.vue"
 // User
 import DashboardUser from "./pages/user/DashboardUser.vue"
 import PostUser from "./pages/user/PostUser.vue"
+import ReportUser from "./pages/user/ReportUser.vue"
 import PasswordUser from "./pages/user/PasswordUser.vue"
 import ProfileUser from "./pages/user/ProfileUser.vue"
 
@@ -60,6 +61,11 @@ const router = new VueRouter({
 			component: PostUser
 		},
 		{
+			name: "user-report",
+			path: "/user/report",
+			component: ReportUser
+		},
+		{
 			name: "user-password",
 			path: "/user/password",
 			component: PasswordUser
@@ -95,7 +101,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
 	store.dispatch('fetchUser')
 	store.dispatch('fetchAdmin')
-	if (to.name === 'user' || to.name === 'user-post-id' || to.name === 'user-password' || to.name === 'user-profile') {
+	if (to.name === 'user' || to.name === 'user-post-id' || to.name === 'user-password' || to.name === 'user-profile' || to.name === 'user-report') {
 		if (store.state.user.auth) {
 			store.commit('who', 'user')
 			next()

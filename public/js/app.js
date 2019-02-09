@@ -13915,18 +13915,20 @@ module.exports = Cancel;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_user_DashboardUser_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__pages_user_DashboardUser_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_user_PostUser_vue__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_user_PostUser_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__pages_user_PostUser_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_user_PasswordUser_vue__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_user_PasswordUser_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__pages_user_PasswordUser_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_user_ProfileUser_vue__ = __webpack_require__(111);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_user_ProfileUser_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__pages_user_ProfileUser_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_admin_DashboardAdmin_vue__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_admin_DashboardAdmin_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__pages_admin_DashboardAdmin_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_admin_PostAdmin_vue__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_admin_PostAdmin_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__pages_admin_PostAdmin_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_admin_UserAdmin_vue__ = __webpack_require__(131);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_admin_UserAdmin_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__pages_admin_UserAdmin_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_admin_PasswordAdmin_vue__ = __webpack_require__(159);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_admin_PasswordAdmin_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15__pages_admin_PasswordAdmin_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_user_ReportUser_vue__ = __webpack_require__(163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_user_ReportUser_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__pages_user_ReportUser_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_user_PasswordUser_vue__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_user_PasswordUser_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__pages_user_PasswordUser_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_user_ProfileUser_vue__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_user_ProfileUser_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__pages_user_ProfileUser_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_admin_DashboardAdmin_vue__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_admin_DashboardAdmin_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__pages_admin_DashboardAdmin_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_admin_PostAdmin_vue__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_admin_PostAdmin_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__pages_admin_PostAdmin_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_admin_UserAdmin_vue__ = __webpack_require__(131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_admin_UserAdmin_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15__pages_admin_UserAdmin_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_admin_PasswordAdmin_vue__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_admin_PasswordAdmin_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16__pages_admin_PasswordAdmin_vue__);
 
 
 
@@ -13940,6 +13942,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 
 
 // User
+
 
 
 
@@ -13982,36 +13985,40 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
 		path: "/user/post/:id",
 		component: __WEBPACK_IMPORTED_MODULE_9__pages_user_PostUser_vue___default.a
 	}, {
+		name: "user-report",
+		path: "/user/report",
+		component: __WEBPACK_IMPORTED_MODULE_10__pages_user_ReportUser_vue___default.a
+	}, {
 		name: "user-password",
 		path: "/user/password",
-		component: __WEBPACK_IMPORTED_MODULE_10__pages_user_PasswordUser_vue___default.a
+		component: __WEBPACK_IMPORTED_MODULE_11__pages_user_PasswordUser_vue___default.a
 	}, {
 		name: "user-profile",
 		path: "/user/profile",
-		component: __WEBPACK_IMPORTED_MODULE_11__pages_user_ProfileUser_vue___default.a
+		component: __WEBPACK_IMPORTED_MODULE_12__pages_user_ProfileUser_vue___default.a
 	}, {
 		name: "admin",
 		path: "/admin",
-		component: __WEBPACK_IMPORTED_MODULE_12__pages_admin_DashboardAdmin_vue___default.a
+		component: __WEBPACK_IMPORTED_MODULE_13__pages_admin_DashboardAdmin_vue___default.a
 	}, {
 		name: "admin-post-id",
 		path: "/admin/post/:id",
-		component: __WEBPACK_IMPORTED_MODULE_13__pages_admin_PostAdmin_vue___default.a
+		component: __WEBPACK_IMPORTED_MODULE_14__pages_admin_PostAdmin_vue___default.a
 	}, {
 		name: 'admin-user',
 		path: '/admin/user',
-		component: __WEBPACK_IMPORTED_MODULE_14__pages_admin_UserAdmin_vue___default.a
+		component: __WEBPACK_IMPORTED_MODULE_15__pages_admin_UserAdmin_vue___default.a
 	}, {
 		name: 'admin-password',
 		path: '/admin/password',
-		component: __WEBPACK_IMPORTED_MODULE_15__pages_admin_PasswordAdmin_vue___default.a
+		component: __WEBPACK_IMPORTED_MODULE_16__pages_admin_PasswordAdmin_vue___default.a
 	}]
 });
 
 router.beforeEach(function (to, from, next) {
 	__WEBPACK_IMPORTED_MODULE_2__store__["a" /* default */].dispatch('fetchUser');
 	__WEBPACK_IMPORTED_MODULE_2__store__["a" /* default */].dispatch('fetchAdmin');
-	if (to.name === 'user' || to.name === 'user-post-id' || to.name === 'user-password' || to.name === 'user-profile') {
+	if (to.name === 'user' || to.name === 'user-post-id' || to.name === 'user-password' || to.name === 'user-profile' || to.name === 'user-report') {
 		if (__WEBPACK_IMPORTED_MODULE_2__store__["a" /* default */].state.user.auth) {
 			__WEBPACK_IMPORTED_MODULE_2__store__["a" /* default */].commit('who', 'user');
 			next();
@@ -63833,6 +63840,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -63972,6 +63980,27 @@ var render = function() {
                           "router-link",
                           {
                             staticClass: "nav-link",
+                            attrs: { to: "/user/report" }
+                          },
+                          [
+                            _c("i", {
+                              staticClass: "ni ni-bullet-list-67 text-red"
+                            }),
+                            _vm._v("\n            รายงาน\n          ")
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      { staticClass: "nav-item" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "nav-link",
                             attrs: { to: "/user/profile" }
                           },
                           [
@@ -64005,8 +64034,6 @@ var render = function() {
                     ),
                     _vm._v(" "),
                     _vm._m(5),
-                    _vm._v(" "),
-                    _vm._m(6),
                     _vm._v(" "),
                     _c(
                       "li",
@@ -64109,9 +64136,9 @@ var render = function() {
                       1
                     ),
                     _vm._v(" "),
-                    _vm._m(7),
+                    _vm._m(6),
                     _vm._v(" "),
-                    _vm._m(8),
+                    _vm._m(7),
                     _vm._v(" "),
                     _c(
                       "li",
@@ -64162,7 +64189,7 @@ var render = function() {
                 _vm._v("Documentation")
               ]),
               _vm._v(" "),
-              _vm._m(9)
+              _vm._m(8)
             ]
           )
         ],
@@ -64371,21 +64398,6 @@ var staticRenderFns = [
         [
           _c("i", { staticClass: "ni ni-pin-3 text-orange" }),
           _vm._v(" Maps\n          ")
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item" }, [
-      _c(
-        "a",
-        { staticClass: "nav-link", attrs: { href: "examples/tables.html" } },
-        [
-          _c("i", { staticClass: "ni ni-bullet-list-67 text-red" }),
-          _vm._v(" Tables\n          ")
         ]
       )
     ])
@@ -69644,7 +69656,7 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(162)
 /* template */
 var __vue_template__ = __webpack_require__(129)
 /* template functional */
@@ -69692,40 +69704,78 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "row mt-3" }, [
+    _c("div", { staticClass: "col-md-12" }, [
+      _c("div", { staticClass: "card bg-secondary shadow" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.saveReport($event)
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-10" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.post.report,
+                        expression: "post.report"
+                      }
+                    ],
+                    staticClass: "form-control form-control-alternative",
+                    attrs: { type: "text", placeholder: "รายงาน" },
+                    domProps: { value: _vm.post.report },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.post, "report", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm._m(1)
+              ])
+            ]
+          )
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row mt-3" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "card bg-secondary shadow" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _c("h3", { staticClass: "card-title text-muted mb-0" }, [
-              _vm._v("รายงาน")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-md-10" }, [
-                _c("input", {
-                  staticClass: "form-control form-control-alternative",
-                  attrs: { type: "text", placeholder: "รายงาน" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-2 text-center" }, [
-                _c("button", { staticClass: "btn btn-success" }, [
-                  _vm._v("บันทีก")
-                ])
-              ])
-            ])
-          ])
-        ])
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title text-muted mb-0" }, [
+        _vm._v("รายงาน")
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-2 text-center" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-success", attrs: { type: "submit" } },
+        [_vm._v("บันทีก")]
+      )
     ])
   }
 ]
@@ -72718,6 +72768,298 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-fce374f2", module.exports)
+  }
+}
+
+/***/ }),
+/* 162 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      post: ""
+    };
+  },
+
+  methods: {
+    loadReport: function loadReport() {
+      var _this = this;
+
+      axios.get("/report/" + this.$route.params.id + "/edit").then(function (res) {
+        console.log(res, "report");
+        _this.post = res.data;
+      });
+    },
+    saveReport: function saveReport() {
+      var _this2 = this;
+
+      var formData = new FormData();
+      formData.append("_method", "put");
+      formData.append("report", this.post.report);
+
+      axios.post("/report/" + this.$route.params.id, formData).then(function (res) {
+        console.log(res, "saveReport");
+        if (res.data === "success") {
+          _this2.$notify({
+            type: "success",
+            text: "บันทึกข้อมูลเรียบร้อยแล้ว"
+          });
+        } else {
+          _this2.$notify({
+            type: "error",
+            text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
+          });
+        }
+        _this2.loadReport();
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.loadReport();
+  }
+});
+
+/***/ }),
+/* 163 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(164)
+/* template */
+var __vue_template__ = __webpack_require__(165)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/pages/user/ReportUser.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1332d8f6", Component.options)
+  } else {
+    hotAPI.reload("data-v-1332d8f6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 164 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Layout__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Layout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_Layout__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    Layout: __WEBPACK_IMPORTED_MODULE_1__components_Layout___default.a
+  },
+  data: function data() {
+    return {
+      reports: []
+    };
+  },
+
+  methods: {
+    loadReports: function loadReports() {
+      var _this = this;
+
+      axios.get("/report/" + this.user.data.id).then(function (res) {
+        console.log(res, "loadReports");
+        _this.reports = res.data;
+      });
+    }
+  },
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])(["user"])),
+  mounted: function mounted() {
+    this.loadReports();
+  }
+});
+
+/***/ }),
+/* 165 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("Layout", [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "card bg-secondary shadow" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _c("h3", { staticClass: "card-title mb-0 text-muted" }, [
+              _vm._v("รายงาน")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "table-responsive" }, [
+              _c("table", { staticClass: "table" }, [
+                _c("thead", { staticClass: "thead-light" }, [
+                  _c("tr", [
+                    _c("th", [_vm._v("หัวข้อ")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("ตำแหน่งที่ร้องขอ")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("เวลา")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("รายงาน")])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.reports, function(item, index) {
+                    return _c("tr", { key: index }, [
+                      item.report !== null
+                        ? _c(
+                            "td",
+                            [
+                              _c(
+                                "router-link",
+                                { attrs: { to: "/user/post/" + item.id } },
+                                [_vm._v(_vm._s(item.title))]
+                              )
+                            ],
+                            1
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      item.report !== null
+                        ? _c("td", [_vm._v(_vm._s(item.academic))])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      item.report !== null
+                        ? _c("td", [_vm._v(_vm._s(item.created_at))])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      item.report !== null
+                        ? _c("td", [_vm._v(_vm._s(item.report))])
+                        : _vm._e()
+                    ])
+                  }),
+                  0
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1332d8f6", module.exports)
   }
 }
 

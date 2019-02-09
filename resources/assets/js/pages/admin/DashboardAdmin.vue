@@ -18,6 +18,7 @@
                   <tr>
                     <th>หัวข้อ</th>
                     <th>ผู้ส่ง</th>
+                    <th>ตำแหน่งที่ร้องขอ</th>
                     <th>เวลา</th>
                     <th>สถานะ</th>
                   </tr>
@@ -31,6 +32,7 @@
                       {{item.firstname}}
                       <!-- <a href="/admin/user/{{$post->user->id}}">{{ $post->user->firstname }}</a> -->
                     </td>
+                    <td>{{item.academic}}</td>
                     <td>{{ item.created_at }}</td>
                     <td>กำลังดำเนินการ</td>
                   </tr>
@@ -51,6 +53,7 @@
                   <tr>
                     <th>หัวข้อ</th>
                     <th>ผู้ส่ง</th>
+                    <th>ตำแหน่งที่ร้องขอ</th>
                     <th>เวลา</th>
                     <th>สถานะ</th>
                   </tr>
@@ -64,6 +67,7 @@
                       {{item.firstname}}
                       <!-- <a href="/admin/user/{{$post->user->id}}">{{ $post->user->firstname }}</a> -->
                     </td>
+                    <th>ตำแหน่งที่ร้องขอ</th>
                     <td>{{ item.created_at }}</td>
                     <td>ผ่านการตรวจสอบแล้ว</td>
                   </tr>

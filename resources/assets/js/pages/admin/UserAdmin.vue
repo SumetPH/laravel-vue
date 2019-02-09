@@ -251,9 +251,15 @@ export default {
       axios.post("/admin/user", { id, active }).then(res => {
         console.log(res, "active");
         if (res.data === "success") {
-          this.$notify("Updating..");
+          this.$notify({
+            type: "success",
+            text: "บันทึกข้อมูลเรียบร้อยแล้ว"
+          });
         } else {
-          this.$notify("Error");
+          this.$notify({
+            type: "error",
+            text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
+          });
         }
         this.loadUsers();
         this.modal = false;
@@ -263,9 +269,15 @@ export default {
       axios.delete(`/admin/user/${id}`).then(res => {
         console.log(res, "delete");
         if (res.data === "success") {
-          this.$notify("Deleting..");
+          this.$notify({
+            type: "success",
+            text: "บันทึกข้อมูลเรียบร้อยแล้ว"
+          });
         } else {
-          this.$notify("Error");
+          this.$notify({
+            type: "error",
+            text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
+          });
         }
         this.loadUsers();
         this.modal = false;

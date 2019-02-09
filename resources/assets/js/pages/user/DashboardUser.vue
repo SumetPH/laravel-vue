@@ -148,22 +148,22 @@
                   >
                 </div>
                 <div class="form-group">
+                  <label for="file">ฟอร์มบันทึกข้อความ</label>
+                  <file-pond
+                    required
+                    name="file"
+                    ref="pond"
+                    label-idle="เลือกเอกสาร"
+                    :server="{process,revert}"
+                  />
+                </div>
+                <div class="form-group">
                   <label for="description">รายละเอียด</label>
                   <textarea
                     class="form-control form-control-alternative"
                     rows="3"
                     v-model="description"
                   ></textarea>
-                </div>
-                <div class="form-group">
-                  <label for="file">ฟอร์มบันทึกข้อความ</label>
-                  <!-- <input class="form-control" type="file" required @change="changeFile"> -->
-                  <file-pond
-                    name="file"
-                    ref="pond"
-                    label-idle="เลือกเอกสาร"
-                    :server="{process,revert}"
-                  />
                 </div>
               </div>
               <div class="modal-footer">
@@ -228,9 +228,17 @@ export default {
 
       axios.post("/user/post", formData).then(res => {
         if (res.data === "success") {
-          this.loadData();
+          this.$notify({
+            type: "success",
+            text: "บันทึกข้อมูลเรียบร้อยแล้ว"
+          });
           this.modal = false;
-          this.$notify("Added");
+          this.loadData();
+        } else {
+          this.$notify({
+            type: "error",
+            text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
+          });
         }
       });
     },
@@ -239,9 +247,17 @@ export default {
         axios.delete(`/user/post/${id}`).then(res => {
           console.log(res, "deletePost");
           if (res.data === "success") {
-            this.loadData();
-            this.$notify("Deleted");
+            this.$notify({
+              type: "success",
+              text: "บันทึกข้อมูลเรียบร้อยแล้ว"
+            });
+          } else {
+            this.$notify({
+              type: "error",
+              text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
+            });
           }
+          this.loadData();
         });
       }
     },

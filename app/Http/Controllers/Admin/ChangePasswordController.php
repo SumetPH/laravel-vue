@@ -10,10 +10,6 @@ use Hash;
 
 class ChangePasswordController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:admin');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +17,7 @@ class ChangePasswordController extends Controller
      */
     public function index()
     {
-        return view('admin.changepassword.index');
+        //
     }
 
     /**
@@ -42,29 +38,20 @@ class ChangePasswordController extends Controller
      */
     public function store(Request $req)
     {
-        if(Hash::check($req->old_password, Auth::user()->password)){
-            $admin = Admin::find(Auth::user()->id);
+        $admin = Admin::find($req->admin_id);
+
+        if(Hash::check($req->old_password, $admin->password)){
+
             $admin->password = Hash::make($req->new_password);
+
             if($admin->save()){
-                $alert = [
-                    'alert_text' => 'ทำการเปลี่ยนรหัสผ่านเรียบร้อยแล้ว',
-                    'alert_color' => 'success'
-                ];
-                return redirect()->back()->with($alert);
+                return response()->json('success');
             } else {
-                $alert = [
-                    'alert_text' => 'การเปลี่ยนรหัสสผ่านไม่สำเร็จ',
-                    'alert_color' => 'success'
-                ];
-                return redirect()->back()->with($alert);
+                return response()->json('error');
             }
-            
+
         } else {
-            $alert = [
-                'alert_text' => 'รหัสผ่านปัจจุบันของคุณไม่ถูกต้อง',
-                'alert_color' => 'danger'
-            ];
-            return redirect()->back()->with($alert);
+            return response()->json('error');
         }
     }
 

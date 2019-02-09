@@ -69,10 +69,18 @@ export default {
       axios.post(`/admin/post3`, formData).then(res => {
         console.log(res);
         if (res.data === "success") {
-          this.$notify("Updating..");
-          this.loadPostAdmin();
-          this.loadPost3Admin();
+          this.$notify({
+            type: "success",
+            text: "บันทึกข้อมูลเรียบร้อยแล้ว"
+          });
+        } else {
+          this.$notify({
+            type: "error",
+            text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
+          });
         }
+        this.loadPostAdmin();
+        this.loadPost3Admin();
       });
     }
   },

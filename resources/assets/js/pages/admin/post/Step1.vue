@@ -16,6 +16,7 @@
         </div>
         <div class="card-body">
           <p>โดย : {{ post.firstname }} {{ post.lastname }}</p>
+          <p>ตำแหน่งที่ร้องขอ: {{ post.academic }}</p>
           <p>หัวข้อ : {{ post.title }}</p>
           <p>รายละเอียด : {{ post.description }}</p>
           <small>เวลา ​: {{post.updated_at}}</small>
@@ -62,10 +63,18 @@ export default {
         .put(`/admin/post/${this.$route.params.id}`, { step1: e.target.value })
         .then(res => {
           console.log(res);
-          this.$notify("Saving...");
           if (res.data === "success") {
-            this.loadPostAdmin();
+            this.$notify({
+              type: "success",
+              text: "บันทึกข้อมูลเรียบร้อยแล้ว"
+            });
+          } else {
+            this.$notify({
+              type: "error",
+              text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
+            });
           }
+          this.loadPostAdmin();
         });
     }
   },

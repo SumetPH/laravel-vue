@@ -16,6 +16,7 @@
             >ขั้นตอนที่ 1 : ผ่านการตรวจสอบแล้ว</h3>
           </div>
           <div class="card-body">
+            <p>ตำแหน่งที่ร้องขอ: {{ post.academic }}</p>
             <p>หัวข้อ : {{ post.title }}</p>
             <p>รายละเอียด : {{ post.description }}</p>
             <small>เวลา ​: {{post.updated_at}}</small>
@@ -78,8 +79,12 @@
                 <label for="file">ฟอร์มบันทึกข้อความ</label>
                 <br>
                 <button v-if="!file" @click="file = true" class="btn btn-warning">แก้ไขเอกสาร</button>
-                <!-- <input v-if="file" class="form-control" type="file" @change="changeFile"> -->
-                <file-pond v-if="file" label-idle="เลือกเอกสาร" :server="{process,revert}"/>
+                <file-pond
+                  v-if="file"
+                  label-idle="เลือกเอกสาร"
+                  :server="{process,revert}"
+                  required
+                />
               </div>
             </div>
             <div class="modal-footer">
@@ -137,9 +142,15 @@ export default {
 
       axios.post(`/user/post/${this.post.id}`, formData).then(res => {
         if (res.data === "success") {
-          this.$notify("Updating..");
+          this.$notify({
+            type: "success",
+            text: "บันทึกข้อมูลเรียบร้อยแล้ว"
+          });
         } else {
-          this.$notify("Error");
+          this.$notify({
+            type: "error",
+            text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
+          });
         }
         this.loadPostUser();
         this.modal = false;

@@ -13,7 +13,7 @@ class CommentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
         //
     }
 
@@ -35,16 +35,16 @@ class CommentController extends Controller
      */
     public function store(Request $req)
     {
-        $pc = new PostComment;
+        $pc = new Comment;
         $pc->post_id = $req->post_id;
         $pc->username = $req->username;
         $pc->msg = $req->msg;
-        $pc->save();
-        $alerts = [
-            'alert_text' => 'คุณได้แสดงความคิดเห็นเรียบร้อยแล้ว',
-            'alert_color' => 'success'
-        ];
-        return redirect()->back()->with($alerts);
+        if($pc->save()){
+            return response()->json('success');
+        } else {
+            return response()->json('error');
+        }
+        
 
     }
 
@@ -56,7 +56,9 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        //
+        
+        $comments = Comment::where('post_id', $id)->get();
+        return response()->json($comments);
     }
 
     /**
@@ -90,12 +92,11 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        $pc = PostComment::find($id);
-        $pc->delete();
-        $alerts = [
-            'alert_text' => 'คุณได้ลบความคิดเห็นเรียบร้อยแล้ว',
-            'alert_color' => 'danger'
-        ];
-        return redirect()->back()->with($alerts);
+        $pc = Comment::find($id);
+        if($pc->delete()){
+            return response()->json('error');
+        } else {
+            return response()->json('error');
+        }
     }
 }

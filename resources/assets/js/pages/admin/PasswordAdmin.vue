@@ -66,8 +66,8 @@ export default {
   methods: {
     submit() {
       axios
-        .post(`/user/changepassword`, {
-          user_id: this.user.data.id,
+        .post(`/admin/changepassword`, {
+          admin_id: this.admin.data.id,
           old_password: this.old_password,
           new_password: this.new_password
         })
@@ -88,7 +88,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(["user"])
+    ...mapState(["admin"])
   }
 };
 </script>

@@ -2,7 +2,9 @@
   <div class="row mt-3">
     <div class="col-md-12">
       <div class="card bg-secondary shadow">
-        <!-- <div class="card-header">head</div> -->
+        <div class="card-header">
+          <h3 class="card-title text-muted mb-0">รายงาน</h3>
+        </div>
         <div class="card-body">
           <div class="row">
             <div class="col-md-10">

@@ -134,17 +134,20 @@
         <ul v-if="who === 'user'" class="navbar-nav">
           <li class="nav-item">
             <router-link class="nav-link" to="/user">
-              <i class="ni ni-tv-2 text-primary"></i> หน้าแรก
+              <i class="ni ni-tv-2 text-primary"></i>
+              หน้าแรก
             </router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/user/profile">
-              <i class="ni ni-single-02 text-yellow"></i> ข้อมูลผู้ใช้
+              <i class="ni ni-single-02 text-yellow"></i>
+              ข้อมูลผู้ใช้
             </router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/user/password">
-              <i class="ni ni-planet text-blue"></i> เปลี่ยนรหัสผ่าน
+              <i class="ni ni-key-25 text-info"></i>
+              เปลี่ยนรหัสผ่าน
             </router-link>
           </li>
           <li class="nav-item">
@@ -156,12 +159,6 @@
             <a class="nav-link" href="examples/tables.html">
               <i class="ni ni-bullet-list-67 text-red"></i> Tables
             </a>
-          </li>
-          <li class="nav-item">
-            <router-link to="/login" class="nav-link">
-              <i class="ni ni-key-25 text-info"></i>
-              Login
-            </router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/register">
@@ -180,12 +177,20 @@
         <ul v-if="who === 'admin'" class="navbar-nav">
           <li class="nav-item">
             <router-link class="nav-link" to="/admin">
-              <i class="ni ni-tv-2 text-primary"></i> หน้าแรก
+              <i class="ni ni-tv-2 text-primary"></i>
+              หน้าแรก
             </router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/admin/user">
-              <i class="ni ni-planet text-blue"></i> จัดการผู้ใช้
+              <i class="ni ni-single-02 text-yellow"></i>
+              จัดการผู้ใช้
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/admin/password" class="nav-link">
+              <i class="ni ni-key-25 text-info"></i>
+              เปลี่ยนรหัสผ่าน
             </router-link>
           </li>
           <li class="nav-item">
@@ -194,20 +199,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="examples/profile.html">
-              <i class="ni ni-single-02 text-yellow"></i> User profile
-            </a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="examples/tables.html">
               <i class="ni ni-bullet-list-67 text-red"></i> Tables
             </a>
-          </li>
-          <li class="nav-item">
-            <router-link to="/login" class="nav-link">
-              <i class="ni ni-key-25 text-info"></i>
-              Login
-            </router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/register">

@@ -20,6 +20,7 @@ import ProfileUser from "./pages/user/ProfileUser.vue"
 import DashboardAdmin from "./pages/admin/DashboardAdmin.vue"
 import PostAdmin from "./pages/admin/PostAdmin.vue"
 import UserAdmin from "./pages/admin/UserAdmin.vue"
+import PasswordAdmin from "./pages/admin/PasswordAdmin.vue"
 
 
 const router = new VueRouter({
@@ -82,6 +83,11 @@ const router = new VueRouter({
 			name: 'admin-user',
 			path: '/admin/user',
 			component: UserAdmin
+		},
+		{
+			name: 'admin-password',
+			path: '/admin/password',
+			component: PasswordAdmin
 		}
 	]
 })

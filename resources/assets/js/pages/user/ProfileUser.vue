@@ -244,11 +244,17 @@ export default {
         .then(res => {
           console.log(res, "updateProfile");
           if (res.data.status === "success") {
-            this.$notify("Updating..");
+            this.$notify({
+              type: "success",
+              text: "บันทึกข้อมูลเรียบร้อยแล้ว"
+            });
             localStorage.setItem("user", JSON.stringify(res.data.data));
             this.user.data = res.data.data;
           } else {
-            this.$notify("Error");
+            this.$notify({
+              type: "error",
+              text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
+            });
           }
           this.loading(false);
         });
@@ -262,11 +268,17 @@ export default {
       axios.post(`/user/profile/${this.user.data.id}`, formData).then(res => {
         console.log(res, "updateImgProfile");
         if (res.data.status === "success") {
-          this.$notify("Updating..");
+          this.$notify({
+            type: "success",
+            text: "บันทึกข้อมูลเรียบร้อยแล้ว"
+          });
           localStorage.setItem("user", JSON.stringify(res.data.data));
           this.user.data = res.data.data;
         } else {
-          this.$notify("Error");
+          this.$notify({
+            type: "error",
+            text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
+          });
         }
         this.loading(false);
       });

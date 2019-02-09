@@ -17,7 +17,7 @@ class ChangePasswordController extends Controller
      */
     public function index()
     {
-        return view('user.changepassword.index');
+        //
     }
 
     /**
@@ -38,29 +38,20 @@ class ChangePasswordController extends Controller
      */
     public function store(Request $req)
     {
-        if(Hash::check($req->old_password, Auth::user()->password)){
-            $user = User::find(Auth::user()->id);
+        $user = User::find($req->user_id);
+
+        if(Hash::check($req->old_password, $user->password)){
+
             $user->password = Hash::make($req->new_password);
+
             if($user->save()){
-                $alert = [
-                    'alert_text' => 'ทำการเปลี่ยนรหัสผ่านเรียบร้อยแล้ว',
-                    'alert_color' => 'success'
-                ];
-                return redirect()->back()->with($alert);
+                return response()->json('success');
             } else {
-                $alert = [
-                    'alert_text' => 'การเปลี่ยนรหัสผ่านไม่สำเร็จ',
-                    'alert_color' => 'success'
-                ];
-                return redirect()->back()->with($alert);
+                return response()->json('error');
             }
-            
+
         } else {
-            $alert = [
-                'alert_text' => 'รหัสผ่านปัจจุบันของคุณไม่ถูกต้อง',
-                'alert_color' => 'danger'
-            ];
-            return redirect()->back()->with($alert);
+            return response()->json('error');
         }
     }
 

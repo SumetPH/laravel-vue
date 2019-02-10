@@ -59,23 +59,25 @@ export default {
   methods: {
     ...mapActions(["loadPostAdmin"]),
     selectChange(e) {
-      axios
-        .put(`/admin/post/${this.$route.params.id}`, { step1: e.target.value })
-        .then(res => {
-          console.log(res);
-          if (res.data === "success") {
-            this.$notify({
-              type: "success",
-              text: "บันทึกข้อมูลเรียบร้อยแล้ว"
-            });
-          } else {
-            this.$notify({
-              type: "error",
-              text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
-            });
-          }
-          this.loadPostAdmin();
-        });
+      let formData = new FormData();
+      formData.append("_method", "put");
+      formData.append("step1", e.target.value);
+
+      axios.post(`/admin/post/${this.$route.params.id}`, formData).then(res => {
+        console.log(res);
+        if (res.data === "success") {
+          this.$notify({
+            type: "success",
+            text: "บันทึกข้อมูลเรียบร้อยแล้ว"
+          });
+        } else {
+          this.$notify({
+            type: "error",
+            text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
+          });
+        }
+        this.loadPostAdmin();
+      });
     }
   },
   mounted() {

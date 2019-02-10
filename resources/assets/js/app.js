@@ -12,7 +12,7 @@ import Notifications from 'vue-notification'
 Vue.use(VueAxios, axios)
 Vue.use(Notifications)
 
-axios.defaults.baseURL = "http://localhost:8000/api"
+axios.defaults.baseURL = "/api"
 
 import App from "./App.vue"
 

@@ -96,7 +96,7 @@ export default {
         if (res.data === "success") {
           this.$notify({
             type: "success",
-            text: "บันทึึึกข้อมูลเรียบร้อยแล้ว"
+            text: "บันทึกข้อมูลเรียบร้อยแล้ว"
           });
         } else {
           this.$notify({

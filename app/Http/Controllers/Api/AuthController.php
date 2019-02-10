@@ -71,6 +71,12 @@ class AuthController extends Controller
         } else {
             // User
             $user = User::where('email',$req->email)->first();
+            if(!$user){
+                return response()->json([
+                    'status' => 'error'
+                ]);
+            }
+            
             if($user->active == 1){
                 if(Hash::check($req->password,$user->password)){
                     return response()->json([

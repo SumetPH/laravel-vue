@@ -94,7 +94,7 @@ class CommentController extends Controller
     {
         $pc = Comment::find($id);
         if($pc->delete()){
-            return response()->json('error');
+            return response()->json('success');
         } else {
             return response()->json('error');
         }

@@ -244,7 +244,10 @@ export default {
     },
     deletePost(id) {
       if (confirm("คุณต้องการลบคำร้องขอนี้ใช่หรือไม่")) {
-        axios.delete(`/user/post/${id}`).then(res => {
+        let formData = new FormData();
+        formData.append("_method", "delete");
+
+        axios.post(`/user/post/${id}`, formData).then(res => {
           console.log(res, "deletePost");
           if (res.data === "success") {
             this.$notify({

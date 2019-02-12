@@ -397,6 +397,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -416,7 +417,9 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["loading"]),
     submit() {
+      this.loading(true);
       let formData = new FormData();
       formData.append("title", this.title);
       formData.append("academic", this.academic);
@@ -440,6 +443,7 @@ export default {
         } else {
           this.$notify("กรุณาลองใหม่อีกครั้ง");
         }
+        this.loading(false);
       });
     }
   }

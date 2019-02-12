@@ -105,7 +105,7 @@ class Post1Controller extends Controller
         if($req->hasFile('file'))
         {
             // delete old file
-            Storage::delete($post->file);
+            Storage::delete($post->file_path);
 
             // file
             $file = $req->file('file');
@@ -135,31 +135,23 @@ class Post1Controller extends Controller
     {
         $post = Post::find($id);
         if($post){
-            Storage::delete($post->file);
+            Storage::delete($post->file_path);
             $post->delete();
         }
         
-        $post2 = Post2::where('post_id',$id)->first();
+        $post2 = Post2::where('post_id',$id)->get();
         if($post2){
-            Storage::delete($post2->file3path);
-            Storage::delete($post2->file4path);
+            foreach ($post2 as $p2) {
+                Storage::delete($p2->file_path);
+            }
             Post2::where('post_id',$id)->delete();   
         }
 
-        $post3 = Post3::where('post_id',$id)->first();
+        $post3 = Post3::where('post_id',$id)->get();
         if($post3){
-            Storage::delete($post3->file1path);
-            Storage::delete($post3->file2path);
-            Storage::delete($post3->file3path);
-            Storage::delete($post3->file4path);
-            Storage::delete($post3->file5path);
-            Storage::delete($post3->file6path);
-            Storage::delete($post3->file7path);
-            Storage::delete($post3->file8path);
-            Storage::delete($post3->file9path);
-            Storage::delete($post3->file10path);
-            Storage::delete($post3->file11path);
-            Storage::delete($post3->file12path);
+            foreach ($post3 as $p3) {
+                Storage::delete($p3->file_path);
+            }
             Post3::where('post_id',$id)->delete();    
         }
             

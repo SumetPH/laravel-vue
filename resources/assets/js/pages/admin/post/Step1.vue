@@ -16,7 +16,7 @@
         </div>
         <div class="card-body">
           <p>โดย : {{ post.firstname }} {{ post.lastname }}</p>
-          <p>ตำแหน่งที่ร้องขอ: {{ post.academic }}</p>
+          <p>ตำแหน่งที่ร้องขอ : {{ post.academic }}</p>
           <p>หัวข้อ : {{ post.title }}</p>
           <p>รายละเอียด : {{ post.description }}</p>
           <small>เวลา ​: {{post.updated_at}}</small>

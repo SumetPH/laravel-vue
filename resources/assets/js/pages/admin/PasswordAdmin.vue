@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 import Layout from "../../components/Layout";
 export default {
   components: {
@@ -64,7 +64,9 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["loading"]),
     submit() {
+      this.loading(true);
       axios
         .post(`/admin/changepassword`, {
           admin_id: this.admin.data.id,
@@ -78,12 +80,16 @@ export default {
               type: "success",
               text: "บันทึกข้อมูลเรียบร้อยแล้ว"
             });
+            this.old_password = "";
+            this.new_password = "";
+            this.confirm_password = "";
           } else {
             this.$notify({
               type: "error",
               text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
             });
           }
+          this.loading(false);
         });
     }
   },

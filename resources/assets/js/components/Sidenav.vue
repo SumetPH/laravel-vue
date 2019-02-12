@@ -157,12 +157,13 @@
               เปลี่ยนรหัสผ่าน
             </router-link>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="examples/maps.html">
-              <i class="ni ni-pin-3 text-orange"></i> Maps
-            </a>
-          </li>
           <li class="nav-item">
+            <router-link class="nav-link" to="/user/doc">
+              <i class="ni ni-pin-3 text-orange"></i>
+              เอกสาร
+            </router-link>
+          </li>
+          <!--<li class="nav-item">
             <router-link class="nav-link" to="/register">
               <i class="ni ni-circle-08 text-pink"></i>
               Register

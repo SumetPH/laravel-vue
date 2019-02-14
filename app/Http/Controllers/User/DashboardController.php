@@ -20,6 +20,7 @@ class DashboardController extends Controller
             ->where(function($q){
                 $q->where('step1','=','0')->orWhere('step3check','=','0');
             })
+            ->orderBy('created_at')
             ->get();
 
         $posts_checked = DB::table('posts')
@@ -29,6 +30,7 @@ class DashboardController extends Controller
             ->where(function($q){
                 $q->where('step1','=','1')->where('step3check','=','1');
             })
+            ->orderBy('created_at')
             ->get();
 
         $data = [

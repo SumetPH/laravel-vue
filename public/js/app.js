@@ -65631,8 +65631,6 @@ var render = function() {
             [_vm._v("หน้าแรก")]
           ),
           _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
           _c(
             "ul",
             { staticClass: "navbar-nav align-items-center d-none d-md-flex" },
@@ -65691,6 +65689,8 @@ var render = function() {
                         "dropdown-menu dropdown-menu-arrow dropdown-menu-right"
                     },
                     [
+                      _vm._m(0),
+                      _vm._v(" "),
                       _vm._m(1),
                       _vm._v(" "),
                       _vm._m(2),
@@ -65698,8 +65698,6 @@ var render = function() {
                       _vm._m(3),
                       _vm._v(" "),
                       _vm._m(4),
-                      _vm._v(" "),
-                      _vm._m(5),
                       _vm._v(" "),
                       _c("div", { staticClass: "dropdown-divider" }),
                       _vm._v(" "),
@@ -65729,34 +65727,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "form",
-      {
-        staticClass:
-          "navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto"
-      },
-      [
-        _c("div", { staticClass: "form-group mb-0" }, [
-          _c("div", { staticClass: "input-group input-group-alternative" }, [
-            _c("div", { staticClass: "input-group-prepend" }, [
-              _c("span", { staticClass: "input-group-text" }, [
-                _c("i", { staticClass: "fas fa-search" })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { placeholder: "Search", type: "text" }
-            })
-          ])
-        ])
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

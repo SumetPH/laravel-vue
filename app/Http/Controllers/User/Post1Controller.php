@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Post2;
 use App\Post3;
+use App\Comment;
 use Auth;
 use Storage;
 
@@ -154,6 +155,8 @@ class Post1Controller extends Controller
             }
             Post3::where('post_id',$id)->delete();    
         }
+        
+        Comment::where('post_id',$id)->delete();
             
         return response()->json('success');
     }

@@ -12,7 +12,7 @@
                 <span class="h2 font-weight-bold mb-0">{{ posts.length }} รายการ</span>
               </div>
               <div class="col-auto">
-                <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                <div class="icon icon-shape bg-primary text-white rounded-circle shadow">
                   <i class="fas fa-chart-bar"></i>
                 </div>
               </div>
@@ -32,7 +32,7 @@
               </div>
               <div class="col-auto">
                 <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                  <i class="fas fa-percent"></i>
+                  <i class="fas fa-exclamation-triangle"></i>
                 </div>
               </div>
             </div>
@@ -50,8 +50,8 @@
                 <span class="h2 font-weight-bold mb-0">{{ posts_checked.length }} รายการ</span>
               </div>
               <div class="col-auto">
-                <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                  <i class="fas fa-chart-pie"></i>
+                <div class="icon icon-shape bg-success text-white rounded-circle shadow">
+                  <i class="fas fa-check-circle"></i>
                 </div>
               </div>
             </div>

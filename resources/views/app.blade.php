@@ -7,9 +7,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>ระบบส่งเอกสารเพื่อขอกำหนดแต่งตั้งตำแหน่งทางวิชาการ</title>
-        <!-- Styles -->
-        {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
-          <!-- Favicon -->
+        <!-- Favicon -->
         <link href="/assets/img/brand/favicon.png" rel="icon" type="image/png">
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">

@@ -15,16 +15,16 @@
           >ขั้นตอนที่ 1 : ผ่านการตรวจสอบแล้ว</h3>
         </div>
         <div class="card-body">
-          <p>โดย : {{ post.firstname }} {{ post.lastname }}</p>
-          <p>ตำแหน่งที่ร้องขอ : {{ post.academic }}</p>
-          <p>หัวข้อ : {{ post.title }}</p>
-          <p>รายละเอียด : {{ post.description }}</p>
-          <small>เวลา ​: {{post.updated_at}}</small>
+          <p>โดย : {{ post1.firstname }} {{ post1.lastname }}</p>
+          <p>ตำแหน่งที่ร้องขอ : {{ post1.academic }}</p>
+          <p>หัวข้อ : {{ post1.title }}</p>
+          <p>รายละเอียด : {{ post1.description }}</p>
+          <small>เวลา ​: {{post1.updated_at}}</small>
           <hr>
           <div class="col-md-9 form-group">
             <label for="file">ฟอร์มบันทึกข้อความ</label>
             <br>เอกสาร :
-            <a target="_blank" :href="'/files/' + post.file_path">{{ post.file_name }}</a>
+            <a target="_blank" :href="'/files/' + post1.file_path">{{ post1.file_name }}</a>
           </div>
           <hr>
 
@@ -54,10 +54,10 @@ import { mapState, mapActions } from "vuex";
 
 export default {
   computed: {
-    ...mapState({ post: "post" })
+    ...mapState({ post: "post", post1: "post1" })
   },
   methods: {
-    ...mapActions(["loadPostAdmin"]),
+    ...mapActions(["loadPost", "loadPost1Admin"]),
     selectChange(e) {
       let formData = new FormData();
       formData.append("_method", "put");
@@ -76,12 +76,14 @@ export default {
             text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
           });
         }
-        this.loadPostAdmin();
+        this.loadPost();
+        this.loadPost1Admin();
       });
     }
   },
   mounted() {
-    this.loadPostAdmin();
+    this.loadPost();
+    this.loadPost1Admin();
   }
 };
 </script>

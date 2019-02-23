@@ -217,7 +217,7 @@
           <div class="col-xl-6">
             <div class="copyright text-center text-xl-left text-muted">
               &copy; 2019
-              <a href class="font-weight-bold ml-1" target="_blank">ISR60</a>
+              <a href class="font-weight-bold ml-1">ISR60</a>
             </div>
           </div>
           <div class="col-xl-6">
@@ -254,15 +254,24 @@ export default {
         console.log(res);
         this.loading(false);
         if (res.data.status === "user") {
-          this.$notify("เข้าสู่ระบบ");
+          this.$notify({
+            type: "primary",
+            text: "เข้าสู่ระบบ"
+          });
           localStorage.setItem("user", JSON.stringify(res.data.user));
           this.$router.push("/user");
         } else if (res.data.status === "admin") {
-          this.$notify("เข้าสู่ระบบ");
+          this.$notify({
+            type: "primary",
+            text: "เข้าสู่ระบบ"
+          });
           localStorage.setItem("admin", JSON.stringify(res.data.admin));
           this.$router.push("/admin");
         } else {
-          this.$notify("กรุณาลองใหม่อีกครั้ง");
+          this.$notify({
+            type: "error",
+            text: res.data.text
+          });
         }
       });
     }

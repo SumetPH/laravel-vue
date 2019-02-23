@@ -16,16 +16,16 @@
             >ขั้นตอนที่ 1 : ผ่านการตรวจสอบแล้ว</h3>
           </div>
           <div class="card-body">
-            <p>ตำแหน่งที่ร้องขอ : {{ post.academic }}</p>
-            <p>หัวข้อ : {{ post.title }}</p>
-            <p>รายละเอียด : {{ post.description }}</p>
-            <small>เวลา ​: {{post.updated_at}}</small>
+            <p>ตำแหน่งที่ร้องขอ : {{ post1.academic }}</p>
+            <p>หัวข้อ : {{ post1.title }}</p>
+            <p>รายละเอียด : {{ post1.description }}</p>
+            <small>เวลา ​: {{post1.updated_at}}</small>
             <hr>
             <div class="row justify-content-center">
               <div class="col-md-12">
                 <label>ฟอร์มบันทึกข้อความ</label>
                 <br>เอกสาร :
-                <a target="_blank" :href="'/files/' + post.file_path">{{post.file_name}}</a>
+                <a target="_blank" :href="'/files/' + post1.file_path">{{post1.file_name}}</a>
                 <p></p>
                 <button v-if="post.step1 === '0'" @click="modalHandle" class="btn btn-warning">แก้ไข</button>
               </div>
@@ -115,12 +115,12 @@ export default {
     };
   },
   computed: {
-    ...mapState({ post: "post", post2: "post2" })
+    ...mapState({ post: "post", post1: "post1", post2: "post2" })
   },
   methods: {
-    ...mapActions(["loadPostUser"]),
+    ...mapActions(["loadPost", "loadPost1User"]),
     modalHandle() {
-      this.description = this.post.description;
+      this.description = this.post1.description;
       this.modal = !this.modal;
     },
     changeFile(e) {
@@ -152,14 +152,16 @@ export default {
             text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
           });
         }
-        this.loadPostUser();
+        this.loadPost();
+        this.loadPost1User();
         this.modal = false;
         this.file = false;
       });
     }
   },
   mounted() {
-    this.loadPostUser();
+    this.loadPost();
+    this.loadPost1User();
   }
 };
 </script>

@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
-use DB;
 
-class ReportController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,8 +33,10 @@ class ReportController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $req)
-    { }
+    public function store(Request $request)
+    {
+        //
+    }
 
     /**
      * Display the specified resource.
@@ -45,12 +46,7 @@ class ReportController extends Controller
      */
     public function show($id)
     {
-        $post = DB::table('posts')
-            ->join('post1s', 'posts.id', '=', 'post1s.post_id')
-            ->select('posts.*', 'post1s.title', 'post1s.academic')
-            ->where('posts.user_id', '=', $id)
-            ->where('posts.report', '<>', '')
-            ->get();
+        $post = Post::find($id);
         return response()->json($post);
     }
 
@@ -62,8 +58,7 @@ class ReportController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::find($id);
-        return response()->json($post);
+        //
     }
 
     /**
@@ -73,15 +68,9 @@ class ReportController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $req, $id)
+    public function update(Request $request, $id)
     {
-        $post = Post::find($id);
-        $post->report = $req->report;
-        if ($post->save()) {
-            return response()->json('success');
-        } else {
-            return response()->json('error');
-        }
+        //
     }
 
     /**

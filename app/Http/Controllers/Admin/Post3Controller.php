@@ -37,22 +37,7 @@ class Post3Controller extends Controller
      */
     public function store(Request $req)
     {
-        $post3 = Post3::find($req->id);
-        $post3->status = $req->status;
-        if($post3->save()){
-            $post = Post::find($req->post_id);
-            $post3 = Post3::where('post_id', $req->post_id)->where('status','=','1')->get();
-            if($post3->count() == 12){
-                $post->step3check = '1';
-                $post->save();
-            } else {
-                $post->step3check = '0';
-                $post->save();
-            }
-            return response()->json('success');
-        } else {
-            return response()->json('error');
-        }
+        //
     }
 
     /**
@@ -63,7 +48,7 @@ class Post3Controller extends Controller
      */
     public function show($id)
     {
-        $post3 = Post3::where('post_id',$id)->get();
+        $post3 = Post3::where('post_id', $id)->get();
         $data = [
             'post3' => $post3,
         ];
@@ -90,7 +75,22 @@ class Post3Controller extends Controller
      */
     public function update(Request $req, $id)
     {
-        //
+        $post3 = Post3::find($id);
+        $post3->status = $req->status;
+        if ($post3->save()) {
+            $post = Post::find($req->post_id);
+            $post3 = Post3::where('post_id', $req->post_id)->where('status', '=', '1')->get();
+            if ($post3->count() == 12) {
+                $post->overall = '1';
+                $post->save();
+            } else {
+                $post->overall = '0';
+                $post->save();
+            }
+            return response()->json('success');
+        } else {
+            return response()->json('error');
+        }
     }
 
     /**

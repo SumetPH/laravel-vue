@@ -11,7 +11,7 @@
           <h3
             v-else
             class="card-title mb-0"
-            :style="post.step3check === '1' ? 'color : #2dce89' : 'color: #fb6340'"
+            :style="post.overall === '1' ? 'color : #2dce89' : 'color: #fb6340'"
           >ขั้นตอนที่ 3 : เอกสารประกอบการเสนอขอกำหนดตำแหน่งทางวิชาการ</h3>
         </div>
         <div class="card-body">
@@ -43,15 +43,6 @@
                   @addfilestart="addfilestart(item.id,item.post_id)"
                 />
               </div>
-
-              <!-- <div v-else class="form-group">
-                <label>{{ item.title }}</label>
-                <input
-                  type="file"
-                  class="form-control"
-                  @change="(e) => update(item.id, item.post_id, e.target.files[0])"
-                >
-              </div>-->
               <hr>
             </div>
           </div>
@@ -74,7 +65,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["loadPostUser", "loadPost3User"]),
+    ...mapActions(["loadPost", "loadPost3User"]),
     addfilestart(id, post_id) {
       this.id = id;
       this.post_id = post_id;
@@ -98,25 +89,10 @@ export default {
         console.log(res);
         // passing the file id to FilePond
         load("100");
-        this.loadPostUser();
+        this.loadPost();
         this.loadPost3User();
       });
     }
-    // update(id, post_id, file) {
-    //   let formData = new FormData();
-    //   formData.append("id", id);
-    //   formData.append("post_id", post_id);
-    //   formData.append("file", file);
-
-    //   axios.post(`/user/post3`, formData).then(res => {
-    //     console.log(res);
-    //     this.$notify("Update...");
-    //     if (res.data === "success") {
-    //       this.loadPostUser();
-    //       this.loadPost3User();
-    //     }
-    //   });
-    // }
   },
   computed: {
     ...mapState({ post: "post", post3: "post3" })

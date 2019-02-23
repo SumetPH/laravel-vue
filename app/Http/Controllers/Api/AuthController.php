@@ -12,8 +12,8 @@ class AuthController extends Controller
 {
     public function register(Request $req)
     {
-        $user = User::where('email',$req->email)->get();
-        if($user->count() === 0){
+        $user = User::where('email', $req->email)->get();
+        if ($user->count() === 0) {
             $user = new User;
             $user->title = $req->title;
             $user->academic = $req->academic;
@@ -28,7 +28,7 @@ class AuthController extends Controller
             $user->university = $req->university;
             $user->campus = $req->campus;
             $user->number = $req->number;
-            if($user->save()){
+            if ($user->save()) {
                 return response()->json('success');
             } else {
                 return response()->json('error');
@@ -40,11 +40,11 @@ class AuthController extends Controller
 
     public function login(Request $req)
     {
-        if($req->email == 'admin'){
+        if ($req->email == 'admin') {
             // Admin
             $admin = Admin::all()->first();
-            if($admin) {
-                if(Hash::check($req->password,$admin->password)){
+            if ($admin) {
+                if (Hash::check($req->password, $admin->password)) {
                     return response()->json([
                         'status' => 'admin',
                         'admin' => $admin
@@ -54,8 +54,7 @@ class AuthController extends Controller
                         'status' => 'error'
                     ]);
                 }
-            }
-            else {
+            } else {
                 $admin = new Admin;
                 $admin->username = 'admin';
                 $admin->password = Hash::make('admin');
@@ -66,31 +65,33 @@ class AuthController extends Controller
                     'status' => 'admin',
                     'admin' => $admin
                 ]);
-
             }
         } else {
             // User
-            $user = User::where('email',$req->email)->first();
-            if(!$user){
+            $user = User::where('email', $req->email)->first();
+            if (!$user) {
                 return response()->json([
-                    'status' => 'error'
+                    'status' => 'error',
+                    'text' => 'ไม่พบบัญขีผู้ใช้งานในระบบ'
                 ]);
             }
-            
-            if($user->active == 1){
-                if(Hash::check($req->password,$user->password)){
+
+            if ($user->active == 1) {
+                if (Hash::check($req->password, $user->password)) {
                     return response()->json([
                         'status' => 'user',
                         'user' => $user
                     ]);
                 } else {
                     return response()->json([
-                        'status' => 'error'
+                        'status' => 'error',
+                        'text' => 'รหัสผ่านของคุณไม่ถูกต้อง'
                     ]);
                 }
             } else {
                 return response()->json([
-                    'status' => 'error'
+                    'status' => 'error',
+                    'text' => 'บัญขีของคุณยังไม่ได้รับการยืนยัน'
                 ]);
             }
         }

@@ -16,8 +16,8 @@ class Post1Controller extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at','desc')->get();
-        return view('admin.post.index')->with('posts',$posts );
+        $posts = Post::orderBy('created_at', 'desc')->get();
+        return view('admin.post.index')->with('posts', $posts);
     }
 
     /**
@@ -49,14 +49,14 @@ class Post1Controller extends Controller
      */
     public function show($id)
     {
-        $post = DB::table('posts')
-            ->join('users', 'posts.user_id', '=', 'users.id')
-            ->select('posts.*', 'users.firstname')
-            ->where('posts.id','=',$id)
+        $post1 = DB::table('post1s')
+            ->join('users', 'post1s.user_id', '=', 'users.id')
+            ->select('post1s.*', 'users.firstname')
+            ->where('post1s.id', '=', $id)
             ->first();
 
         $data = [
-            'post' => $post
+            'post1' => $post1
         ];
 
         return response()->json($data);
@@ -85,7 +85,7 @@ class Post1Controller extends Controller
         $post = Post::find($id);
         $post->step1 = $req->step1;
 
-        if($post->save()){
+        if ($post->save()) {
             return response()->json('success');
         } else {
             return response()->json('error');

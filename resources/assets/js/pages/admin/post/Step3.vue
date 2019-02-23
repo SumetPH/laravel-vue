@@ -6,7 +6,7 @@
           <div class="card-header">
             <h3
               class="card-title mb-0"
-              :style="post.step3check === '1' ? 'color : #2dce89' : 'color: #fb6340'"
+              :style="post.overall === '1' ? 'color : #2dce89' : 'color: #fb6340'"
             >ขั้นตอนที่ 3 : เอกสารประกอบการเสนอขอกำหนดตำแหน่งทางวิชาการ</h3>
           </div>
           <div class="card-body">
@@ -59,14 +59,18 @@
 import { mapState, mapActions } from "vuex";
 export default {
   methods: {
-    ...mapActions(["loadPostAdmin", "loadPost3Admin"]),
+    ...mapActions(["loadPost", "loadPost3Admin"]),
     update(id, post_id, e) {
       let formData = new FormData();
-      formData.append("id", id);
+      formData.append("_method", "put");
       formData.append("post_id", post_id);
       formData.append("status", e.target.value);
 
-      axios.post(`/admin/post3`, formData).then(res => {
+      axios({
+        method: "post",
+        url: `/admin/post3/${id}`,
+        data: formData
+      }).then(res => {
         console.log(res);
         if (res.data === "success") {
           this.$notify({
@@ -79,7 +83,7 @@ export default {
             text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
           });
         }
-        this.loadPostAdmin();
+        this.loadPost();
         this.loadPost3Admin();
       });
     }

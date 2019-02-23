@@ -38,14 +38,6 @@
                   @addfilestart="addfilestart(item.id,item.post_id)"
                 />
               </div>
-              <!-- <div v-else class="form-group">
-                <label>{{ item.title }}</label>
-                <input
-                  type="file"
-                  class="form-control"
-                  @change="(e) => update(item.id, item.post_id, e.target.files[0])"
-                >
-              </div>-->
               <hr>
             </div>
           </div>
@@ -75,7 +67,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["loadPostAdmin", "loadPost2Admin"]),
+    ...mapActions(["loadPost", "loadPost2Admin"]),
     addfilestart(id, post_id) {
       this.id = id;
       this.post_id = post_id;
@@ -99,25 +91,10 @@ export default {
         console.log(res);
         // passing the file id to FilePond
         load("100");
-        this.loadPostAdmin();
+        this.loadPost();
         this.loadPost2Admin();
       });
     }
-    // update(id, post_id, file) {
-    //   let formData = new FormData();
-    //   formData.append("id", id);
-    //   formData.append("post_id", post_id);
-    //   formData.append("file", file);
-
-    //   axios.post(`/admin/post2`, formData).then(res => {
-    //     console.log(res);
-    //     this.$notify("Update...");
-    //     if (res.data === "success") {
-    //       this.loadPostAdmin();
-    //       this.loadPost2Admin();
-    //     }
-    //   });
-    // },
   },
   mounted() {
     this.loadPost2Admin();

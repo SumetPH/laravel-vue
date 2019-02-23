@@ -117,16 +117,17 @@
         <div class="modal-dialog" role="document" data-show="true">
           <div class="modal-content">
             <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">คำร้องขอ</h4>
               <button
                 @click="modalHandle"
                 type="button"
                 class="close"
                 data-dismiss="modal"
                 aria-label="Close"
+                :disabled="isSubmit"
               >
                 <span aria-hidden="true">&times;</span>
               </button>
-              <h4 class="modal-title" id="myModalLabel">คำร้องขอ</h4>
             </div>
             <form @submit.prevent="submit">
               <div class="modal-body bg-secondary">
@@ -167,12 +168,18 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">บันทึก</button>
+                <button type="submit" class="btn btn-primary btn-icon" :disabled="isSubmit">
+                  <span v-if="isSubmit" class="btn-inner--icon">
+                    <i class="fas fa-spinner"></i>
+                  </span>
+                  <span v-else class="btn-inner--text">บันทึก</span>
+                </button>
                 <button
                   @click="modalHandle"
                   type="button"
                   class="btn btn-default"
                   data-dismiss="modal"
+                  :disabled="isSubmit"
                 >ยกเลิก</button>
               </div>
             </form>
@@ -185,6 +192,7 @@
 
 
 <script>
+import { mapActions } from "vuex";
 import Layout from "../../components/Layout";
 import Card from "../../components/Card.vue";
 
@@ -195,6 +203,7 @@ export default {
   },
   data() {
     return {
+      isSubmit: false,
       user: JSON.parse(localStorage.getItem("user")),
       posts: [],
       posts_checking: [],
@@ -206,7 +215,9 @@ export default {
       modal: false
     };
   },
+
   methods: {
+    ...mapActions(["loading"]),
     changeFile(e) {
       this.file = e.target.files[0];
     },
@@ -219,6 +230,7 @@ export default {
       load();
     },
     submit() {
+      this.isSubmit = true;
       let formData = new FormData();
       formData.append("user_id", this.user.id);
       formData.append("academic", this.academic);
@@ -240,10 +252,12 @@ export default {
             text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
           });
         }
+        this.isSubmit = false;
       });
     },
     deletePost(id) {
       if (confirm("คุณต้องการลบคำร้องขอนี้ใช่หรือไม่")) {
+        this.loading(true);
         let formData = new FormData();
         formData.append("_method", "delete");
 
@@ -252,15 +266,16 @@ export default {
           if (res.data === "success") {
             this.$notify({
               type: "success",
-              text: "บันทึกข้อมูลเรียบร้อยแล้ว"
+              text: "ลบข้อมูลเรียบร้อยแล้ว"
             });
           } else {
             this.$notify({
               type: "error",
-              text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
+              text: "มีข้อผิดผลาดในการลบข้อมูล"
             });
           }
           this.loadData();
+          this.loading(false);
         });
       }
     },

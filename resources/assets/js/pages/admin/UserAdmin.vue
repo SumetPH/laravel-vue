@@ -227,6 +227,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import Layout from "../../components/Layout";
 
 export default {
@@ -241,6 +242,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["loading"]),
     loadUsers() {
       axios.get("/admin/user").then(res => {
         console.log(res, "loadUser");
@@ -248,6 +250,7 @@ export default {
       });
     },
     activeUser(id, active) {
+      this.loading(true);
       axios.post("/admin/user", { id, active }).then(res => {
         console.log(res, "active");
         if (res.data === "success") {
@@ -261,27 +264,32 @@ export default {
             text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
           });
         }
+        this.loading(false);
         this.loadUsers();
         this.modal = false;
       });
     },
     deleteUser(id) {
-      axios.delete(`/admin/user/${id}`).then(res => {
-        console.log(res, "delete");
-        if (res.data === "success") {
-          this.$notify({
-            type: "success",
-            text: "บันทึกข้อมูลเรียบร้อยแล้ว"
-          });
-        } else {
-          this.$notify({
-            type: "error",
-            text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
-          });
-        }
-        this.loadUsers();
-        this.modal = false;
-      });
+      if (confirm("คุณต้องการลบผู้ใช้งานใช่หรือไม่")) {
+        this.loading(true);
+        axios.delete(`/admin/user/${id}`).then(res => {
+          console.log(res, "delete");
+          if (res.data === "success") {
+            this.$notify({
+              type: "success",
+              text: "บันทึกข้อมูลเรียบร้อยแล้ว"
+            });
+          } else {
+            this.$notify({
+              type: "error",
+              text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
+            });
+          }
+          this.loading(false);
+          this.loadUsers();
+          this.modal = false;
+        });
+      }
     },
     modalHandle(index) {
       this.modalUser = this.users[index];

@@ -18,7 +18,6 @@
       </button>
       <!-- Brand -->
       <router-link class="navbar-brand pt-0" to="/">
-        <!-- <img src="/assets/img/brand/dds-primary.png" class="navbar-brand-img" alt="..."> -->
         <img src="/assets/img/brand/rmuti-black.png" class="navbar-brand-img" alt="...">
       </router-link>
       <!-- User -->
@@ -72,6 +71,7 @@
           </div>
         </div>
         <!-- Navigation -->
+        <!-- for user -->
         <ul v-if="who === 'user'" class="navbar-nav">
           <li class="nav-item">
             <router-link class="nav-link" to="/user">
@@ -106,6 +106,7 @@
           </li>
         </ul>
 
+        <!-- for admin -->
         <ul v-if="who === 'admin'" class="navbar-nav">
           <li class="nav-item">
             <router-link class="nav-link" to="/admin">
@@ -126,6 +127,7 @@
             </router-link>
           </li>
         </ul>
+
         <!-- Divider -->
         <hr class="my-3">
         <!-- Heading -->

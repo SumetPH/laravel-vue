@@ -16,22 +16,24 @@ class DashboardController extends Controller
         $posts = Post::all();
 
         $posts_checking = DB::table('posts')
-            ->join('users', 'posts.user_id', '=', 'users.id')
-            ->join('post1s', 'posts.id', '=', 'post1s.post_id')
+            ->join('users', 'posts.user_id', 'users.id')
+            ->join('post1s', 'posts.id', 'post1s.post_id')
             ->select('posts.*', 'post1s.title', 'post1s.academic', 'users.firstname')
-            ->where('posts.step1', '=', '0')
-            ->orWhere('posts.step2', '=', '0')
-            ->orWhere('posts.step3', '=', '0')
+            ->where('posts.step1', '0')
+            ->orWhere('posts.step2', '0')
+            ->orWhere('posts.step3', '0')
+            ->orWhere('posts.overall', '0')
             ->orderBy('created_at')
             ->get();
 
         $posts_checked = DB::table('posts')
-            ->join('users', 'posts.user_id', '=', 'users.id')
-            ->join('post1s', 'posts.id', '=', 'post1s.post_id')
+            ->join('users', 'posts.user_id', 'users.id')
+            ->join('post1s', 'posts.id', 'post1s.post_id')
             ->select('posts.*', 'post1s.title', 'post1s.academic', 'users.firstname')
-            ->where('posts.step1', '=', '1')
-            ->where('posts.step2', '=', '1')
-            ->where('posts.step3', '=', '1')
+            ->where('posts.step1', '1')
+            ->where('posts.step2', '1')
+            ->where('posts.step3', '1')
+            ->where('posts.overall','1')
             ->orderBy('created_at')
             ->get();
 

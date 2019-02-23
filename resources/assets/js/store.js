@@ -30,6 +30,7 @@ const store = new Vuex.Store({
       reports: [],
       isLoading: false
    },
+
    mutations: {
       who(state, who) {
          state.who = who
@@ -76,26 +77,27 @@ const store = new Vuex.Store({
          state.isLoading = status
       }
    },
+
    actions: {
-      fetchUser(c) {
+      fetchUser({ commit }) {
          if (localStorage.getItem("user")) {
-            c.commit("fetchUser", {
+            commit("fetchUser", {
                auth: true,
                data: JSON.parse(localStorage.getItem("user"))
             })
          }
       },
-      fetchAdmin(c) {
+      fetchAdmin({ commit }) {
          if (localStorage.getItem("admin")) {
-            c.commit("fetchAdmin", {
+            commit("fetchAdmin", {
                auth: true,
                data: JSON.parse(localStorage.getItem("admin"))
             })
          }
       },
-      logout(e, who) {
+      logout({ commit }, who) {
          localStorage.removeItem(who)
-         e.commit("logout", who)
+         commit("logout", who)
          router.push("/login")
       },
       loadPost({ commit }) {
@@ -114,20 +116,20 @@ const store = new Vuex.Store({
             commit("loading", false)
          })
       },
-      loadPost2Admin(c) {
+      loadPost2Admin({ commit }) {
          axios
             .get(`/admin/post2/${router.currentRoute.params.id}`)
             .then(res => {
                console.log(res, "post2")
-               c.commit("post2", res.data.post2)
+               commit("post2", res.data.post2)
             })
       },
-      loadPost3Admin(c) {
+      loadPost3Admin({ commit }) {
          axios
             .get(`/admin/post3/${router.currentRoute.params.id}`)
             .then(res => {
                console.log(res, "post3")
-               c.commit("post3", res.data.post3)
+               commit("post3", res.data.post3)
             })
       },
       loadPost1User({ commit }) {
@@ -139,26 +141,26 @@ const store = new Vuex.Store({
             commit("loading", false)
          })
       },
-      loadPost2User(c) {
+      loadPost2User({ commit }) {
          axios.get(`/user/post2/${router.currentRoute.params.id}`).then(res => {
             console.log(res, "post2")
-            c.commit("post2", res.data.post2)
+            commit("post2", res.data.post2)
          })
       },
-      loadPost3User(c) {
+      loadPost3User({ commit }) {
          axios.get(`/user/post3/${router.currentRoute.params.id}`).then(res => {
             console.log(res, "post3")
-            c.commit("post3", res.data.post3)
+            commit("post3", res.data.post3)
          })
       },
-      loadReports(c, user_id) {
+      loadReports({ commit }, user_id) {
          axios.get(`/report/${user_id}`).then(res => {
             console.log(res, "loadReports")
-            c.commit("reports", res.data)
+            commit("reports", res.data)
          })
       },
-      loading(c, status) {
-         c.commit("loading", status)
+      loading({ commit }, status) {
+         commit("loading", status)
       }
    }
 })

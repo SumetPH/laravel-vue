@@ -96,10 +96,14 @@ class Post2Controller extends Controller
         Storage::delete($post2->file_path);
 
         $file = $req->file('file');
-        $fileCON = $file->getClientOriginalName();
-        $file_name = pathinfo($fileCON, PATHINFO_FILENAME) . '_' . time() . '.' . pathinfo($fileCON, PATHINFO_EXTENSION);
+        $fullName = $file->getClientOriginalName();
+        $ext = $file->getClientOriginalExtension();
+        $fullNameLength = strlen($fullName);
+    	$extLength = strlen($ext) + 1;
+        $onlyName = substr($fullName, 0, $fullNameLength - $extLength);
         $folder = 'post2';
-        $file_path = Storage::putFileAs($folder,$file,$file_name);
+        $file_name = $onlyName . '_' . time() . '.' . $ext;
+        $file_path = Storage::putFileAs($folder, $file, $file_name);
 
         $post2->file_name = $file_name;
         $post2->file_path = $file_path;

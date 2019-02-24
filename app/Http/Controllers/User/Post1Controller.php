@@ -43,10 +43,14 @@ class Post1Controller extends Controller
     {
         // file
         $file = $req->file('file');
-        $fileCON = $file->getClientOriginalName();
-        $filename = pathinfo($fileCON, PATHINFO_FILENAME) . '_' . time() . '.' . pathinfo($fileCON, PATHINFO_EXTENSION);
-        $folder = 'post';
-        $path = Storage::putFileAs($folder, $file, $filename);
+        $fullName = $file->getClientOriginalName();
+        $ext = $file->getClientOriginalExtension();
+        $fullNameLength = strlen($fullName);
+    	$extLength = strlen($ext) + 1;
+        $onlyName = substr($fullName, 0, $fullNameLength - $extLength);
+        $folder = 'post1';
+        $file_name = $onlyName . '_' . time() . '.' . $ext;
+        $file_path = Storage::putFileAs($folder, $file, $file_name);
 
         // add infomation to posts table
         $post = new Post;
@@ -59,8 +63,8 @@ class Post1Controller extends Controller
         $post1->academic = $req->academic;
         $post1->title = 'ขอแต่งตั้งผู้ทรงคุณวุฒิภายนอก';
         $post1->description = $req->description;
-        $post1->file_path = $path;
-        $post1->file_name = $filename;
+        $post1->file_path = $file_path;
+        $post1->file_name = $file_name;
 
         if ($post1->save()) {
             return response()->json('success');

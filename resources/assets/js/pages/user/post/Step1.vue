@@ -55,16 +55,17 @@
         <div class="modal-dialog" role="document" data-show="true">
           <div class="modal-content">
             <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">คำร้องขอ</h4>
               <button
                 @click="modalHandle"
                 type="button"
                 class="close"
                 data-dismiss="modal"
                 aria-label="Close"
+                :disabled="isSubmit"
               >
                 <span aria-hidden="true">&times;</span>
               </button>
-              <h4 class="modal-title" id="myModalLabel">คำร้องขอ</h4>
             </div>
             <div class="modal-body bg-secondary">
               <div class="form-group">
@@ -82,18 +83,30 @@
                 <file-pond
                   v-if="file"
                   label-idle="เลือกเอกสาร"
+                  @addfile="onaddfile"
                   :server="{process,revert}"
                   required
                 />
               </div>
             </div>
             <div class="modal-footer">
-              <button @click="updatePost" class="btn btn-primary">บันทึก</button>
+              <button
+                @click="updatePost"
+                type="submit"
+                class="btn btn-primary btn-icon"
+                :disabled="isSubmit"
+              >
+                <span v-if="isSubmit" class="btn-inner--icon">
+                  <i class="fas fa-spinner"></i>
+                </span>
+                <span v-else class="btn-inner--text">บันทึก</span>
+              </button>
               <button
                 @click="modalHandle"
                 type="button"
                 class="btn btn-default"
                 data-dismiss="modal"
+                :disabled="isSubmit"
               >ยกเลิก</button>
             </div>
           </div>
@@ -109,6 +122,7 @@ import { mapState, mapActions } from "vuex";
 export default {
   data() {
     return {
+      isSubmit: false,
       modal: false,
       description: "",
       file: false
@@ -123,12 +137,13 @@ export default {
       this.description = this.post1.description;
       this.modal = !this.modal;
     },
-    changeFile(e) {
-      this.file = e.target.files[0];
+    onaddfile() {
+      this.isSubmit = true;
     },
     process(fieldName, file, metadata, load, error, progress, abort) {
       this.file = file;
       load();
+      this.isSubmit = false;
     },
     revert(uniqueFileId, load, error) {
       this.file = false;
@@ -137,8 +152,12 @@ export default {
     updatePost() {
       let formData = new FormData();
       formData.append("_method", "put");
-      formData.append("description", this.description);
       formData.append("file", this.file);
+      if (this.description === null) {
+        formData.append("description", "");
+      } else {
+        formData.append("description", this.description);
+      }
 
       axios.post(`/user/post/${this.post.id}`, formData).then(res => {
         if (res.data === "success") {

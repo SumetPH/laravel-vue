@@ -81,11 +81,9 @@ class Post1Controller extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id);
         $post1 = Post1::where('post_id', $id)->first();
 
         $data = [
-            'post' => $post,
             'post1' => $post1,
         ];
 
@@ -121,12 +119,17 @@ class Post1Controller extends Controller
 
             // file
             $file = $req->file('file');
-            $fileCON = $file->getClientOriginalName();
-            $filename = pathinfo($fileCON, PATHINFO_FILENAME) . '_' . time() . '.' . pathinfo($fileCON, PATHINFO_EXTENSION);
-            $folder = 'post';
-            $path = Storage::putFileAs($folder, $file, $filename);
-            $post->file_path = $path;
-            $post->file_name = $filename;
+            $fullName = $file->getClientOriginalName();
+            $ext = $file->getClientOriginalExtension();
+            $fullNameLength = strlen($fullName);
+            $extLength = strlen($ext) + 1;
+            $onlyName = substr($fullName, 0, $fullNameLength - $extLength);
+            $folder = 'post1';
+            $file_name = $onlyName . '_' . time() . '.' . $ext;
+            $file_path = Storage::putFileAs($folder, $file, $file_name);
+
+            $post->file_path = $file_path;
+            $post->file_name = $file_name;
         }
 
         $post->description = $req->description;

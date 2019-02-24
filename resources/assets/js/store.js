@@ -103,7 +103,7 @@ const store = new Vuex.Store({
       loadPost({ commit }) {
          commit("loading", true)
          axios.get(`/post/${router.currentRoute.params.id}`).then(res => {
-            console.log(res.data, "post")
+            console.log(res, "post")
             commit("loading", false)
             commit("post", res.data)
          })
@@ -111,7 +111,7 @@ const store = new Vuex.Store({
       loadPost1Admin({ commit }) {
          commit("loading", true)
          axios.get(`/admin/post/${router.currentRoute.params.id}`).then(res => {
-            console.log(res.data, "post1")
+            console.log(res, "post1")
             commit("post1", res.data.post1)
             commit("loading", false)
          })
@@ -135,8 +135,7 @@ const store = new Vuex.Store({
       loadPost1User({ commit }) {
          commit("loading", true)
          axios.get(`/user/post/${router.currentRoute.params.id}`).then(res => {
-            console.log(res.data, "post1")
-            commit("post", res.data.post)
+            console.log(res, "post1")
             commit("post1", res.data.post1)
             commit("loading", false)
          })

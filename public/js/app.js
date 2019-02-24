@@ -3095,7 +3095,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
 
          commit("loading", true);
          __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get("/post/" + __WEBPACK_IMPORTED_MODULE_3__router__["a" /* default */].currentRoute.params.id).then(function (res) {
-            console.log(res.data, "post");
+            console.log(res, "post");
             commit("loading", false);
             commit("post", res.data);
          });
@@ -3105,7 +3105,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
 
          commit("loading", true);
          __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get("/admin/post/" + __WEBPACK_IMPORTED_MODULE_3__router__["a" /* default */].currentRoute.params.id).then(function (res) {
-            console.log(res.data, "post1");
+            console.log(res, "post1");
             commit("post1", res.data.post1);
             commit("loading", false);
          });
@@ -3131,8 +3131,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
 
          commit("loading", true);
          __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get("/user/post/" + __WEBPACK_IMPORTED_MODULE_3__router__["a" /* default */].currentRoute.params.id).then(function (res) {
-            console.log(res.data, "post1");
-            commit("post", res.data.post);
+            console.log(res, "post1");
             commit("post1", res.data.post1);
             commit("loading", false);
          });
@@ -65613,6 +65612,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 
@@ -65640,12 +65640,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(["loading"]), {
-    changeFile: function changeFile(e) {
-      this.file = e.target.files[0];
+    onaddfile: function onaddfile() {
+      this.isSubmit = true;
     },
     process: function process(fieldName, file, metadata, load, error, progress, abort) {
       this.file = file;
       load();
+      this.isSubmit = false;
     },
     revert: function revert(uniqueFileId, load, error) {
       this.file = "";
@@ -67719,7 +67720,8 @@ var render = function() {
                                         process: _vm.process,
                                         revert: _vm.revert
                                       }
-                                    }
+                                    },
+                                    on: { addfile: _vm.onaddfile }
                                   })
                                 ],
                                 1
@@ -68082,12 +68084,26 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      isSubmit: false,
       modal: false,
       description: "",
       file: false
@@ -68100,12 +68116,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       this.description = this.post1.description;
       this.modal = !this.modal;
     },
-    changeFile: function changeFile(e) {
-      this.file = e.target.files[0];
+    onaddfile: function onaddfile() {
+      this.isSubmit = true;
     },
     process: function process(fieldName, file, metadata, load, error, progress, abort) {
       this.file = file;
       load();
+      this.isSubmit = false;
     },
     revert: function revert(uniqueFileId, load, error) {
       this.file = false;
@@ -68116,8 +68133,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
       var formData = new FormData();
       formData.append("_method", "put");
-      formData.append("description", this.description);
       formData.append("file", this.file);
+      if (this.description === null) {
+        formData.append("description", "");
+      } else {
+        formData.append("description", this.description);
+      }
 
       axios.post("/user/post/" + this.post.id, formData).then(function (res) {
         if (res.data === "success") {
@@ -68254,13 +68275,23 @@ var render = function() {
                   _c("div", { staticClass: "modal-content" }, [
                     _c("div", { staticClass: "modal-header" }, [
                       _c(
+                        "h4",
+                        {
+                          staticClass: "modal-title",
+                          attrs: { id: "myModalLabel" }
+                        },
+                        [_vm._v("คำร้องขอ")]
+                      ),
+                      _vm._v(" "),
+                      _c(
                         "button",
                         {
                           staticClass: "close",
                           attrs: {
                             type: "button",
                             "data-dismiss": "modal",
-                            "aria-label": "Close"
+                            "aria-label": "Close",
+                            disabled: _vm.isSubmit
                           },
                           on: { click: _vm.modalHandle }
                         },
@@ -68269,15 +68300,6 @@ var render = function() {
                             _vm._v("×")
                           ])
                         ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "h4",
-                        {
-                          staticClass: "modal-title",
-                          attrs: { id: "myModalLabel" }
-                        },
-                        [_vm._v("คำร้องขอ")]
                       )
                     ]),
                     _vm._v(" "),
@@ -68344,7 +68366,8 @@ var render = function() {
                                     revert: _vm.revert
                                   },
                                   required: ""
-                                }
+                                },
+                                on: { addfile: _vm.onaddfile }
                               })
                             : _vm._e()
                         ],
@@ -68356,17 +68379,30 @@ var render = function() {
                       _c(
                         "button",
                         {
-                          staticClass: "btn btn-primary",
+                          staticClass: "btn btn-primary btn-icon",
+                          attrs: { type: "submit", disabled: _vm.isSubmit },
                           on: { click: _vm.updatePost }
                         },
-                        [_vm._v("บันทึก")]
+                        [
+                          _vm.isSubmit
+                            ? _c("span", { staticClass: "btn-inner--icon" }, [
+                                _c("i", { staticClass: "fas fa-spinner" })
+                              ])
+                            : _c("span", { staticClass: "btn-inner--text" }, [
+                                _vm._v("บันทึก")
+                              ])
+                        ]
                       ),
                       _vm._v(" "),
                       _c(
                         "button",
                         {
                           staticClass: "btn btn-default",
-                          attrs: { type: "button", "data-dismiss": "modal" },
+                          attrs: {
+                            type: "button",
+                            "data-dismiss": "modal",
+                            disabled: _vm.isSubmit
+                          },
                           on: { click: _vm.modalHandle }
                         },
                         [_vm._v("ยกเลิก")]

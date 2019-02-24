@@ -155,6 +155,7 @@
                     name="file"
                     ref="pond"
                     label-idle="เลือกเอกสาร"
+                    @addfile="onaddfile"
                     :server="{process,revert}"
                   />
                 </div>
@@ -218,12 +219,13 @@ export default {
 
   methods: {
     ...mapActions(["loading"]),
-    changeFile(e) {
-      this.file = e.target.files[0];
+    onaddfile() {
+      this.isSubmit = true;
     },
     process(fieldName, file, metadata, load, error, progress, abort) {
       this.file = file;
       load();
+      this.isSubmit = false;
     },
     revert(uniqueFileId, load, error) {
       this.file = "";

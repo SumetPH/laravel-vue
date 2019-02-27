@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-default animated fadeIn" id="login-heigth">
+  <div class="bg-default animated fadeIn v-height">
     <div class="main-content">
       <!-- Navbar -->
       <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
@@ -23,8 +23,8 @@
             <div class="navbar-collapse-header d-md-none">
               <div class="row">
                 <div class="col-6 collapse-brand">
-                  <a href="index.html">
-                    <img src="assets/img/brand/blue.png">
+                  <a href="#">
+                    <img src="/assets/img/brand/logo-primary.png">
                   </a>
                 </div>
                 <div class="col-6 collapse-close">
@@ -79,7 +79,7 @@
       <!-- Header -->
       <div class="header bg-gradient-primary py-7 py-lg-8">
         <div class="container">
-          <div class="header-body text-center mb-7">
+          <div class="header-body text-center mb-7 mt-5">
             <div class="row justify-content-center">
               <div class="col-lg-5 col-md-6">
                 <h1 class="text-white">เข้าสู่ระบบ</h1>
@@ -235,7 +235,7 @@ export default {
 }
 
 @media (min-height: 782px) {
-  #login-heigth {
+  .v-height {
     height: 100vh;
   }
 }

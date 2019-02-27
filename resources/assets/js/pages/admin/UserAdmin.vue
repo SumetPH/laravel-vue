@@ -70,6 +70,7 @@
         <div class="modal-dialog" role="document" data-show="true">
           <div class="modal-content">
             <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">ข้อมูลผู้ใช้งาน</h4>
               <button
                 @click="modalHandle"
                 type="button"
@@ -79,7 +80,6 @@
               >
                 <span aria-hidden="true">&times;</span>
               </button>
-              <h4 class="modal-title" id="myModalLabel">คำร้องขอ</h4>
             </div>
             <div class="modal-body bg-secondary">
               <div class="row justify-content-center">
@@ -90,7 +90,19 @@
                     class="rounded-circle"
                   >
                 </div>
-                <div class="col-md-9">
+
+                <div class="col-md-9 mt-4">
+                  <div class="form-group">
+                    <label class="control-label">ตำแหน่งทางวิชาการ</label>
+                    <input
+                      type="text"
+                      class="form-control form-control-alternative"
+                      name="academic"
+                      disabled
+                      :value="modalUser.academic"
+                    >
+                  </div>
+
                   <div class="form-group">
                     <label for="firstname" class="control-label">ชื่อ</label>
                     <input
@@ -309,7 +321,6 @@ export default {
 
 /* Important part */
 .modal-dialog {
-  width: 700px;
   overflow-y: initial !important;
 }
 .modal-body {

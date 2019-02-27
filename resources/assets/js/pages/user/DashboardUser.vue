@@ -308,7 +308,6 @@ export default {
 
 /* Important part */
 .modal-dialog {
-  width: 700px;
   overflow-y: initial !important;
 }
 .modal-body {

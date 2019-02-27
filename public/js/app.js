@@ -61717,106 +61717,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -61834,7 +61734,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       faculty: "",
       university: "มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน",
       campus: "วิทยาเขตสกลนคร",
-      number: ""
+      number: "",
+      checkPass: 6
     };
   },
 
@@ -61868,6 +61769,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         }
         _this.loading(false);
       });
+    },
+    funcChekPass: function funcChekPass() {
+      this.checkPass = this.password.length;
     }
   })
 });
@@ -62052,8 +61956,7 @@ var render = function() {
                                 expression: "title"
                               }
                             ],
-                            staticClass:
-                              "form-control form-control-alternative",
+                            staticClass: "form-control",
                             on: {
                               change: function($event) {
                                 var $$selectedVal = Array.prototype.filter
@@ -62102,8 +62005,7 @@ var render = function() {
                                 expression: "academic"
                               }
                             ],
-                            staticClass:
-                              "form-control form-control-alternative",
+                            staticClass: "form-control",
                             on: {
                               change: function($event) {
                                 var $$selectedVal = Array.prototype.filter
@@ -62154,42 +62056,32 @@ var render = function() {
                           [_vm._v("ชื่อ")]
                         ),
                         _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "input-group input-group-alternative"
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.firstname,
+                              expression: "firstname"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "firstname",
+                            placeholder: "ชื่อ",
+                            type: "text",
+                            required: ""
                           },
-                          [
-                            _vm._m(4),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.firstname,
-                                  expression: "firstname"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                name: "firstname",
-                                placeholder: "ชื่อ",
-                                type: "text",
-                                required: ""
-                              },
-                              domProps: { value: _vm.firstname },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.firstname = $event.target.value
-                                }
+                          domProps: { value: _vm.firstname },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
                               }
-                            })
-                          ]
-                        )
+                              _vm.firstname = $event.target.value
+                            }
+                          }
+                        })
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "form-group mb-3" }, [
@@ -62202,42 +62094,32 @@ var render = function() {
                           [_vm._v("นามสกุล")]
                         ),
                         _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "input-group input-group-alternative"
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.lastname,
+                              expression: "lastname"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "lastname",
+                            placeholder: "นามสกุล",
+                            type: "text",
+                            required: ""
                           },
-                          [
-                            _vm._m(5),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.lastname,
-                                  expression: "lastname"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                name: "lastname",
-                                placeholder: "นามสกุล",
-                                type: "text",
-                                required: ""
-                              },
-                              domProps: { value: _vm.lastname },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.lastname = $event.target.value
-                                }
+                          domProps: { value: _vm.lastname },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
                               }
-                            })
-                          ]
-                        )
+                              _vm.lastname = $event.target.value
+                            }
+                          }
+                        })
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "form-group mb-3" }, [
@@ -62250,42 +62132,32 @@ var render = function() {
                           [_vm._v("อีเมล")]
                         ),
                         _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "input-group input-group-alternative"
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.email,
+                              expression: "email"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "email",
+                            placeholder: "อีเมล",
+                            type: "text",
+                            required: ""
                           },
-                          [
-                            _vm._m(6),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.email,
-                                  expression: "email"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                name: "email",
-                                placeholder: "อีเมล",
-                                type: "text",
-                                required: ""
-                              },
-                              domProps: { value: _vm.email },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.email = $event.target.value
-                                }
+                          domProps: { value: _vm.email },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
                               }
-                            })
-                          ]
-                        )
+                              _vm.email = $event.target.value
+                            }
+                          }
+                        })
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "form-group mb-3" }, [
@@ -62298,45 +62170,48 @@ var render = function() {
                           [_vm._v("รหัสผ่าน")]
                         ),
                         _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "input-group input-group-alternative"
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.password,
+                              expression: "password"
+                            }
+                          ],
+                          class:
+                            _vm.checkPass < 6
+                              ? "form-control is-invalid"
+                              : "form-control",
+                          style:
+                            _vm.checkPass < 6 ? "border-color: #fb6340" : "",
+                          attrs: {
+                            name: "password",
+                            placeholder: "รหัสผ่าน",
+                            type: "password",
+                            minlength: "6",
+                            required: ""
                           },
-                          [
-                            _vm._m(7),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.password,
-                                  expression: "password"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                name: "password",
-                                placeholder: "รหัสผ่าน",
-                                type: "password",
-                                required: ""
-                              },
-                              domProps: { value: _vm.password },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.password = $event.target.value
-                                }
+                          domProps: { value: _vm.password },
+                          on: {
+                            blur: _vm.funcChekPass,
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
                               }
-                            })
-                          ]
-                        )
+                              _vm.password = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.checkPass < 6
+                          ? _c("div", { staticClass: "invalid-feedback" }, [
+                              _vm._v("รหัสผ่านต้องมีอย่างน้อย 6 ตัว")
+                            ])
+                          : _vm._e()
                       ]),
                       _vm._v(" "),
-                      _vm._m(8),
+                      _vm._m(4),
                       _vm._v(" "),
                       _c("div", { staticClass: "form-group mb-3" }, [
                         _c(
@@ -62348,42 +62223,32 @@ var render = function() {
                           [_vm._v("วุฒิ")]
                         ),
                         _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "input-group input-group-alternative"
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.education,
+                              expression: "education"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "education",
+                            placeholder: "วุฒิ",
+                            type: "text",
+                            required: ""
                           },
-                          [
-                            _vm._m(9),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.education,
-                                  expression: "education"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                name: "education",
-                                placeholder: "วุฒิ",
-                                type: "text",
-                                required: ""
-                              },
-                              domProps: { value: _vm.education },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.education = $event.target.value
-                                }
+                          domProps: { value: _vm.education },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
                               }
-                            })
-                          ]
-                        )
+                              _vm.education = $event.target.value
+                            }
+                          }
+                        })
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "form-group mb-3" }, [
@@ -62396,42 +62261,32 @@ var render = function() {
                           [_vm._v("ตำแหน่ง")]
                         ),
                         _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "input-group input-group-alternative"
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.position,
+                              expression: "position"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "position",
+                            placeholder: "ตำแหน่ง",
+                            type: "text",
+                            required: ""
                           },
-                          [
-                            _vm._m(10),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.position,
-                                  expression: "position"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                name: "position",
-                                placeholder: "ตำแหน่ง",
-                                type: "text",
-                                required: ""
-                              },
-                              domProps: { value: _vm.position },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.position = $event.target.value
-                                }
+                          domProps: { value: _vm.position },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
                               }
-                            })
-                          ]
-                        )
+                              _vm.position = $event.target.value
+                            }
+                          }
+                        })
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "form-group mb-3" }, [
@@ -62444,42 +62299,32 @@ var render = function() {
                           [_vm._v("สาขา")]
                         ),
                         _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "input-group input-group-alternative"
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.branch,
+                              expression: "branch"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "branch",
+                            placeholder: "สาขา",
+                            type: "text",
+                            required: ""
                           },
-                          [
-                            _vm._m(11),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.branch,
-                                  expression: "branch"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                name: "branch",
-                                placeholder: "สาขา",
-                                type: "text",
-                                required: ""
-                              },
-                              domProps: { value: _vm.branch },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.branch = $event.target.value
-                                }
+                          domProps: { value: _vm.branch },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
                               }
-                            })
-                          ]
-                        )
+                              _vm.branch = $event.target.value
+                            }
+                          }
+                        })
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "form-group mb-3" }, [
@@ -62492,42 +62337,32 @@ var render = function() {
                           [_vm._v("คณะ")]
                         ),
                         _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "input-group input-group-alternative"
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.faculty,
+                              expression: "faculty"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "faculty",
+                            placeholder: "คณะ",
+                            type: "text",
+                            required: ""
                           },
-                          [
-                            _vm._m(12),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.faculty,
-                                  expression: "faculty"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                name: "faculty",
-                                placeholder: "คณะ",
-                                type: "text",
-                                required: ""
-                              },
-                              domProps: { value: _vm.faculty },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.faculty = $event.target.value
-                                }
+                          domProps: { value: _vm.faculty },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
                               }
-                            })
-                          ]
-                        )
+                              _vm.faculty = $event.target.value
+                            }
+                          }
+                        })
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "form-group mb-3" }, [
@@ -62540,42 +62375,32 @@ var render = function() {
                           [_vm._v("มหาวิทยาลัย")]
                         ),
                         _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "input-group input-group-alternative"
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.university,
+                              expression: "university"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "university",
+                            placeholder: "มหาวิทยาลัย",
+                            type: "text",
+                            required: ""
                           },
-                          [
-                            _vm._m(13),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.university,
-                                  expression: "university"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                name: "university",
-                                placeholder: "มหาวิทยาลัย",
-                                type: "text",
-                                required: ""
-                              },
-                              domProps: { value: _vm.university },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.university = $event.target.value
-                                }
+                          domProps: { value: _vm.university },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
                               }
-                            })
-                          ]
-                        )
+                              _vm.university = $event.target.value
+                            }
+                          }
+                        })
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "form-group mb-3" }, [
@@ -62588,42 +62413,32 @@ var render = function() {
                           [_vm._v("วิทยาเขต")]
                         ),
                         _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "input-group input-group-alternative"
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.campus,
+                              expression: "campus"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "campus",
+                            placeholder: "วิทยาเขต",
+                            type: "text",
+                            required: ""
                           },
-                          [
-                            _vm._m(14),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.campus,
-                                  expression: "campus"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                name: "campus",
-                                placeholder: "วิทยาเขต",
-                                type: "text",
-                                required: ""
-                              },
-                              domProps: { value: _vm.campus },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.campus = $event.target.value
-                                }
+                          domProps: { value: _vm.campus },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
                               }
-                            })
-                          ]
-                        )
+                              _vm.campus = $event.target.value
+                            }
+                          }
+                        })
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "form-group mb-3" }, [
@@ -62636,42 +62451,32 @@ var render = function() {
                           [_vm._v("เบอร์โทรศัพท์")]
                         ),
                         _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "input-group input-group-alternative"
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.number,
+                              expression: "number"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "number",
+                            placeholder: "เบอร์โทรศัพท์",
+                            type: "text",
+                            required: ""
                           },
-                          [
-                            _vm._m(15),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.number,
-                                  expression: "number"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                name: "number",
-                                placeholder: "เบอร์โทรศัพท์",
-                                type: "text",
-                                required: ""
-                              },
-                              domProps: { value: _vm.number },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.number = $event.target.value
-                                }
+                          domProps: { value: _vm.number },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
                               }
-                            })
-                          ]
-                        )
+                              _vm.number = $event.target.value
+                            }
+                          }
+                        })
                       ]),
                       _vm._v(" "),
                       _c(
@@ -62701,7 +62506,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _vm._m(16)
+    _vm._m(5)
   ])
 }
 var staticRenderFns = [
@@ -62732,8 +62537,8 @@ var staticRenderFns = [
     return _c("div", { staticClass: "navbar-collapse-header d-md-none" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-6 collapse-brand" }, [
-          _c("a", { attrs: { href: "index.html" } }, [
-            _c("img", { attrs: { src: "assets/img/brand/blue.png" } })
+          _c("a", { attrs: { href: "#" } }, [
+            _c("img", { attrs: { src: "/assets/img/brand/logo-primary.png" } })
           ])
         ]),
         _vm._v(" "),
@@ -62788,7 +62593,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "header-body text-center mb-7" }, [
+      _c("div", { staticClass: "header-body text-center mb-7 mt-5" }, [
         _c("div", { staticClass: "row justify-content-center" }, [
           _c("div", { staticClass: "col-lg-5 col-md-6" }, [
             _c("h1", { staticClass: "text-white" }, [_vm._v("สมัครสมาชิก")]),
@@ -62805,38 +62610,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-prepend" }, [
-      _c("span", { staticClass: "input-group-text" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-prepend" }, [
-      _c("span", { staticClass: "input-group-text" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-prepend" }, [
-      _c("span", { staticClass: "input-group-text" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-prepend" }, [
-      _c("span", { staticClass: "input-group-text" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group mb-3" }, [
       _c(
         "label",
@@ -62847,77 +62620,15 @@ var staticRenderFns = [
         [_vm._v("รหัสผ่าน (ยืนยัน)")]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "input-group input-group-alternative" }, [
-        _c("div", { staticClass: "input-group-prepend" }, [
-          _c("span", { staticClass: "input-group-text" })
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            name: "password_confirmation",
-            placeholder: "รหัสผ่าน (ยืนยัน)",
-            type: "password",
-            required: ""
-          }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-prepend" }, [
-      _c("span", { staticClass: "input-group-text" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-prepend" }, [
-      _c("span", { staticClass: "input-group-text" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-prepend" }, [
-      _c("span", { staticClass: "input-group-text" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-prepend" }, [
-      _c("span", { staticClass: "input-group-text" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-prepend" }, [
-      _c("span", { staticClass: "input-group-text" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-prepend" }, [
-      _c("span", { staticClass: "input-group-text" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-prepend" }, [
-      _c("span", { staticClass: "input-group-text" })
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          name: "password_confirmation",
+          placeholder: "รหัสผ่าน (ยืนยัน)",
+          type: "password",
+          required: ""
+        }
+      })
     ])
   },
   function() {
@@ -63075,7 +62786,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.navbar-horizontal .navbar-brand img[data-v-3e2ac97c] {\n  height: 130px;\n}\n@media (min-height: 782px) {\n#login-heigth[data-v-3e2ac97c] {\n    height: 100vh;\n}\n}\n", ""]);
+exports.push([module.i, "\n.navbar-horizontal .navbar-brand img[data-v-3e2ac97c] {\n  height: 130px;\n}\n@media (min-height: 782px) {\n.v-height[data-v-3e2ac97c] {\n    height: 100vh;\n}\n}\n", ""]);
 
 // exports
 
@@ -63329,287 +63040,273 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "bg-default animated fadeIn",
-      attrs: { id: "login-heigth" }
-    },
-    [
-      _c("div", { staticClass: "main-content" }, [
-        _c(
-          "nav",
-          {
-            staticClass:
-              "navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark"
-          },
-          [
-            _c(
-              "div",
-              { staticClass: "container px-4" },
-              [
-                _c(
-                  "router-link",
-                  { staticClass: "navbar-brand", attrs: { to: "/" } },
-                  [
-                    _c("img", {
-                      attrs: { src: "/assets/img/brand/rmuti-white.png" }
-                    })
-                  ]
-                ),
-                _vm._v(" "),
-                _vm._m(0),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "collapse navbar-collapse",
-                    attrs: { id: "navbar-collapse-main" }
-                  },
-                  [
-                    _vm._m(1),
+  return _c("div", { staticClass: "bg-default animated fadeIn v-height" }, [
+    _c("div", { staticClass: "main-content" }, [
+      _c(
+        "nav",
+        {
+          staticClass:
+            "navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark"
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "container px-4" },
+            [
+              _c(
+                "router-link",
+                { staticClass: "navbar-brand", attrs: { to: "/" } },
+                [
+                  _c("img", {
+                    attrs: { src: "/assets/img/brand/rmuti-white.png" }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "collapse navbar-collapse",
+                  attrs: { id: "navbar-collapse-main" }
+                },
+                [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c("ul", { staticClass: "navbar-nav ml-auto" }, [
+                    _c(
+                      "li",
+                      { staticClass: "nav-item" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "nav-link nav-link-icon",
+                            attrs: { to: "/register" }
+                          },
+                          [
+                            _c("i", { staticClass: "ni ni-circle-08" }),
+                            _vm._v(" "),
+                            _c(
+                              "span",
+                              { staticClass: "nav-link-inner--text" },
+                              [_vm._v("สมัครสมาชิก")]
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    ),
                     _vm._v(" "),
-                    _c("ul", { staticClass: "navbar-nav ml-auto" }, [
+                    _c("li", { staticClass: "nav-item dropdown" }, [
+                      _vm._m(2),
+                      _vm._v(" "),
                       _c(
-                        "li",
-                        { staticClass: "nav-item" },
+                        "div",
+                        {
+                          staticClass: "dropdown-menu dropdown-menu-right",
+                          attrs: {
+                            "aria-labelledby": "navbar-default_dropdown_1"
+                          }
+                        },
                         [
                           _c(
                             "router-link",
                             {
-                              staticClass: "nav-link nav-link-icon",
-                              attrs: { to: "/register" }
+                              staticClass: "dropdown-item",
+                              attrs: { to: "/user" }
                             },
-                            [
-                              _c("i", { staticClass: "ni ni-circle-08" }),
-                              _vm._v(" "),
-                              _c(
-                                "span",
-                                { staticClass: "nav-link-inner--text" },
-                                [_vm._v("สมัครสมาชิก")]
-                              )
-                            ]
+                            [_vm._v("สำหรับบุคลากร")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "dropdown-item",
+                              attrs: { to: "/admin" }
+                            },
+                            [_vm._v("สำหรับผู้ดูแล")]
                           )
                         ],
                         1
-                      ),
-                      _vm._v(" "),
-                      _c("li", { staticClass: "nav-item dropdown" }, [
-                        _vm._m(2),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "dropdown-menu dropdown-menu-right",
-                            attrs: {
-                              "aria-labelledby": "navbar-default_dropdown_1"
-                            }
-                          },
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "dropdown-item",
-                                attrs: { to: "/user" }
-                              },
-                              [_vm._v("สำหรับบุคลากร")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "dropdown-item",
-                                attrs: { to: "/admin" }
-                              },
-                              [_vm._v("สำหรับผู้ดูแล")]
-                            )
-                          ],
-                          1
-                        )
-                      ])
+                      )
                     ])
-                  ]
-                )
-              ],
-              1
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "header bg-gradient-primary py-7 py-lg-8" }, [
-          _vm._m(3),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "separator separator-bottom separator-skew zindex-100"
-            },
-            [
-              _c(
-                "svg",
-                {
-                  attrs: {
-                    x: "0",
-                    y: "0",
-                    viewBox: "0 0 2560 100",
-                    preserveAspectRatio: "none",
-                    version: "1.1",
-                    xmlns: "http://www.w3.org/2000/svg"
-                  }
-                },
-                [
-                  _c("polygon", {
-                    staticClass: "fill-default",
-                    attrs: { points: "2560 0 2560 100 0 100" }
-                  })
+                  ])
                 ]
               )
-            ]
+            ],
+            1
           )
-        ]),
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "header bg-gradient-primary py-7 py-lg-8" }, [
+        _vm._m(3),
         _vm._v(" "),
         _c(
           "div",
           {
-            staticClass: "container pb-5",
-            staticStyle: { "margin-top": "-200px" }
+            staticClass: "separator separator-bottom separator-skew zindex-100"
           },
           [
-            _c("div", { staticClass: "row justify-content-center" }, [
-              _c("div", { staticClass: "col-lg-5 col-md-7" }, [
-                _c(
-                  "div",
-                  { staticClass: "card bg-secondary shadow border-0" },
-                  [
-                    _c("div", { staticClass: "card-body px-lg-5 py-lg-5" }, [
-                      _c(
-                        "form",
-                        {
-                          attrs: { role: "form" },
-                          on: {
-                            submit: function($event) {
-                              $event.preventDefault()
-                              return _vm.submit($event)
-                            }
-                          }
-                        },
-                        [
-                          _c("div", { staticClass: "form-group" }, [
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "input-group input-group-alternative"
-                              },
-                              [
-                                _vm._m(4),
-                                _vm._v(" "),
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.email,
-                                      expression: "email"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  attrs: {
-                                    name: "email",
-                                    placeholder: "อีเมล หรือ ชื่อผู้ใช้",
-                                    type: "text",
-                                    required: ""
-                                  },
-                                  domProps: { value: _vm.email },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.email = $event.target.value
-                                    }
-                                  }
-                                })
-                              ]
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "form-group" }, [
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "input-group input-group-alternative"
-                              },
-                              [
-                                _vm._m(5),
-                                _vm._v(" "),
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.password,
-                                      expression: "password"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  attrs: {
-                                    name: "password",
-                                    placeholder: "รหัสผ่าน",
-                                    type: "password",
-                                    required: ""
-                                  },
-                                  domProps: { value: _vm.password },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.password = $event.target.value
-                                    }
-                                  }
-                                })
-                              ]
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(6)
-                        ]
-                      )
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "row mt-3" }, [
-                  _c("div", { staticClass: "col-6" }),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "col-6 text-right" },
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "text-light",
-                          attrs: { to: "/password/send" }
-                        },
-                        [_c("small", [_vm._v("ลืมรหัสผ่าน")])]
-                      )
-                    ],
-                    1
-                  )
-                ])
-              ])
-            ])
+            _c(
+              "svg",
+              {
+                attrs: {
+                  x: "0",
+                  y: "0",
+                  viewBox: "0 0 2560 100",
+                  preserveAspectRatio: "none",
+                  version: "1.1",
+                  xmlns: "http://www.w3.org/2000/svg"
+                }
+              },
+              [
+                _c("polygon", {
+                  staticClass: "fill-default",
+                  attrs: { points: "2560 0 2560 100 0 100" }
+                })
+              ]
+            )
           ]
         )
       ]),
       _vm._v(" "),
-      _vm._m(7)
-    ]
-  )
+      _c(
+        "div",
+        {
+          staticClass: "container pb-5",
+          staticStyle: { "margin-top": "-200px" }
+        },
+        [
+          _c("div", { staticClass: "row justify-content-center" }, [
+            _c("div", { staticClass: "col-lg-5 col-md-7" }, [
+              _c("div", { staticClass: "card bg-secondary shadow border-0" }, [
+                _c("div", { staticClass: "card-body px-lg-5 py-lg-5" }, [
+                  _c(
+                    "form",
+                    {
+                      attrs: { role: "form" },
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          return _vm.submit($event)
+                        }
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "input-group input-group-alternative"
+                          },
+                          [
+                            _vm._m(4),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.email,
+                                  expression: "email"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                name: "email",
+                                placeholder: "อีเมล หรือ ชื่อผู้ใช้",
+                                type: "text",
+                                required: ""
+                              },
+                              domProps: { value: _vm.email },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.email = $event.target.value
+                                }
+                              }
+                            })
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "input-group input-group-alternative"
+                          },
+                          [
+                            _vm._m(5),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.password,
+                                  expression: "password"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                name: "password",
+                                placeholder: "รหัสผ่าน",
+                                type: "password",
+                                required: ""
+                              },
+                              domProps: { value: _vm.password },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.password = $event.target.value
+                                }
+                              }
+                            })
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(6)
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row mt-3" }, [
+                _c("div", { staticClass: "col-6" }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-6 text-right" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "text-light",
+                        attrs: { to: "/password/send" }
+                      },
+                      [_c("small", [_vm._v("ลืมรหัสผ่าน")])]
+                    )
+                  ],
+                  1
+                )
+              ])
+            ])
+          ])
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _vm._m(7)
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -63639,8 +63336,8 @@ var staticRenderFns = [
     return _c("div", { staticClass: "navbar-collapse-header d-md-none" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-6 collapse-brand" }, [
-          _c("a", { attrs: { href: "index.html" } }, [
-            _c("img", { attrs: { src: "assets/img/brand/blue.png" } })
+          _c("a", { attrs: { href: "#" } }, [
+            _c("img", { attrs: { src: "/assets/img/brand/logo-primary.png" } })
           ])
         ]),
         _vm._v(" "),
@@ -63695,7 +63392,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "header-body text-center mb-7" }, [
+      _c("div", { staticClass: "header-body text-center mb-7 mt-5" }, [
         _c("div", { staticClass: "row justify-content-center" }, [
           _c("div", { staticClass: "col-lg-5 col-md-6" }, [
             _c("h1", { staticClass: "text-white" }, [_vm._v("เข้าสู่ระบบ")]),
@@ -65398,7 +65095,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.modal[data-v-42300710] {\n  display: block !important; /* I added this to see the modal, you don't need this */\n}\n\n/* Important part */\n.modal-dialog[data-v-42300710] {\n  width: 700px;\n  overflow-y: initial !important;\n}\n.modal-body[data-v-42300710] {\n  height: 380px;\n  overflow-y: auto;\n}\n", ""]);
+exports.push([module.i, "\n.modal[data-v-42300710] {\n  display: block !important; /* I added this to see the modal, you don't need this */\n}\n\n/* Important part */\n.modal-dialog[data-v-42300710] {\n  overflow-y: initial !important;\n}\n.modal-body[data-v-42300710] {\n  height: 380px;\n  overflow-y: auto;\n}\n", ""]);
 
 // exports
 
@@ -72614,7 +72311,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.modal[data-v-03ec5fd7] {\n  display: block !important; /* I added this to see the modal, you don't need this */\n}\n\n/* Important part */\n.modal-dialog[data-v-03ec5fd7] {\n  width: 700px;\n  overflow-y: initial !important;\n}\n.modal-body[data-v-03ec5fd7] {\n  height: 390px;\n  overflow-y: auto;\n}\n", ""]);
+exports.push([module.i, "\n.modal[data-v-03ec5fd7] {\n  display: block !important; /* I added this to see the modal, you don't need this */\n}\n\n/* Important part */\n.modal-dialog[data-v-03ec5fd7] {\n  overflow-y: initial !important;\n}\n.modal-body[data-v-03ec5fd7] {\n  height: 390px;\n  overflow-y: auto;\n}\n", ""]);
 
 // exports
 
@@ -72630,6 +72327,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Layout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_Layout__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -73096,6 +72805,15 @@ var render = function() {
                   _c("div", { staticClass: "modal-content" }, [
                     _c("div", { staticClass: "modal-header" }, [
                       _c(
+                        "h4",
+                        {
+                          staticClass: "modal-title",
+                          attrs: { id: "myModalLabel" }
+                        },
+                        [_vm._v("ข้อมูลผู้ใช้งาน")]
+                      ),
+                      _vm._v(" "),
+                      _c(
                         "button",
                         {
                           staticClass: "close",
@@ -73111,15 +72829,6 @@ var render = function() {
                             _vm._v("×")
                           ])
                         ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "h4",
-                        {
-                          staticClass: "modal-title",
-                          attrs: { id: "myModalLabel" }
-                        },
-                        [_vm._v("คำร้องขอ")]
                       )
                     ]),
                     _vm._v(" "),
@@ -73137,7 +72846,24 @@ var render = function() {
                           })
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-md-9" }, [
+                        _c("div", { staticClass: "col-md-9 mt-4" }, [
+                          _c("div", { staticClass: "form-group" }, [
+                            _c("label", { staticClass: "control-label" }, [
+                              _vm._v("ตำแหน่งทางวิชาการ")
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              staticClass:
+                                "form-control form-control-alternative",
+                              attrs: {
+                                type: "text",
+                                name: "academic",
+                                disabled: ""
+                              },
+                              domProps: { value: _vm.modalUser.academic }
+                            })
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "form-group" }, [
                             _c(
                               "label",

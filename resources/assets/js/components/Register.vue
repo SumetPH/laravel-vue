@@ -23,8 +23,8 @@
             <div class="navbar-collapse-header d-md-none">
               <div class="row">
                 <div class="col-6 collapse-brand">
-                  <a href="index.html">
-                    <img src="assets/img/brand/blue.png">
+                  <a href="#">
+                    <img src="/assets/img/brand/logo-primary.png">
                   </a>
                 </div>
                 <div class="col-6 collapse-close">
@@ -72,30 +72,6 @@
                   <router-link to="/admin" class="dropdown-item">สำหรับผู้ดูแล</router-link>
                 </div>
               </li>
-              <!-- <li class="nav-item">
-                <a class="nav-link nav-link-icon" href="index.html">
-                  <i class="ni ni-planet"></i>
-                  <span class="nav-link-inner--text">Dashboard</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link nav-link-icon" href="examples/register.html">
-                  <i class="ni ni-circle-08"></i>
-                  <span class="nav-link-inner--text">Register</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link nav-link-icon" href="examples/login.html">
-                  <i class="ni ni-key-25"></i>
-                  <span class="nav-link-inner--text">Login</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link nav-link-icon" href="examples/profile.html">
-                  <i class="ni ni-single-02"></i>
-                  <span class="nav-link-inner--text">Profile</span>
-                </a>
-              </li>-->
             </ul>
           </div>
         </div>
@@ -103,7 +79,7 @@
       <!-- Header -->
       <div class="header bg-gradient-success py-7 py-lg-8">
         <div class="container">
-          <div class="header-body text-center mb-7">
+          <div class="header-body text-center mb-7 mt-5">
             <div class="row justify-content-center">
               <div class="col-lg-5 col-md-6">
                 <h1 class="text-white">สมัครสมาชิก</h1>
@@ -131,238 +107,162 @@
         <div class="row justify-content-center">
           <div class="col-lg-6 col-md-8">
             <div class="card bg-secondary shadow border-0">
-              <!-- <div class="card-header bg-transparent pb-5">
-                <div class="text-muted text-center mt-2 mb-4">
-                  <small>Sign up with</small>
-                </div>
-                <div class="text-center">
-                  <a href="#" class="btn btn-neutral btn-icon mr-4">
-                    <span class="btn-inner--icon">
-                      <img src="assets/img/icons/common/github.svg">
-                    </span>
-                    <span class="btn-inner--text">Github</span>
-                  </a>
-                  <a href="#" class="btn btn-neutral btn-icon">
-                    <span class="btn-inner--icon">
-                      <img src="assets/img/icons/common/google.svg">
-                    </span>
-                    <span class="btn-inner--text">Google</span>
-                  </a>
-                </div>
-              </div>-->
               <div class="card-body px-lg-5 py-lg-5">
-                <!-- <div class="text-center text-muted mb-4">
-                  <small>Or sign up with credentials</small>
-                </div>-->
                 <form role="form" @submit.prevent="submit">
                   <div class="form-group mb-3">
                     <label class="control-label">คำนำหน้า</label>
-                    <select class="form-control form-control-alternative" v-model="title">
+                    <select class="form-control" v-model="title">
                       <option value="นาย">นาย</option>
                       <option value="นาง">นาง</option>
                       <option value="นางสาว">นางสาว</option>
                     </select>
                   </div>
+
                   <div class="form-group mb-3">
                     <label class="control-label">ตำแหน่งทางวิชาการ</label>
-                    <select class="form-control form-control-alternative" v-model="academic">
+                    <select class="form-control" v-model="academic">
                       <option value="-">-</option>
                       <option value="ผู้ช่วยศาสตราจารย์">ผู้ช่วยศาสตราจารย์</option>
                       <option value="รองศาสตราจารย์">รองศาสตราจารย์</option>
                       <option value="ศาสตราจารย์">ศาสตราจารย์</option>
                     </select>
                   </div>
+
                   <div class="form-group mb-3">
                     <label for="firstname" class="control-label">ชื่อ</label>
-                    <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"></span>
-                      </div>
-                      <input
-                        class="form-control"
-                        name="firstname"
-                        placeholder="ชื่อ"
-                        type="text"
-                        required
-                        v-model="firstname"
-                      >
-                    </div>
+                    <input
+                      class="form-control"
+                      name="firstname"
+                      placeholder="ชื่อ"
+                      type="text"
+                      required
+                      v-model="firstname"
+                    >
                   </div>
                   <div class="form-group mb-3">
                     <label for="lastname" class="control-label">นามสกุล</label>
-                    <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"></span>
-                      </div>
-                      <input
-                        class="form-control"
-                        name="lastname"
-                        placeholder="นามสกุล"
-                        type="text"
-                        required
-                        v-model="lastname"
-                      >
-                    </div>
+                    <input
+                      class="form-control"
+                      name="lastname"
+                      placeholder="นามสกุล"
+                      type="text"
+                      required
+                      v-model="lastname"
+                    >
                   </div>
 
                   <div class="form-group mb-3">
                     <label for="email" class="control-label">อีเมล</label>
-                    <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"></span>
-                      </div>
-                      <input
-                        class="form-control"
-                        name="email"
-                        placeholder="อีเมล"
-                        type="text"
-                        required
-                        v-model="email"
-                      >
-                    </div>
+                    <input
+                      class="form-control"
+                      name="email"
+                      placeholder="อีเมล"
+                      type="text"
+                      required
+                      v-model="email"
+                    >
                   </div>
                   <div class="form-group mb-3">
                     <label for="password" class="control-label">รหัสผ่าน</label>
-                    <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"></span>
-                      </div>
-                      <input
-                        class="form-control"
-                        name="password"
-                        placeholder="รหัสผ่าน"
-                        type="password"
-                        required
-                        v-model="password"
-                      >
-                    </div>
+                    <input
+                      :style="checkPass < 6 ? 'border-color: #fb6340' : ''"
+                      :class="checkPass < 6 ? 'form-control is-invalid' : 'form-control'"
+                      name="password"
+                      placeholder="รหัสผ่าน"
+                      type="password"
+                      minlength="6"
+                      required
+                      v-model="password"
+                      @blur="funcChekPass"
+                    >
+                    <div v-if="checkPass < 6" class="invalid-feedback">รหัสผ่านต้องมีอย่างน้อย 6 ตัว</div>
                   </div>
                   <div class="form-group mb-3">
                     <label for="password_confirmation" class="control-label">รหัสผ่าน (ยืนยัน)</label>
-                    <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"></span>
-                      </div>
-                      <input
-                        class="form-control"
-                        name="password_confirmation"
-                        placeholder="รหัสผ่าน (ยืนยัน)"
-                        type="password"
-                        required
-                      >
-                    </div>
+                    <input
+                      class="form-control"
+                      name="password_confirmation"
+                      placeholder="รหัสผ่าน (ยืนยัน)"
+                      type="password"
+                      required
+                    >
                   </div>
                   <div class="form-group mb-3">
                     <label for="education" class="control-label">วุฒิ</label>
-                    <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"></span>
-                      </div>
-                      <input
-                        class="form-control"
-                        name="education"
-                        placeholder="วุฒิ"
-                        type="text"
-                        required
-                        v-model="education"
-                      >
-                    </div>
+                    <input
+                      class="form-control"
+                      name="education"
+                      placeholder="วุฒิ"
+                      type="text"
+                      required
+                      v-model="education"
+                    >
                   </div>
                   <div class="form-group mb-3">
                     <label for="position" class="control-label">ตำแหน่ง</label>
-                    <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"></span>
-                      </div>
-                      <input
-                        class="form-control"
-                        name="position"
-                        placeholder="ตำแหน่ง"
-                        type="text"
-                        required
-                        v-model="position"
-                      >
-                    </div>
+                    <input
+                      class="form-control"
+                      name="position"
+                      placeholder="ตำแหน่ง"
+                      type="text"
+                      required
+                      v-model="position"
+                    >
                   </div>
                   <div class="form-group mb-3">
                     <label for="branch" class="control-label">สาขา</label>
-                    <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"></span>
-                      </div>
-                      <input
-                        class="form-control"
-                        name="branch"
-                        placeholder="สาขา"
-                        type="text"
-                        required
-                        v-model="branch"
-                      >
-                    </div>
+                    <input
+                      class="form-control"
+                      name="branch"
+                      placeholder="สาขา"
+                      type="text"
+                      required
+                      v-model="branch"
+                    >
                   </div>
                   <div class="form-group mb-3">
                     <label for="faculty" class="control-label">คณะ</label>
-                    <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"></span>
-                      </div>
-                      <input
-                        class="form-control"
-                        name="faculty"
-                        placeholder="คณะ"
-                        type="text"
-                        required
-                        v-model="faculty"
-                      >
-                    </div>
+                    <input
+                      class="form-control"
+                      name="faculty"
+                      placeholder="คณะ"
+                      type="text"
+                      required
+                      v-model="faculty"
+                    >
                   </div>
                   <div class="form-group mb-3">
                     <label for="university" class="control-label">มหาวิทยาลัย</label>
-                    <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"></span>
-                      </div>
-                      <input
-                        class="form-control"
-                        name="university"
-                        placeholder="มหาวิทยาลัย"
-                        type="text"
-                        required
-                        v-model="university"
-                      >
-                    </div>
+                    <input
+                      class="form-control"
+                      name="university"
+                      placeholder="มหาวิทยาลัย"
+                      type="text"
+                      required
+                      v-model="university"
+                    >
                   </div>
                   <div class="form-group mb-3">
                     <label for="campus" class="control-label">วิทยาเขต</label>
-                    <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"></span>
-                      </div>
-                      <input
-                        class="form-control"
-                        name="campus"
-                        placeholder="วิทยาเขต"
-                        type="text"
-                        required
-                        v-model="campus"
-                      >
-                    </div>
+                    <input
+                      class="form-control"
+                      name="campus"
+                      placeholder="วิทยาเขต"
+                      type="text"
+                      required
+                      v-model="campus"
+                    >
                   </div>
                   <div class="form-group mb-3">
                     <label for="number" class="control-label">เบอร์โทรศัพท์</label>
-                    <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"></span>
-                      </div>
-                      <input
-                        class="form-control"
-                        name="number"
-                        placeholder="เบอร์โทรศัพท์"
-                        type="text"
-                        required
-                        v-model="number"
-                      >
-                    </div>
+                    <input
+                      class="form-control"
+                      name="number"
+                      placeholder="เบอร์โทรศัพท์"
+                      type="text"
+                      required
+                      v-model="number"
+                    >
                   </div>
                   <button type="submit" class="btn btn-primary">ลงทะเบียน</button>
                   <button type="reset" class="btn btn-danger">ยกเลิก</button>
@@ -413,7 +313,8 @@ export default {
       faculty: "",
       university: "มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน",
       campus: "วิทยาเขตสกลนคร",
-      number: ""
+      number: "",
+      checkPass: 6
     };
   },
   methods: {
@@ -445,6 +346,9 @@ export default {
         }
         this.loading(false);
       });
+    },
+    funcChekPass() {
+      this.checkPass = this.password.length;
     }
   }
 };

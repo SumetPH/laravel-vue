@@ -51,7 +51,7 @@ class Post1Controller extends Controller
     {
         $post1 = DB::table('post1s')
             ->join('users', 'post1s.user_id', '=', 'users.id')
-            ->select('post1s.*', 'users.firstname')
+            ->select('post1s.*', 'users.firstname', 'users.lastname')
             ->where('post1s.id', '=', $id)
             ->first();
 

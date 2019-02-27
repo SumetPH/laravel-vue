@@ -60715,7 +60715,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.navbar-horizontal .navbar-brand img {\n  height: 130px;\n}\n.vue-typer .custom.char {\n  color: white;\n}\n@media (max-width: 992px) {\n.f-1 {\n    -webkit-box-ordinal-group: 3;\n        -ms-flex-order: 2;\n            order: 2;\n}\n.f-2 {\n    -webkit-box-ordinal-group: 2;\n        -ms-flex-order: 1;\n            order: 1;\n    margin: 20px;\n}\n.f-3 {\n    -webkit-box-ordinal-group: 4;\n        -ms-flex-order: 3;\n            order: 3;\n}\n.home-title {\n    margin-top: 4rem;\n}\n}\n", ""]);
+exports.push([module.i, "\n.navbar-horizontal .navbar-brand img {\n  height: 130px;\n}\n.vue-typer .custom.char.typed {\n  color: white;\n}\n.vue-typer .custom.caret.typing {\n  background-color: white;\n}\n@media (max-width: 992px) {\n.f-1 {\n    -webkit-box-ordinal-group: 3;\n        -ms-flex-order: 2;\n            order: 2;\n}\n.f-2 {\n    -webkit-box-ordinal-group: 2;\n        -ms-flex-order: 1;\n            order: 1;\n    margin: 20px;\n}\n.f-3 {\n    -webkit-box-ordinal-group: 4;\n        -ms-flex-order: 3;\n            order: 3;\n}\n.home-title {\n    margin-top: 4rem;\n}\n}\n", ""]);
 
 // exports
 
@@ -75045,6 +75045,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+
 
 
 

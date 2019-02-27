@@ -178,8 +178,12 @@ export default {
   height: 130px;
 }
 
-.vue-typer .custom.char {
+.vue-typer .custom.char.typed {
   color: white;
+}
+
+.vue-typer .custom.caret.typing {
+  background-color: white;
 }
 
 @media (max-width: 992px) {

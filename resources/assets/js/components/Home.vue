@@ -108,7 +108,6 @@
             <div class="home-title">
               <h2 class="display-2 text-white">ระบบส่งเอกสารเพื่อขอกำหนดแต่งตั้งตำแหน่งทางวิชาการ</h2>
               <h2 class="display-4 text-white">มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน</h2>
-              <h3 class="text-white" id="app"></h3>
             </div>
           </div>
         </div>

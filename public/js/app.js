@@ -60917,7 +60917,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -61255,9 +61254,7 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("h2", { staticClass: "display-4 text-white" }, [
                 _vm._v("มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน")
-              ]),
-              _vm._v(" "),
-              _c("h3", { staticClass: "text-white", attrs: { id: "app" } })
+              ])
             ])
           ])
         ])

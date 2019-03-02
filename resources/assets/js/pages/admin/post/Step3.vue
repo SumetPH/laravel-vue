@@ -2,7 +2,7 @@
   <div>
     <div v-if="post.step1 === '1' && post.step2 === '1' && post.step3 === '1'" class="row mt-5">
       <div class="col-md-12">
-        <div class="card shadow">
+        <div class="card shadow" :style="post.overall === '1' ? 'border: 3px solid #2dce89' : ''">
           <div class="card-header">
             <h3
               class="card-title mb-0"
@@ -41,6 +41,12 @@
                 <hr>
               </div>
             </div>
+          </div>
+          <div class="card-footer">
+            <h4
+              class="card-title mb-0 text-center"
+              :style="post.overall === '1' ? 'color : #2dce89' : 'color: #fb6340'"
+            >คำร้องขอนี้ผ่านการตรวจสอบเรียบร้อยแล้ว</h4>
           </div>
         </div>
       </div>

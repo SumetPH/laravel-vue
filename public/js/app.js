@@ -71216,6 +71216,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -71263,109 +71271,138 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
     _c("div", { staticClass: "col-md-12" }, [
-      _c("div", { staticClass: "card shadow" }, [
-        _c("div", { staticClass: "card-header" }, [
-          _vm.post.step1 === "0"
-            ? _c(
-                "h3",
-                {
-                  staticClass: "card-title mb-0",
-                  staticStyle: { color: "#f5365c" }
-                },
-                [_vm._v("ขั้นตอนที่ 1 : ยังไม่ผ่านการตรวจสอบ")]
-              )
-            : _c(
-                "h3",
-                {
-                  staticClass: "card-title mb-0",
-                  staticStyle: { color: "#2dce89" }
-                },
-                [_vm._v("ขั้นตอนที่ 1 : ผ่านการตรวจสอบแล้ว")]
-              )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c("p", [
-            _vm._v(
-              "โดย : " +
-                _vm._s(_vm.post1.firstname) +
-                " " +
-                _vm._s(_vm.post1.lastname)
-            )
+      _c(
+        "div",
+        {
+          staticClass: "card shadow",
+          style: _vm.post.step1 === "1" ? "border: 3px solid #2dce89" : ""
+        },
+        [
+          _c("div", { staticClass: "card-header" }, [
+            _vm.post.step1 === "0"
+              ? _c(
+                  "h3",
+                  {
+                    staticClass: "card-title mb-0",
+                    staticStyle: { color: "#f5365c" }
+                  },
+                  [_vm._v("ขั้นตอนที่ 1 : ยังไม่ผ่านการตรวจสอบ")]
+                )
+              : _c(
+                  "h3",
+                  {
+                    staticClass: "card-title mb-0",
+                    staticStyle: { color: "#2dce89" }
+                  },
+                  [_vm._v("ขั้นตอนที่ 1 : ผ่านการตรวจสอบแล้ว")]
+                )
           ]),
           _vm._v(" "),
-          _c("p", [_vm._v("ตำแหน่งที่ร้องขอ : " + _vm._s(_vm.post1.academic))]),
-          _vm._v(" "),
-          _c("p", [_vm._v("หัวข้อ : " + _vm._s(_vm.post1.title))]),
-          _vm._v(" "),
-          _c("p", [_vm._v("รายละเอียด : " + _vm._s(_vm.post1.description))]),
-          _vm._v(" "),
-          _c("small", [_vm._v("เวลา ​: " + _vm._s(_vm.post1.updated_at))]),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-9 form-group" }, [
-            _c("label", { attrs: { for: "file" } }, [
-              _vm._v("ฟอร์มบันทึกข้อความ")
+          _c("div", { staticClass: "card-body" }, [
+            _c("p", [
+              _vm._v(
+                "โดย : " +
+                  _vm._s(_vm.post1.firstname) +
+                  " " +
+                  _vm._s(_vm.post1.lastname)
+              )
             ]),
             _vm._v(" "),
-            _c("br"),
-            _vm._v("เอกสาร :\n          "),
-            _c(
-              "a",
-              {
-                attrs: {
-                  target: "_blank",
-                  href: "/files/" + _vm.post1.file_path
-                }
-              },
-              [_vm._v(_vm._s(_vm.post1.file_name))]
-            )
-          ]),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("form", { staticClass: "col-md-9" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "status" } }, [
-                _vm._v("ผลการประเมิน")
+            _c("p", [
+              _vm._v("ตำแหน่งที่ร้องขอ : " + _vm._s(_vm.post1.academic))
+            ]),
+            _vm._v(" "),
+            _c("p", [_vm._v("หัวข้อ : " + _vm._s(_vm.post1.title))]),
+            _vm._v(" "),
+            _c("p", [_vm._v("รายละเอียด : " + _vm._s(_vm.post1.description))]),
+            _vm._v(" "),
+            _c("small", [_vm._v("เวลา ​: " + _vm._s(_vm.post1.updated_at))]),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-9 form-group" }, [
+              _c("label", { attrs: { for: "file" } }, [
+                _vm._v("ฟอร์มบันทึกข้อความ")
               ]),
               _vm._v(" "),
+              _c("br"),
+              _vm._v("เอกสาร :\n          "),
               _c(
-                "select",
+                "a",
                 {
-                  staticClass: "form-control",
-                  attrs: { name: "status" },
-                  on: { change: _vm.selectChange }
+                  attrs: {
+                    target: "_blank",
+                    href: "/files/" + _vm.post1.file_path
+                  }
                 },
-                [
-                  _c(
-                    "option",
-                    {
-                      attrs: { value: "0" },
-                      domProps: {
-                        selected: _vm.post.step1 === "0" ? "selected" : ""
-                      }
-                    },
-                    [_vm._v("ยังไม่ผ่านการตรวจสอบ")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    {
-                      attrs: { value: "1" },
-                      domProps: {
-                        selected: _vm.post.step1 === "1" ? "selected" : ""
-                      }
-                    },
-                    [_vm._v("ผ่านการตรวจสอบแล้ว")]
-                  )
-                ]
+                [_vm._v(_vm._s(_vm.post1.file_name))]
               )
+            ]),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _c("form", { staticClass: "col-md-9" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "status" } }, [
+                  _vm._v("ผลการประเมิน")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    staticClass: "form-control",
+                    attrs: { name: "status" },
+                    on: { change: _vm.selectChange }
+                  },
+                  [
+                    _c(
+                      "option",
+                      {
+                        attrs: { value: "0" },
+                        domProps: {
+                          selected: _vm.post.step1 === "0" ? "selected" : ""
+                        }
+                      },
+                      [_vm._v("ยังไม่ผ่านการตรวจสอบ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "option",
+                      {
+                        attrs: { value: "1" },
+                        domProps: {
+                          selected: _vm.post.step1 === "1" ? "selected" : ""
+                        }
+                      },
+                      [_vm._v("ผ่านการตรวจสอบแล้ว")]
+                    )
+                  ]
+                )
+              ])
             ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-footer" }, [
+            _vm.post.step1 === "0"
+              ? _c(
+                  "h4",
+                  {
+                    staticClass: "card-title mb-0 text-center",
+                    staticStyle: { color: "#f5365c" }
+                  },
+                  [_vm._v("ยังไม่ผ่านการตรวจสอบ")]
+                )
+              : _c(
+                  "h4",
+                  {
+                    staticClass: "card-title mb-0 text-center",
+                    staticStyle: { color: "#2dce89" }
+                  },
+                  [_vm._v("ผ่านการตรวจสอบแล้ว")]
+                )
           ])
-        ])
-      ])
+        ]
+      )
     ])
   ])
 }
@@ -71551,110 +71588,120 @@ var render = function() {
   return _vm.post.step1 === "1"
     ? _c("div", { staticClass: "row mt-5" }, [
         _c("div", { staticClass: "col-md-12" }, [
-          _c("div", { staticClass: "card shadow" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm.post.step2 === "0"
-                ? _c(
-                    "h3",
-                    {
-                      staticClass: "card-title mb-0",
-                      staticStyle: { color: "#f5365c" }
-                    },
-                    [
-                      _vm._v(
-                        "ขั้นตอนที่ 2 : กรุณาส่งเอกสารให้ครบตามหัวข้อที่กำหนด"
-                      )
-                    ]
-                  )
-                : _c(
-                    "h3",
-                    {
-                      staticClass: "card-title mb-0",
-                      staticStyle: { color: "#2dce89" }
-                    },
-                    [
-                      _vm._v(
-                        "ขั้นตอนที่ 2 : เอกสารประกอบการเสนอขอกำหนดตำแหน่งทางวิชาการ"
-                      )
-                    ]
-                  )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c(
-                "div",
-                { staticClass: "row" },
-                _vm._l(_vm.post2, function(item, index) {
-                  return _c("div", { key: index, staticClass: "col-md-9" }, [
-                    item.file_path != null
-                      ? _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v(_vm._s(item.title))]),
-                          _vm._v(" "),
-                          _c("br"),
-                          _vm._v("เอกสาร :\n              "),
-                          _c(
-                            "a",
-                            {
-                              attrs: {
-                                target: "_blank",
-                                href: "/files/" + item.file_path
-                              }
-                            },
-                            [_vm._v(_vm._s(item.file_name))]
-                          ),
-                          _vm._v(" "),
-                          _c("br"),
-                          _vm._v(" "),
-                          _c("small", [
-                            _vm._v("เวลา ​: " + _vm._s(item.updated_at))
-                          ]),
-                          _vm._v(" "),
-                          _c("p"),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-warning",
-                              on: {
-                                click: function($event) {
-                                  item.file_path = null
-                                }
-                              }
-                            },
-                            [_vm._v("แก้ไข")]
-                          )
-                        ])
-                      : _c(
-                          "div",
-                          { staticClass: "form-group" },
-                          [
+          _c(
+            "div",
+            {
+              staticClass: "card shadow",
+              style: _vm.post.step2 === "1" ? "border: 3px solid #2dce89" : ""
+            },
+            [
+              _c("div", { staticClass: "card-header" }, [
+                _vm.post.step2 === "0"
+                  ? _c(
+                      "h3",
+                      {
+                        staticClass: "card-title mb-0",
+                        staticStyle: { color: "#f5365c" }
+                      },
+                      [
+                        _vm._v(
+                          "ขั้นตอนที่ 2 : กรุณาส่งเอกสารให้ครบตามหัวข้อที่กำหนด"
+                        )
+                      ]
+                    )
+                  : _c(
+                      "h3",
+                      {
+                        staticClass: "card-title mb-0",
+                        staticStyle: { color: "#2dce89" }
+                      },
+                      [
+                        _vm._v(
+                          "ขั้นตอนที่ 2 : เอกสารประกอบการเสนอขอกำหนดตำแหน่งทางวิชาการ"
+                        )
+                      ]
+                    )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c(
+                  "div",
+                  { staticClass: "row" },
+                  _vm._l(_vm.post2, function(item, index) {
+                    return _c("div", { key: index, staticClass: "col-md-9" }, [
+                      item.file_path != null
+                        ? _c("div", { staticClass: "form-group" }, [
                             _c("label", [_vm._v(_vm._s(item.title))]),
                             _vm._v(" "),
-                            _c("file-pond", {
-                              ref: "pond",
-                              refInFor: true,
-                              attrs: {
-                                name: "file",
-                                "label-idle": "เลือกเอกสาร",
-                                server: { process: _vm.process }
-                              },
-                              on: {
-                                addfilestart: function($event) {
-                                  return _vm.addfilestart(item.id, item.post_id)
+                            _c("br"),
+                            _vm._v("เอกสาร :\n              "),
+                            _c(
+                              "a",
+                              {
+                                attrs: {
+                                  target: "_blank",
+                                  href: "/files/" + item.file_path
                                 }
-                              }
-                            })
-                          ],
-                          1
-                        ),
-                    _vm._v(" "),
-                    _c("hr")
-                  ])
-                }),
-                0
-              )
-            ])
-          ])
+                              },
+                              [_vm._v(_vm._s(item.file_name))]
+                            ),
+                            _vm._v(" "),
+                            _c("br"),
+                            _vm._v(" "),
+                            _c("small", [
+                              _vm._v("เวลา ​: " + _vm._s(item.updated_at))
+                            ]),
+                            _vm._v(" "),
+                            _c("p"),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-warning",
+                                on: {
+                                  click: function($event) {
+                                    item.file_path = null
+                                  }
+                                }
+                              },
+                              [_vm._v("แก้ไข")]
+                            )
+                          ])
+                        : _c(
+                            "div",
+                            { staticClass: "form-group" },
+                            [
+                              _c("label", [_vm._v(_vm._s(item.title))]),
+                              _vm._v(" "),
+                              _c("file-pond", {
+                                ref: "pond",
+                                refInFor: true,
+                                attrs: {
+                                  name: "file",
+                                  "label-idle": "เลือกเอกสาร",
+                                  server: { process: _vm.process }
+                                },
+                                on: {
+                                  addfilestart: function($event) {
+                                    return _vm.addfilestart(
+                                      item.id,
+                                      item.post_id
+                                    )
+                                  }
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                      _vm._v(" "),
+                      _c("hr")
+                    ])
+                  }),
+                  0
+                )
+              ])
+            ]
+          )
         ])
       ])
     : _vm._e()
@@ -71782,6 +71829,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -71834,111 +71887,137 @@ var render = function() {
     _vm.post.step1 === "1" && _vm.post.step2 === "1" && _vm.post.step3 === "1"
       ? _c("div", { staticClass: "row mt-5" }, [
           _c("div", { staticClass: "col-md-12" }, [
-            _c("div", { staticClass: "card shadow" }, [
-              _c("div", { staticClass: "card-header" }, [
-                _c(
-                  "h3",
-                  {
-                    staticClass: "card-title mb-0",
-                    style:
-                      _vm.post.overall === "1"
-                        ? "color : #2dce89"
-                        : "color: #fb6340"
-                  },
-                  [
-                    _vm._v(
-                      "ขั้นตอนที่ 3 : เอกสารประกอบการเสนอขอกำหนดตำแหน่งทางวิชาการ"
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body" }, [
-                _c(
-                  "div",
-                  { staticClass: "row" },
-                  _vm._l(_vm.post3, function(item, index) {
-                    return _c("div", { key: index, staticClass: "col-md-9" }, [
-                      _c("div", { staticClass: "form-group" }, [
-                        item.status === "1"
-                          ? _c("i", {
-                              staticClass: "ni ni-check-bold text-green"
-                            })
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _c("label", [_vm._v(_vm._s(item.title))]),
-                        _vm._v(" "),
-                        _c("br"),
-                        _vm._v("เอกสาร :\n                "),
-                        _c(
-                          "a",
-                          {
-                            attrs: {
-                              target: "_blank",
-                              href: "/files/" + item.file_path
-                            }
-                          },
-                          [_vm._v(_vm._s(item.file_name))]
-                        ),
-                        _vm._v(" "),
-                        _c("br"),
-                        _vm._v(" "),
-                        _c("small", [
-                          _vm._v("เวลา ​: " + _vm._s(item.updated_at))
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("label", { attrs: { for: "status" } }, [
-                          _vm._v("ผลการประเมิน")
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "select",
-                          {
-                            staticClass: "form-control",
-                            attrs: { name: "status" },
-                            on: {
-                              change: function(e) {
-                                return _vm.update(item.id, item.post_id, e)
-                              }
-                            }
-                          },
-                          [
+            _c(
+              "div",
+              {
+                staticClass: "card shadow",
+                style:
+                  _vm.post.overall === "1" ? "border: 3px solid #2dce89" : ""
+              },
+              [
+                _c("div", { staticClass: "card-header" }, [
+                  _c(
+                    "h3",
+                    {
+                      staticClass: "card-title mb-0",
+                      style:
+                        _vm.post.overall === "1"
+                          ? "color : #2dce89"
+                          : "color: #fb6340"
+                    },
+                    [
+                      _vm._v(
+                        "ขั้นตอนที่ 3 : เอกสารประกอบการเสนอขอกำหนดตำแหน่งทางวิชาการ"
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c(
+                    "div",
+                    { staticClass: "row" },
+                    _vm._l(_vm.post3, function(item, index) {
+                      return _c(
+                        "div",
+                        { key: index, staticClass: "col-md-9" },
+                        [
+                          _c("div", { staticClass: "form-group" }, [
+                            item.status === "1"
+                              ? _c("i", {
+                                  staticClass: "ni ni-check-bold text-green"
+                                })
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c("label", [_vm._v(_vm._s(item.title))]),
+                            _vm._v(" "),
+                            _c("br"),
+                            _vm._v("เอกสาร :\n                "),
                             _c(
-                              "option",
+                              "a",
                               {
-                                attrs: { value: "0" },
-                                domProps: {
-                                  selected:
-                                    item.status === "0" ? "selected" : ""
+                                attrs: {
+                                  target: "_blank",
+                                  href: "/files/" + item.file_path
                                 }
                               },
-                              [_vm._v("ยังไม่ผ่านการตรวจสอบ")]
+                              [_vm._v(_vm._s(item.file_name))]
                             ),
                             _vm._v(" "),
+                            _c("br"),
+                            _vm._v(" "),
+                            _c("small", [
+                              _vm._v("เวลา ​: " + _vm._s(item.updated_at))
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group" }, [
+                            _c("label", { attrs: { for: "status" } }, [
+                              _vm._v("ผลการประเมิน")
+                            ]),
+                            _vm._v(" "),
                             _c(
-                              "option",
+                              "select",
                               {
-                                attrs: { value: "1" },
-                                domProps: {
-                                  selected:
-                                    item.status === "1" ? "selected" : ""
+                                staticClass: "form-control",
+                                attrs: { name: "status" },
+                                on: {
+                                  change: function(e) {
+                                    return _vm.update(item.id, item.post_id, e)
+                                  }
                                 }
                               },
-                              [_vm._v("ผ่านการตรวจสอบแล้ว")]
+                              [
+                                _c(
+                                  "option",
+                                  {
+                                    attrs: { value: "0" },
+                                    domProps: {
+                                      selected:
+                                        item.status === "0" ? "selected" : ""
+                                    }
+                                  },
+                                  [_vm._v("ยังไม่ผ่านการตรวจสอบ")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "option",
+                                  {
+                                    attrs: { value: "1" },
+                                    domProps: {
+                                      selected:
+                                        item.status === "1" ? "selected" : ""
+                                    }
+                                  },
+                                  [_vm._v("ผ่านการตรวจสอบแล้ว")]
+                                )
+                              ]
                             )
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("hr")
-                    ])
-                  }),
-                  0
-                )
-              ])
-            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("hr")
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-footer" }, [
+                  _c(
+                    "h4",
+                    {
+                      staticClass: "card-title mb-0 text-center",
+                      style:
+                        _vm.post.overall === "1"
+                          ? "color : #2dce89"
+                          : "color: #fb6340"
+                    },
+                    [_vm._v("คำร้องขอนี้ผ่านการตรวจสอบเรียบร้อยแล้ว")]
+                  )
+                ])
+              ]
+            )
           ])
         ])
       : _vm._e(),

@@ -1,7 +1,7 @@
 <template>
   <div v-if="post.step1 === '1'" class="row mt-5">
     <div class="col-md-12">
-      <div class="card shadow">
+      <div class="card shadow" :style="post.step2 === '1' ? 'border: 3px solid #2dce89' : ''">
         <div class="card-header">
           <h3
             v-if="post.step2 === '0'"

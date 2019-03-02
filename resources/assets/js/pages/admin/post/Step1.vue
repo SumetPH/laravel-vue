@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-md-12">
-      <div class="card shadow">
+      <div class="card shadow" :style="post.step1 === '1' ? 'border: 3px solid #2dce89' : ''">
         <div class="card-header">
           <h3
             v-if="post.step1 === '0'"
@@ -43,6 +43,14 @@
               </select>
             </div>
           </form>
+        </div>
+        <div class="card-footer">
+          <h4
+            v-if="post.step1 === '0'"
+            class="card-title mb-0 text-center"
+            style="color: #f5365c"
+          >ยังไม่ผ่านการตรวจสอบ</h4>
+          <h4 v-else class="card-title mb-0 text-center" style="color: #2dce89">ผ่านการตรวจสอบแล้ว</h4>
         </div>
       </div>
     </div>

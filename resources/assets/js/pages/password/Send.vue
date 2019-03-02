@@ -164,37 +164,37 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions } from 'vuex'
 
 export default {
   data() {
     return {
-      email: ""
-    };
+      email: ''
+    }
   },
   methods: {
-    ...mapActions(["loading"]),
+    ...mapActions(['loading']),
     sendEmail() {
-      this.loading(true);
-      axios.post("/password/forgot", { email: this.email }).then(res => {
-        console.log(res, "sendEmail");
-        if (res.data === "success") {
+      this.loading(true)
+      axios.post('/password/forgot', { email: this.email }).then(res => {
+        // consolee.log(res, "sendEmail");
+        if (res.data === 'success') {
           this.$notify({
-            type: "success",
-            text: "ทำการส่งการรีเซ็ตรหัสผ่านไปยังอีเมลของท่านแล้ว"
-          });
-          this.email = "";
+            type: 'success',
+            text: 'ทำการส่งการรีเซ็ตรหัสผ่านไปยังอีเมลของท่านแล้ว'
+          })
+          this.email = ''
         } else {
           this.$notify({
-            type: "error",
-            text: "อีเมลของคุณยังไม่ได้ทำการลงทะเบียน"
-          });
+            type: 'error',
+            text: 'อีเมลของคุณยังไม่ได้ทำการลงทะเบียน'
+          })
         }
-        this.loading(false);
-      });
+        this.loading(false)
+      })
     }
   }
-};
+}
 </script>
 
 <style scoped>

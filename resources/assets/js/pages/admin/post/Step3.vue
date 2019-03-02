@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="post.step1 === '1' && post.step2 === '1' && post.step3 === '1'" class="row mt-5">
+    <div v-if="post.step1 === '1' && post.step2 === '1' && post.step3 === '1'" class="row">
       <div class="col-md-12">
         <div class="card shadow" :style="post.overall === '1' ? 'border: 3px solid #2dce89' : ''">
           <div class="card-header">
@@ -13,8 +13,7 @@
             <div class="row">
               <div v-for="(item, index) in post3" :key="index" class="col-md-9">
                 <div class="form-group">
-                  <i v-if="item.status === '1'" class="ni ni-check-bold text-green"></i>
-                  <!-- <i v-else class="ni ni-fat-remove text-red"></i> -->
+                  <i v-if="item.status === '1'" class="far fa-check-circle text-green"></i>
                   <label>{{ item.title }}</label>
                   <br>เอกสาร :
                   <a target="_blank" :href="'/files/' + item.file_path">{{ item.file_name }}</a>
@@ -22,11 +21,14 @@
                   <small>เวลา ​: {{item.updated_at}}</small>
                 </div>
                 <div class="form-group">
-                  <label for="status">ผลการประเมิน</label>
+                  <label
+                    :style="item.status === '0' ? 'color: #fb6340' : 'color : #2dce89'"
+                    for="status"
+                  >ผลการประเมิน</label>
                   <select
+                    @change="e => update(item.id, item.post_id, e)"
                     class="form-control"
                     name="status"
-                    @change="e => update(item.id, item.post_id, e)"
                   >
                     <option
                       :selected="item.status === '0' ? 'selected' : ''"
@@ -42,7 +44,7 @@
               </div>
             </div>
           </div>
-          <div class="card-footer">
+          <div v-if="post.overall === '1'" class="card-footer">
             <h4
               class="card-title mb-0 text-center"
               :style="post.overall === '1' ? 'color : #2dce89' : 'color: #fb6340'"
@@ -62,43 +64,43 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions } from 'vuex'
 export default {
   methods: {
-    ...mapActions(["loadPost", "loadPost3Admin"]),
+    ...mapActions(['loadPost', 'loadPost3Admin']),
     update(id, post_id, e) {
-      let formData = new FormData();
-      formData.append("_method", "put");
-      formData.append("post_id", post_id);
-      formData.append("status", e.target.value);
+      let formData = new FormData()
+      formData.append('_method', 'put')
+      formData.append('post_id', post_id)
+      formData.append('status', e.target.value)
 
       axios({
-        method: "post",
+        method: 'post',
         url: `/admin/post3/${id}`,
         data: formData
       }).then(res => {
-        console.log(res);
-        if (res.data === "success") {
+        // console.log(res)
+        if (res.data === 'success') {
           this.$notify({
-            type: "success",
-            text: "บันทึกข้อมูลเรียบร้อยแล้ว"
-          });
+            type: 'success',
+            text: 'บันทึกข้อมูลเรียบร้อยแล้ว'
+          })
         } else {
           this.$notify({
-            type: "error",
-            text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
-          });
+            type: 'error',
+            text: 'มีข้อผิดผลาดในการบันทึกข้อมูล'
+          })
         }
-        this.loadPost();
-        this.loadPost3Admin();
-      });
+        this.loadPost()
+        this.loadPost3Admin()
+      })
     }
   },
   computed: {
-    ...mapState({ post: "post", post3: "post3" })
+    ...mapState({ post: 'post', post3: 'post3' })
   },
   mounted() {
-    this.loadPost3Admin();
+    this.loadPost3Admin()
   }
-};
+}
 </script>

@@ -116,11 +116,11 @@
                       </span>
                     </div>
                     <input
+                      v-model="new_password"
                       class="form-control"
                       placeholder="รหัสผ่านใหม่"
                       type="password"
                       required
-                      v-model="new_password"
                     >
                   </div>
                 </div>
@@ -133,11 +133,11 @@
                       </span>
                     </div>
                     <input
+                      v-model="confirm_password"
                       class="form-control"
                       placeholder="รหัสผ่านใหม่ (อีกครัง)"
                       type="password"
                       required
-                      v-model="confirm_password"
                     >
                   </div>
                 </div>
@@ -182,43 +182,43 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions } from 'vuex'
 
 export default {
   data() {
     return {
-      new_password: "",
-      confirm_password: ""
-    };
+      new_password: '',
+      confirm_password: ''
+    }
   },
   methods: {
-    ...mapActions(["loading"]),
+    ...mapActions(['loading']),
     resetPassword() {
-      this.loading(true);
+      this.loading(true)
       axios
-        .post("/password/reset", {
+        .post('/password/reset', {
           hash: this.$route.params.hash,
           new_password: this.new_password
         })
         .then(res => {
-          console.log(res, "sendEmail");
-          if (res.data === "success") {
+          // consoleole.log(res, "sendEmail");
+          if (res.data === 'success') {
             this.$notify({
-              type: "success",
-              text: "ทำการเปลี่ยนรหัสผ่านเรียบร้อยแล้ว"
-            });
-            this.$router.push("/login");
+              type: 'success',
+              text: 'ทำการเปลี่ยนรหัสผ่านเรียบร้อยแล้ว'
+            })
+            this.$router.push('/login')
           } else {
             this.$notify({
-              type: "error",
-              text: "มีข้อผิดผลาดในการเปลียนรหัสผ่าน"
-            });
+              type: 'error',
+              text: 'มีข้อผิดผลาดในการเปลียนรหัสผ่าน'
+            })
           }
-          this.loading(false);
-        });
+          this.loading(false)
+        })
     }
   }
-};
+}
 </script>
 
 <style scoped>

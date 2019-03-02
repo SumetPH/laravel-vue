@@ -1,7 +1,7 @@
 <template>
-  <div class="row mt-3">
+  <div class="row">
     <div class="col-md-12">
-      <div class="card bg-secondary shadow">
+      <div class="card shadow">
         <div class="card-header">
           <h3 class="card-title text-muted mb-0">รายงาน</h3>
         </div>
@@ -9,12 +9,7 @@
           <form @submit.prevent="saveReport">
             <div class="row">
               <div class="col-md-10">
-                <input
-                  class="form-control form-control-alternative"
-                  type="text"
-                  placeholder="รายงาน"
-                  v-model="post.report"
-                >
+                <input v-model="post.report" class="form-control" type="text" placeholder="รายงาน">
               </div>
               <div class="col-md-2 text-center">
                 <button type="submit" class="btn btn-success">บันทีก</button>
@@ -31,42 +26,42 @@
 export default {
   data() {
     return {
-      post: ""
-    };
+      post: ''
+    }
   },
   methods: {
     loadReport() {
       axios.get(`/report/${this.$route.params.id}/edit`).then(res => {
-        console.log(res, "report");
-        this.post = res.data;
-      });
+        // consoleole.log(res, 'report')
+        this.post = res.data
+      })
     },
     saveReport() {
-      let formData = new FormData();
-      formData.append("_method", "put");
-      formData.append("report", this.post.report);
+      let formData = new FormData()
+      formData.append('_method', 'put')
+      formData.append('report', this.post.report)
 
       axios.post(`/report/${this.$route.params.id}`, formData).then(res => {
-        console.log(res, "saveReport");
-        if (res.data === "success") {
+        // consoleole.log(res, 'saveReport')
+        if (res.data === 'success') {
           this.$notify({
-            type: "success",
-            text: "บันทึกข้อมูลเรียบร้อยแล้ว"
-          });
+            type: 'success',
+            text: 'บันทึกข้อมูลเรียบร้อยแล้ว'
+          })
         } else {
           this.$notify({
-            type: "error",
-            text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
-          });
+            type: 'error',
+            text: 'มีข้อผิดผลาดในการบันทึกข้อมูล'
+          })
         }
-        this.loadReport();
-      });
+        this.loadReport()
+      })
     }
   },
   mounted() {
-    this.loadReport();
+    this.loadReport()
   }
-};
+}
 </script>
 
 

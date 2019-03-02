@@ -14,6 +14,7 @@
             style="color: #2dce89"
           >ขั้นตอนที่ 1 : ผ่านการตรวจสอบแล้ว</h3>
         </div>
+
         <div class="card-body">
           <p>โดย : {{ post1.firstname }} {{ post1.lastname }}</p>
           <p>ตำแหน่งที่ร้องขอ : {{ post1.academic }}</p>
@@ -44,6 +45,7 @@
             </div>
           </form>
         </div>
+
         <div class="card-footer">
           <h4
             v-if="post.step1 === '0'"
@@ -58,40 +60,40 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions } from 'vuex'
 
 export default {
   computed: {
-    ...mapState({ post: "post", post1: "post1" })
+    ...mapState({ post: 'post', post1: 'post1' })
   },
   methods: {
-    ...mapActions(["loadPost", "loadPost1Admin"]),
+    ...mapActions(['loadPost', 'loadPost1Admin']),
     selectChange(e) {
-      let formData = new FormData();
-      formData.append("_method", "put");
-      formData.append("step1", e.target.value);
+      let formData = new FormData()
+      formData.append('_method', 'put')
+      formData.append('step1', e.target.value)
 
       axios.post(`/admin/post/${this.$route.params.id}`, formData).then(res => {
-        console.log(res);
-        if (res.data === "success") {
+        // consoleole.log(res)
+        if (res.data === 'success') {
           this.$notify({
-            type: "success",
-            text: "บันทึกข้อมูลเรียบร้อยแล้ว"
-          });
+            type: 'success',
+            text: 'บันทึกข้อมูลเรียบร้อยแล้ว'
+          })
         } else {
           this.$notify({
-            type: "error",
-            text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
-          });
+            type: 'error',
+            text: 'มีข้อผิดผลาดในการบันทึกข้อมูล'
+          })
         }
-        this.loadPost();
-        this.loadPost1Admin();
-      });
+        this.loadPost()
+        this.loadPost1Admin()
+      })
     }
   },
   mounted() {
-    this.loadPost();
-    this.loadPost1Admin();
+    this.loadPost()
+    this.loadPost1Admin()
   }
-};
+}
 </script>

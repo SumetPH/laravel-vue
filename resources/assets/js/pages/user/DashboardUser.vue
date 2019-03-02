@@ -142,29 +142,29 @@
                 <div class="form-group">
                   <label for="title">หัวข้อ</label>
                   <input
-                    type="text"
-                    class="form-control form-control-alternative"
-                    disabled
                     v-model="title"
+                    class="form-control form-control-alternative"
+                    type="text"
+                    disabled
                   >
                 </div>
                 <div class="form-group">
                   <label for="file">ฟอร์มบันทึกข้อความ</label>
                   <file-pond
-                    required
+                    @addfile="onaddfile"
+                    :server="{process,revert}"
                     name="file"
                     ref="pond"
                     label-idle="เลือกเอกสาร"
-                    @addfile="onaddfile"
-                    :server="{process,revert}"
+                    required
                   />
                 </div>
                 <div class="form-group">
                   <label for="description">รายละเอียด</label>
                   <textarea
+                    v-model="description"
                     class="form-control form-control-alternative"
                     rows="3"
-                    v-model="description"
                   ></textarea>
                 </div>
               </div>
@@ -193,9 +193,9 @@
 
 
 <script>
-import { mapActions } from "vuex";
-import Layout from "../../components/Layout";
-import Card from "../../components/Card.vue";
+import { mapActions } from 'vuex'
+import Layout from '../../components/Layout'
+import Card from '../../components/Card.vue'
 
 export default {
   components: {
@@ -205,100 +205,100 @@ export default {
   data() {
     return {
       isSubmit: false,
-      user: JSON.parse(localStorage.getItem("user")),
+      user: JSON.parse(localStorage.getItem('user')),
       posts: [],
       posts_checking: [],
       posts_checked: [],
-      academic: "ผู้ช่วยศาสตราจารย์",
-      title: "ขอแต่งตั้งผู้ทรงคุณวุฒิภายนอก",
-      description: "",
-      file: "",
+      academic: 'ผู้ช่วยศาสตราจารย์',
+      title: 'ขอแต่งตั้งผู้ทรงคุณวุฒิภายนอก',
+      description: '',
+      file: '',
       modal: false
-    };
+    }
   },
 
   methods: {
-    ...mapActions(["loading"]),
+    ...mapActions(['loading']),
     onaddfile() {
-      this.isSubmit = true;
+      this.isSubmit = true
     },
     process(fieldName, file, metadata, load, error, progress, abort) {
-      this.file = file;
-      load();
-      this.isSubmit = false;
+      this.file = file
+      load()
+      this.isSubmit = false
     },
     revert(uniqueFileId, load, error) {
-      this.file = "";
-      load();
+      this.file = ''
+      load()
     },
     submit() {
-      this.isSubmit = true;
-      let formData = new FormData();
-      formData.append("user_id", this.user.id);
-      formData.append("academic", this.academic);
-      formData.append("title", this.title);
-      formData.append("description", this.description);
-      formData.append("file", this.file);
+      this.isSubmit = true
+      let formData = new FormData()
+      formData.append('user_id', this.user.id)
+      formData.append('academic', this.academic)
+      formData.append('title', this.title)
+      formData.append('description', this.description)
+      formData.append('file', this.file)
 
-      axios.post("/user/post", formData).then(res => {
-        if (res.data === "success") {
+      axios.post('/user/post', formData).then(res => {
+        if (res.data === 'success') {
           this.$notify({
-            type: "success",
-            text: "บันทึกข้อมูลเรียบร้อยแล้ว"
-          });
-          this.modal = false;
-          this.loadData();
+            type: 'success',
+            text: 'บันทึกข้อมูลเรียบร้อยแล้ว'
+          })
+          this.modal = false
+          this.loadData()
         } else {
           this.$notify({
-            type: "error",
-            text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
-          });
+            type: 'error',
+            text: 'มีข้อผิดผลาดในการบันทึกข้อมูล'
+          })
         }
-        this.isSubmit = false;
-      });
+        this.isSubmit = false
+      })
     },
     deletePost(id) {
-      if (confirm("คุณต้องการลบคำร้องขอนี้ใช่หรือไม่")) {
-        this.loading(true);
-        let formData = new FormData();
-        formData.append("_method", "delete");
+      if (confirm('คุณต้องการลบคำร้องขอนี้ใช่หรือไม่')) {
+        this.loading(true)
+        let formData = new FormData()
+        formData.append('_method', 'delete')
 
         axios.post(`/user/post/${id}`, formData).then(res => {
-          console.log(res, "deletePost");
-          if (res.data === "success") {
+          // consolee.log(res, "deletePost");
+          if (res.data === 'success') {
             this.$notify({
-              type: "success",
-              text: "ลบข้อมูลเรียบร้อยแล้ว"
-            });
+              type: 'success',
+              text: 'ลบข้อมูลเรียบร้อยแล้ว'
+            })
           } else {
             this.$notify({
-              type: "error",
-              text: "มีข้อผิดผลาดในการลบข้อมูล"
-            });
+              type: 'error',
+              text: 'มีข้อผิดผลาดในการลบข้อมูล'
+            })
           }
-          this.loadData();
-          this.loading(false);
-        });
+          this.loadData()
+          this.loading(false)
+        })
       }
     },
     loadData() {
-      axios.post("/user", { id: this.user.id }).then(res => {
-        console.log(res);
-        this.posts = res.data.posts;
-        this.posts_checking = res.data.posts_checking;
-        this.posts_checked = res.data.posts_checked;
-      });
+      axios.post('/user', { id: this.user.id }).then(res => {
+        // consolee.log(res);
+        this.posts = res.data.posts
+        this.posts_checking = res.data.posts_checking
+        this.posts_checked = res.data.posts_checked
+      })
     },
     modalHandle() {
-      this.modal = !this.modal;
+      this.modal = !this.modal
     }
   },
   mounted() {
     if (this.user) {
-      this.loadData();
+      this.loadData()
     }
   }
-};
+}
 </script>
 
 <style scoped>

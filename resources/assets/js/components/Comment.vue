@@ -22,11 +22,11 @@
               </div>
               <div>
                 <button
-                  @click="delComment(comm.id)"
                   v-if="comm.username === data.data.firstname"
-                  type="submit"
+                  @click="delComment(comm.id)"
                   class="mr-1 btn btn-danger btn-sm"
                   style="cursor: pointer;"
+                  type="submit"
                 >ลบ</button>
               </div>
             </div>
@@ -34,7 +34,7 @@
           </div>
           <form @submit.prevent="submitComment">
             <div class="form-group">
-              <textarea class="form-control" name="msg" rows="2" required v-model="msg"></textarea>
+              <textarea v-model="msg" class="form-control" name="msg" rows="5" required></textarea>
               <br>
               <button class="btn btn-primary" type="submit">แสดงความคิดเห็น</button>
             </div>
@@ -46,22 +46,22 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex'
 
 export default {
-  props: ["who", "data"],
+  props: ['who', 'data'],
   data() {
     return {
       comments: [],
-      msg: ""
-    };
+      msg: ''
+    }
   },
   methods: {
     loadComments() {
       axios.get(`/comment/${this.$route.params.id}`).then(res => {
-        console.log(res, "comments");
-        this.comments = res.data;
-      });
+        // console.log(res, 'comments')
+        this.comments = res.data
+      })
     },
     submitComment() {
       axios
@@ -71,45 +71,47 @@ export default {
           msg: this.msg
         })
         .then(res => {
-          console.log(res, "submitComment");
-          if (res.data === "success") {
+          // console.log(res, 'submitComment')
+          if (res.data === 'success') {
             this.$notify({
-              type: "success",
-              text: "บันทึกข้อมูลเรียบร้อยแล้ว"
-            });
+              type: 'success',
+              text: 'บันทึกข้อมูลเรียบร้อยแล้ว'
+            })
           } else {
             this.$notify({
-              type: "error",
-              text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
-            });
+              type: 'error',
+              text: 'มีข้อผิดผลาดในการบันทึกข้อมูล'
+            })
           }
-          this.msg = "";
-          this.loadComments();
-        });
+          this.msg = ''
+          this.loadComments()
+        })
     },
     delComment(id) {
-      let formData = new FormData();
-      formData.append("_method", "delete");
+      if (confirm('คุณต้องการลบความคิดเห็นใช่หรือไม่')) {
+        let formData = new FormData()
+        formData.append('_method', 'delete')
 
-      axios.post(`/comment/${id}`, formData).then(res => {
-        console.log(res, "delComment");
-        if (res.data === "success") {
-          this.$notify({
-            type: "success",
-            text: "บันทึกข้อมูลเรียบร้อยแล้ว"
-          });
-        } else {
-          this.$notify({
-            type: "error",
-            text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
-          });
-        }
-        this.loadComments();
-      });
+        axios.post(`/comment/${id}`, formData).then(res => {
+          // console.log(res, 'delComment')
+          if (res.data === 'success') {
+            this.$notify({
+              type: 'success',
+              text: 'บันทึกข้อมูลเรียบร้อยแล้ว'
+            })
+          } else {
+            this.$notify({
+              type: 'error',
+              text: 'มีข้อผิดผลาดในการบันทึกข้อมูล'
+            })
+          }
+          this.loadComments()
+        })
+      }
     }
   },
   mounted() {
-    this.loadComments();
+    this.loadComments()
   }
-};
+}
 </script>

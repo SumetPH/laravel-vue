@@ -108,7 +108,7 @@
           <div class="col-lg-6 col-md-8">
             <div class="card bg-secondary shadow border-0">
               <div class="card-body px-lg-5 py-lg-5">
-                <form role="form" @submit.prevent="submit">
+                <form @submit.prevent="submit" role="form">
                   <div class="form-group mb-3">
                     <label class="control-label">คำนำหน้า</label>
                     <select class="form-control" v-model="title">
@@ -165,15 +165,15 @@
                   <div class="form-group mb-3">
                     <label for="password" class="control-label">รหัสผ่าน</label>
                     <input
-                      :style="checkPass < 6 ? 'border-color: #fb6340' : ''"
                       :class="checkPass < 6 ? 'form-control is-invalid' : 'form-control'"
+                      :style="checkPass < 6 ? 'border-color: #fb6340' : ''"
+                      v-model="password"
+                      @blur="funcChekPass"
                       name="password"
                       placeholder="รหัสผ่าน"
                       type="password"
                       minlength="6"
                       required
-                      v-model="password"
-                      @blur="funcChekPass"
                     >
                     <div v-if="checkPass < 6" class="invalid-feedback">รหัสผ่านต้องมีอย่างน้อย 6 ตัว</div>
                   </div>
@@ -297,61 +297,61 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions } from 'vuex'
 export default {
   data() {
     return {
-      title: "นาย",
-      academic: "-",
-      firstname: "",
-      lastname: "",
-      email: "",
-      password: "",
-      education: "",
-      position: "",
-      branch: "",
-      faculty: "",
-      university: "มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน",
-      campus: "วิทยาเขตสกลนคร",
-      number: "",
+      title: 'นาย',
+      academic: '-',
+      firstname: '',
+      lastname: '',
+      email: '',
+      password: '',
+      education: '',
+      position: '',
+      branch: '',
+      faculty: '',
+      university: 'มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน',
+      campus: 'วิทยาเขตสกลนคร',
+      number: '',
       checkPass: 6
-    };
+    }
   },
   methods: {
-    ...mapActions(["loading"]),
+    ...mapActions(['loading']),
     submit() {
-      this.loading(true);
-      let formData = new FormData();
-      formData.append("title", this.title);
-      formData.append("academic", this.academic);
-      formData.append("firstname", this.firstname);
-      formData.append("lastname", this.lastname);
-      formData.append("email", this.email);
-      formData.append("password", this.password);
-      formData.append("education", this.education);
-      formData.append("position", this.position);
-      formData.append("branch", this.branch);
-      formData.append("faculty", this.faculty);
-      formData.append("university", this.university);
-      formData.append("campus", this.campus);
-      formData.append("number", this.number);
+      this.loading(true)
+      let formData = new FormData()
+      formData.append('title', this.title)
+      formData.append('academic', this.academic)
+      formData.append('firstname', this.firstname)
+      formData.append('lastname', this.lastname)
+      formData.append('email', this.email)
+      formData.append('password', this.password)
+      formData.append('education', this.education)
+      formData.append('position', this.position)
+      formData.append('branch', this.branch)
+      formData.append('faculty', this.faculty)
+      formData.append('university', this.university)
+      formData.append('campus', this.campus)
+      formData.append('number', this.number)
 
-      axios.post("/register", formData).then(res => {
-        console.log(res);
-        if (res.data === "success") {
-          this.$notify("กรุณารอการยืนยันจากเจ้าหน้าที่ ก่อนเข้าใช้งาน");
-          this.$router.push("/login");
+      axios.post('/register', formData).then(res => {
+        // console.log(res);
+        if (res.data === 'success') {
+          this.$notify('กรุณารอการยืนยันจากเจ้าหน้าที่ ก่อนเข้าใช้งาน')
+          this.$router.push('/login')
         } else {
-          this.$notify("กรุณาลองใหม่อีกครั้ง");
+          this.$notify('กรุณาลองใหม่อีกครั้ง')
         }
-        this.loading(false);
-      });
+        this.loading(false)
+      })
     },
     funcChekPass() {
-      this.checkPass = this.password.length;
+      this.checkPass = this.password.length
     }
   }
-};
+}
 </script>
 
 <style scoped>

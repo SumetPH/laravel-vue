@@ -14,30 +14,30 @@
                     <label for="old-password">รหัสผ่านปัจจุบัน</label>
                     <input
                       v-model="old_password"
-                      type="password"
                       class="form-control form-control-alternative"
+                      type="password"
                     >
                   </div>
                   <div class="form-group">
                     <label for="new-password">รหัสผ่านใหม่</label>
                     <input
                       v-model="new_password"
-                      type="password"
                       class="form-control form-control-alternative"
+                      type="password"
                     >
                   </div>
                   <div class="form-group">
                     <label for="confirm-password">รหัสผ่านใหม่ (ยืนยัน)</label>
                     <input
                       v-model="confirm_password"
-                      type="password"
                       class="form-control form-control-alternative"
+                      type="password"
                     >
                   </div>
                   <button
-                    type="submit"
-                    class="btn btn-primary"
                     :disabled="new_password === '' || new_password !== confirm_password"
+                    class="btn btn-primary"
+                    type="submit"
                   >บันทึก</button>
                 </form>
               </div>
@@ -50,23 +50,23 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
-import Layout from "../../components/Layout";
+import { mapState, mapActions } from 'vuex'
+import Layout from '../../components/Layout'
 export default {
   components: {
     Layout
   },
   data() {
     return {
-      old_password: "",
-      new_password: "",
-      confirm_password: ""
-    };
+      old_password: '',
+      new_password: '',
+      confirm_password: ''
+    }
   },
   methods: {
-    ...mapActions(["loading"]),
+    ...mapActions(['loading']),
     submit() {
-      this.loading(true);
+      this.loading(true)
       axios
         .post(`/admin/changepassword`, {
           admin_id: this.admin.data.id,
@@ -74,27 +74,27 @@ export default {
           new_password: this.new_password
         })
         .then(res => {
-          console.log(res, "changepassword");
-          if (res.data === "success") {
+          // consolee.log(res, "changepassword");
+          if (res.data === 'success') {
             this.$notify({
-              type: "success",
-              text: "บันทึกข้อมูลเรียบร้อยแล้ว"
-            });
-            this.old_password = "";
-            this.new_password = "";
-            this.confirm_password = "";
+              type: 'success',
+              text: 'บันทึกข้อมูลเรียบร้อยแล้ว'
+            })
+            this.old_password = ''
+            this.new_password = ''
+            this.confirm_password = ''
           } else {
             this.$notify({
-              type: "error",
-              text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
-            });
+              type: 'error',
+              text: 'มีข้อผิดผลาดในการบันทึกข้อมูล'
+            })
           }
-          this.loading(false);
-        });
+          this.loading(false)
+        })
     }
   },
   computed: {
-    ...mapState(["admin"])
+    ...mapState(['admin'])
   }
-};
+}
 </script>

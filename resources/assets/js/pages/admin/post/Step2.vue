@@ -1,5 +1,5 @@
 <template>
-  <div v-if="post.step1 === '1'" class="row mt-5">
+  <div v-if="post.step1 === '1'" class="row">
     <div class="col-md-12">
       <div class="card shadow" :style="post.step2 === '1' ? 'border: 3px solid #2dce89' : ''">
         <div class="card-header">
@@ -24,18 +24,17 @@
                 <br>
                 <small>เวลา ​: {{item.updated_at}}</small>
                 <p></p>
-                <!-- <button @click="item.file_path = null" class="btn btn-warning">แก้ไข</button> -->
                 <button @click="item.file_path = null" class="btn btn-warning">แก้ไข</button>
               </div>
 
               <div v-else class="form-group">
                 <label>{{ item.title }}</label>
                 <file-pond
+                  @addfilestart="addfilestart(item.id,item.post_id)"
+                  :server="{process}"
                   name="file"
                   ref="pond"
                   label-idle="เลือกเอกสาร"
-                  :server="{process}"
-                  @addfilestart="addfilestart(item.id,item.post_id)"
                 />
               </div>
               <hr>
@@ -48,56 +47,52 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
-import Test from "../../../test/Test";
+import { mapState, mapActions } from 'vuex'
 
 export default {
   computed: {
-    ...mapState({ post: "post", post2: "post2" })
-  },
-  components: {
-    Test
+    ...mapState({ post: 'post', post2: 'post2' })
   },
   data() {
     return {
-      id: "",
-      post_id: "",
-      title: "",
-      file: ""
-    };
+      id: '',
+      post_id: '',
+      title: '',
+      file: ''
+    }
   },
   methods: {
-    ...mapActions(["loadPost", "loadPost2Admin"]),
+    ...mapActions(['loadPost', 'loadPost2Admin']),
     addfilestart(id, post_id) {
-      this.id = id;
-      this.post_id = post_id;
+      this.id = id
+      this.post_id = post_id
     },
     process(fieldName, file, metadata, load, error, progress, abort) {
-      const formData = new FormData();
-      formData.append("_method", "put");
-      formData.append("post_id", this.post_id);
-      formData.append("file", file);
+      const formData = new FormData()
+      formData.append('_method', 'put')
+      formData.append('post_id', this.post_id)
+      formData.append('file', file)
 
       // the request itself
       axios({
-        method: "post",
+        method: 'post',
         url: `/admin/post2/${this.id}`,
         data: formData,
         onUploadProgress: e => {
           // updating progress indicator
-          progress(e.lengthComputable, e.loaded, e.total);
+          progress(e.lengthComputable, e.loaded, e.total)
         }
       }).then(res => {
-        console.log(res);
+        // consolee.log(res)
         // passing the file id to FilePond
-        load("100");
-        this.loadPost();
-        this.loadPost2Admin();
-      });
+        load('100')
+        this.loadPost()
+        this.loadPost2Admin()
+      })
     }
   },
   mounted() {
-    this.loadPost2Admin();
+    this.loadPost2Admin()
   }
-};
+}
 </script>

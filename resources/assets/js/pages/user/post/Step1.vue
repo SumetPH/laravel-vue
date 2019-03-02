@@ -2,7 +2,7 @@
   <div>
     <div class="row">
       <div class="col-md-12">
-        <div class="card shadow">
+        <div class="card shadow" :style="post.step1 === '1' ? 'border: 3px solid #2dce89' : ''">
           <div class="card-header">
             <h3
               v-if="post.step1 === '0'"
@@ -15,6 +15,7 @@
               style="color: #2dce89"
             >ขั้นตอนที่ 1 : ผ่านการตรวจสอบแล้ว</h3>
           </div>
+
           <div class="card-body">
             <p>ตำแหน่งที่ร้องขอ : {{ post1.academic }}</p>
             <p>หัวข้อ : {{ post1.title }}</p>
@@ -30,6 +31,15 @@
                 <button v-if="post.step1 === '0'" @click="modalHandle" class="btn btn-warning">แก้ไข</button>
               </div>
             </div>
+          </div>
+
+          <div class="card-footer">
+            <h4
+              v-if="post.step1 === '0'"
+              class="card-title mb-0 text-center"
+              style="color: #f5365c"
+            >ยังไม่ผ่านการตรวจสอบ</h4>
+            <h4 v-else class="card-title mb-0 text-center" style="color: #2dce89">ผ่านการตรวจสอบแล้ว</h4>
           </div>
         </div>
       </div>
@@ -58,11 +68,11 @@
               <h4 class="modal-title" id="myModalLabel">คำร้องขอ</h4>
               <button
                 @click="modalHandle"
-                type="button"
+                :disabled="isSubmit"
                 class="close"
+                type="button"
                 data-dismiss="modal"
                 aria-label="Close"
-                :disabled="isSubmit"
               >
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -82,9 +92,9 @@
                 <button v-if="!file" @click="file = true" class="btn btn-warning">แก้ไขเอกสาร</button>
                 <file-pond
                   v-if="file"
-                  label-idle="เลือกเอกสาร"
                   @addfile="onaddfile"
                   :server="{process,revert}"
+                  label-idle="เลือกเอกสาร"
                   required
                 />
               </div>
@@ -92,9 +102,9 @@
             <div class="modal-footer">
               <button
                 @click="updatePost"
-                type="submit"
-                class="btn btn-primary btn-icon"
                 :disabled="isSubmit"
+                class="btn btn-primary btn-icon"
+                type="submit"
               >
                 <span v-if="isSubmit" class="btn-inner--icon">
                   <i class="fas fa-spinner"></i>
@@ -103,10 +113,10 @@
               </button>
               <button
                 @click="modalHandle"
-                type="button"
-                class="btn btn-default"
-                data-dismiss="modal"
                 :disabled="isSubmit"
+                class="btn btn-default"
+                type="button"
+                data-dismiss="modal"
               >ยกเลิก</button>
             </div>
           </div>
@@ -117,70 +127,70 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions } from 'vuex'
 
 export default {
   data() {
     return {
       isSubmit: false,
       modal: false,
-      description: "",
+      description: '',
       file: false
-    };
+    }
   },
   computed: {
-    ...mapState({ post: "post", post1: "post1", post2: "post2" })
+    ...mapState({ post: 'post', post1: 'post1', post2: 'post2' })
   },
   methods: {
-    ...mapActions(["loadPost", "loadPost1User"]),
+    ...mapActions(['loadPost', 'loadPost1User']),
     modalHandle() {
-      this.description = this.post1.description;
-      this.modal = !this.modal;
+      this.description = this.post1.description
+      this.modal = !this.modal
     },
     onaddfile() {
-      this.isSubmit = true;
+      this.isSubmit = true
     },
     process(fieldName, file, metadata, load, error, progress, abort) {
-      this.file = file;
-      load();
-      this.isSubmit = false;
+      this.file = file
+      load()
+      this.isSubmit = false
     },
     revert(uniqueFileId, load, error) {
-      this.file = false;
-      load();
+      this.file = false
+      load()
     },
     updatePost() {
-      let formData = new FormData();
-      formData.append("_method", "put");
-      formData.append("file", this.file);
+      let formData = new FormData()
+      formData.append('_method', 'put')
+      formData.append('file', this.file)
       if (this.description === null) {
-        formData.append("description", "");
+        formData.append('description', '')
       } else {
-        formData.append("description", this.description);
+        formData.append('description', this.description)
       }
 
       axios.post(`/user/post/${this.post.id}`, formData).then(res => {
-        if (res.data === "success") {
+        if (res.data === 'success') {
           this.$notify({
-            type: "success",
-            text: "บันทึกข้อมูลเรียบร้อยแล้ว"
-          });
+            type: 'success',
+            text: 'บันทึกข้อมูลเรียบร้อยแล้ว'
+          })
         } else {
           this.$notify({
-            type: "error",
-            text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
-          });
+            type: 'error',
+            text: 'มีข้อผิดผลาดในการบันทึกข้อมูล'
+          })
         }
-        this.loadPost();
-        this.loadPost1User();
-        this.modal = false;
-        this.file = false;
-      });
+        this.loadPost()
+        this.loadPost1User()
+        this.modal = false
+        this.file = false
+      })
     }
   },
   mounted() {
-    this.loadPost();
-    this.loadPost1User();
+    this.loadPost()
+    this.loadPost1User()
   }
-};
+}
 </script>

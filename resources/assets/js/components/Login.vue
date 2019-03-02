@@ -107,7 +107,7 @@
           <div class="col-lg-5 col-md-7">
             <div class="card bg-secondary shadow border-0">
               <div class="card-body px-lg-5 py-lg-5">
-                <form role="form" @submit.prevent="submit">
+                <form @submit.prevent="submit" role="form">
                   <div class="form-group">
                     <div class="input-group input-group-alternative">
                       <div class="input-group-prepend">
@@ -116,12 +116,12 @@
                         </span>
                       </div>
                       <input
+                        v-model="email"
                         class="form-control"
                         name="email"
                         placeholder="อีเมล หรือ ชื่อผู้ใช้"
                         type="text"
                         required
-                        v-model="email"
                       >
                     </div>
                   </div>
@@ -133,12 +133,12 @@
                         </span>
                       </div>
                       <input
+                        v-model="password"
                         class="form-control"
                         name="password"
                         placeholder="รหัสผ่าน"
                         type="password"
                         required
-                        v-model="password"
                       >
                     </div>
                   </div>
@@ -184,49 +184,49 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions } from 'vuex'
 export default {
   data() {
     return {
-      email: "",
-      password: ""
-    };
+      email: '',
+      password: ''
+    }
   },
   methods: {
-    ...mapActions(["loading"]),
+    ...mapActions(['loading']),
     submit() {
-      this.loading(true);
-      let formData = new FormData();
-      formData.append("email", this.email);
-      formData.append("password", this.password);
+      this.loading(true)
+      let formData = new FormData()
+      formData.append('email', this.email)
+      formData.append('password', this.password)
 
-      axios.post("/login", formData).then(res => {
-        console.log(res);
-        this.loading(false);
-        if (res.data.status === "user") {
+      axios.post('/login', formData).then(res => {
+        // console.log(res);
+        this.loading(false)
+        if (res.data.status === 'user') {
           this.$notify({
-            type: "primary",
-            text: "เข้าสู่ระบบ"
-          });
-          localStorage.setItem("user", JSON.stringify(res.data.user));
-          this.$router.push("/user");
-        } else if (res.data.status === "admin") {
+            type: 'primary',
+            text: 'เข้าสู่ระบบ'
+          })
+          localStorage.setItem('user', JSON.stringify(res.data.user))
+          this.$router.push('/user')
+        } else if (res.data.status === 'admin') {
           this.$notify({
-            type: "primary",
-            text: "เข้าสู่ระบบ"
-          });
-          localStorage.setItem("admin", JSON.stringify(res.data.admin));
-          this.$router.push("/admin");
+            type: 'primary',
+            text: 'เข้าสู่ระบบ'
+          })
+          localStorage.setItem('admin', JSON.stringify(res.data.admin))
+          this.$router.push('/admin')
         } else {
           this.$notify({
-            type: "error",
+            type: 'error',
             text: res.data.text
-          });
+          })
         }
-      });
+      })
     }
   }
-};
+}
 </script>
 
 <style scoped>

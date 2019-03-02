@@ -35,13 +35,13 @@
                     <td class="p-2">
                       <button
                         v-if="user.active === '0'"
-                        class="btn btn-success"
                         @click="activeUser(user.id, 1)"
+                        class="btn btn-success"
                       >ยืนยัน</button>
                       <button
                         v-else
-                        class="btn btn-warning"
                         @click="activeUser(user.id, 0)"
+                        class="btn btn-warning"
                       >ยกเลิกการยืนยัน</button>
                     </td>
                     <td class="p-2">
@@ -73,8 +73,8 @@
               <h4 class="modal-title" id="myModalLabel">ข้อมูลผู้ใช้งาน</h4>
               <button
                 @click="modalHandle"
-                type="button"
                 class="close"
+                type="button"
                 data-dismiss="modal"
                 aria-label="Close"
               >
@@ -95,43 +95,43 @@
                   <div class="form-group">
                     <label class="control-label">ตำแหน่งทางวิชาการ</label>
                     <input
-                      type="text"
+                      :value="modalUser.academic"
                       class="form-control form-control-alternative"
+                      type="text"
                       name="academic"
                       disabled
-                      :value="modalUser.academic"
                     >
                   </div>
 
                   <div class="form-group">
                     <label for="firstname" class="control-label">ชื่อ</label>
                     <input
-                      type="text"
+                      :value="modalUser.firstname"
                       class="form-control form-control-alternative"
+                      type="text"
                       name="firstname"
                       disabled
-                      :value="modalUser.firstname"
                     >
                   </div>
 
                   <div class="form-group">
                     <label for="lastname" class="control-label">นามสกุล</label>
                     <input
-                      type="text"
+                      :value="modalUser.lastname"
                       class="form-control form-control-alternative"
+                      type="text"
                       name="lastname"
                       disabled
-                      :value="modalUser.lastname"
                     >
                   </div>
 
                   <div class="form-group">
                     <label for="email" class="control-label">อีเมล</label>
                     <input
+                      :value="modalUser.email"
                       class="form-control form-control-alternative"
                       type="text"
                       name="email"
-                      :value="modalUser.email"
                       disabled
                     >
                   </div>
@@ -139,74 +139,74 @@
                   <div class="form-group">
                     <label for="education" class="control-label">วุฒิ</label>
                     <input
-                      type="text"
+                      :value="modalUser.education"
                       class="form-control form-control-alternative"
+                      type="text"
                       name="education"
                       disabled
-                      :value="modalUser.education"
                     >
                   </div>
 
                   <div class="form-group">
                     <label for="position" class="control-label">ตำแหน่ง</label>
                     <input
-                      type="text"
+                      :value="modalUser.position"
                       class="form-control form-control-alternative"
+                      type="text"
                       name="position"
                       disabled
-                      :value="modalUser.position"
                     >
                   </div>
 
                   <div class="form-group">
                     <label for="branch" class="control-label">สาขา</label>
                     <input
-                      type="text"
+                      :value="modalUser.branch"
                       class="form-control form-control-alternative"
+                      type="text"
                       name="branch"
                       disabled
-                      :value="modalUser.branch"
                     >
                   </div>
 
                   <div class="form-group">
                     <label for="faculty" class="control-label">คณะ</label>
                     <input
-                      type="text"
+                      :value="modalUser.faculty"
                       class="form-control form-control-alternative"
+                      type="text"
                       name="faculty"
                       disabled
-                      :value="modalUser.faculty"
                     >
                   </div>
                   <div class="form-group">
                     <label for="university" class="control-label">มหาวิทยาลัย</label>
                     <input
-                      type="text"
+                      :value="modalUser.university"
                       class="form-control form-control-alternative"
+                      type="text"
                       name="university"
                       disabled
-                      :value="modalUser.university"
                     >
                   </div>
                   <div class="form-group">
                     <label for="campus" class="control-label">วิทยาเขต</label>
                     <input
-                      type="text"
+                      :value="modalUser.campus"
                       class="form-control form-control-alternative"
+                      type="text"
                       name="campus"
                       disabled
-                      :value="modalUser.campus"
                     >
                   </div>
                   <div class="form-group">
                     <label for="number" class="control-label">เบอร์โทรศัพท์</label>
                     <input
-                      type="text"
+                      :value="modalUser.number"
                       class="form-control form-control-alternative"
+                      type="text"
                       name="number"
                       disabled
-                      :value="modalUser.number"
                     >
                   </div>
                 </div>
@@ -215,19 +215,19 @@
             <div class="modal-footer">
               <button
                 v-if="modalUser.active === '0'"
-                class="btn btn-success"
                 @click="activeUser(modalUser.id, 1)"
+                class="btn btn-success"
               >ยืนยัน</button>
               <button
                 v-else
-                class="btn btn-warning"
                 @click="activeUser(modalUser.id, 0)"
+                class="btn btn-warning"
               >ยกเลิกการยืนยัน</button>
               <button @click="deleteUser(modalUser.id)" class="btn btn-danger">ลบ</button>
               <button
                 @click="modalHandle(modalUser.id)"
-                type="button"
                 class="btn btn-default"
+                type="button"
                 data-dismiss="modal"
               >ยกเลิก</button>
             </div>
@@ -239,8 +239,8 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
-import Layout from "../../components/Layout";
+import { mapActions } from 'vuex'
+import Layout from '../../components/Layout'
 
 export default {
   components: {
@@ -251,67 +251,67 @@ export default {
       users: [],
       modal: false,
       modalUser: {}
-    };
+    }
   },
   methods: {
-    ...mapActions(["loading"]),
+    ...mapActions(['loading']),
     loadUsers() {
-      axios.get("/admin/user").then(res => {
-        console.log(res, "loadUser");
-        this.users = res.data;
-      });
+      axios.get('/admin/user').then(res => {
+        // consolee.log(res, "loadUser");
+        this.users = res.data
+      })
     },
     activeUser(id, active) {
-      this.loading(true);
-      axios.post("/admin/user", { id, active }).then(res => {
-        console.log(res, "active");
-        if (res.data === "success") {
+      this.loading(true)
+      axios.post('/admin/user', { id, active }).then(res => {
+        // consolee.log(res, "active");
+        if (res.data === 'success') {
           this.$notify({
-            type: "success",
-            text: "บันทึกข้อมูลเรียบร้อยแล้ว"
-          });
+            type: 'success',
+            text: 'บันทึกข้อมูลเรียบร้อยแล้ว'
+          })
         } else {
           this.$notify({
-            type: "error",
-            text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
-          });
+            type: 'error',
+            text: 'มีข้อผิดผลาดในการบันทึกข้อมูล'
+          })
         }
-        this.loading(false);
-        this.loadUsers();
-        this.modal = false;
-      });
+        this.loading(false)
+        this.loadUsers()
+        this.modal = false
+      })
     },
     deleteUser(id) {
-      if (confirm("คุณต้องการลบผู้ใช้งานใช่หรือไม่")) {
-        this.loading(true);
+      if (confirm('คุณต้องการลบผู้ใช้งานใช่หรือไม่')) {
+        this.loading(true)
         axios.delete(`/admin/user/${id}`).then(res => {
-          console.log(res, "delete");
-          if (res.data === "success") {
+          // consolee.log(res, "delete");
+          if (res.data === 'success') {
             this.$notify({
-              type: "success",
-              text: "บันทึกข้อมูลเรียบร้อยแล้ว"
-            });
+              type: 'success',
+              text: 'บันทึกข้อมูลเรียบร้อยแล้ว'
+            })
           } else {
             this.$notify({
-              type: "error",
-              text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
-            });
+              type: 'error',
+              text: 'มีข้อผิดผลาดในการบันทึกข้อมูล'
+            })
           }
-          this.loading(false);
-          this.loadUsers();
-          this.modal = false;
-        });
+          this.loading(false)
+          this.loadUsers()
+          this.modal = false
+        })
       }
     },
     modalHandle(index) {
-      this.modalUser = this.users[index];
-      this.modal = !this.modal;
+      this.modalUser = this.users[index]
+      this.modal = !this.modal
     }
   },
   mounted() {
-    this.loadUsers();
+    this.loadUsers()
   }
-};
+}
 </script>
 
 <style scoped>

@@ -37,7 +37,7 @@
           <router-link :to="who === 'user' ? '/user/profile' : '#'">
             <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
-                <img v-if="who === 'user'" alt="Image placeholder" :src="'/files/' + data.image">
+                <img v-if="who === 'user'" :src="'/files/' + data.image" alt="Image placeholder">
                 <img v-else alt="Image placeholder" src="/files/image/profile.png">
               </span>
             </div>
@@ -155,16 +155,16 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions } from 'vuex'
 export default {
-  props: ["who", "data", "reports"],
+  props: ['who', 'data', 'reports'],
   methods: {
-    ...mapActions(["logout", "loadReports"])
+    ...mapActions(['logout', 'loadReports'])
   },
   mounted() {
-    this.loadReports(this.data.id);
+    this.loadReports(this.data.id)
   }
-};
+}
 </script>
 
 

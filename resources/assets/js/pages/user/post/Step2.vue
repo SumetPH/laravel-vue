@@ -1,7 +1,7 @@
 <template>
-  <div v-if="post.step1 === '1' && post.step2 === '1'" class="row mt-5">
+  <div v-if="post.step1 === '1' && post.step2 === '1'" class="row">
     <div class="col-md-12">
-      <div class="card shadow">
+      <div class="card shadow" :style="post.step2 === '1' ? 'border: 3px solid #2dce89' : ''">
         <div class="card-header">
           <h3
             v-if="post.step2 === '0'"
@@ -34,17 +34,17 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions } from 'vuex'
 
 export default {
   computed: {
-    ...mapState({ post: "post", post2: "post2" })
+    ...mapState({ post: 'post', post2: 'post2' })
   },
   methods: {
-    ...mapActions(["loadPost2User"])
+    ...mapActions(['loadPost2User'])
   },
   mounted() {
-    this.loadPost2User();
+    this.loadPost2User()
   }
-};
+}
 </script>

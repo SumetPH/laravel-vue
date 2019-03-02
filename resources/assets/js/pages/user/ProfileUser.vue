@@ -16,35 +16,16 @@
             </div>
           </div>
           <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-            <div class="d-flex justify-content-between">
-              <!-- <a href="#" class="btn btn-sm btn-info mr-4">Connect</a>
-              <a href="#" class="btn btn-sm btn-default float-right">Message</a>-->
-            </div>
+            <div class="d-flex justify-content-between"></div>
           </div>
           <div class="card-body pt-0 pt-md-4">
             <div class="row">
               <div class="col">
-                <div class="card-profile-stats d-flex justify-content-center mt-md-5">
-                  <!-- <div>
-                    <span class="heading">22</span>
-                    <span class="description">Friends</span>
-                  </div>
-                  <div>
-                    <span class="heading">10</span>
-                    <span class="description">Photos</span>
-                  </div>
-                  <div>
-                    <span class="heading">89</span>
-                    <span class="description">Comments</span>
-                  </div>-->
-                </div>
+                <div class="card-profile-stats d-flex justify-content-center mt-md-5"></div>
               </div>
             </div>
             <div class="text-center">
-              <h3>
-                {{user.data.firstname ? user.data.firstname + ' ' + user.data.lastname : ''}}
-                <!-- <span class="font-weight-light">, 27</span> -->
-              </h3>
+              <h3>{{user.data.firstname ? user.data.firstname + ' ' + user.data.lastname : ''}}</h3>
               <div class="h5 font-weight-300">
                 <i class="ni location_pin mr-2"></i>
                 ตำแหน่ง : {{user.data.position}}
@@ -61,7 +42,6 @@
                 {{user.data.university}}
               </div>
               <hr class="my-4">
-              <!-- <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p> -->
               <a @click.prevent="$refs.image.click()" href>เปลี่ยนรูปโปรไฟล์</a>
               <input @change="updateImgProfile" ref="image" type="file" style="display: none">
               <p></p>
@@ -77,9 +57,7 @@
               <div class="col-8">
                 <h3 class="mb-0 text-muted">ข้อมูลผู้ใช้</h3>
               </div>
-              <div class="col-4 text-right">
-                <!-- <a href="#!" class="btn btn-sm btn-primary">Settings</a> -->
-              </div>
+              <div class="col-4 text-right"></div>
             </div>
           </div>
           <div class="card-body">
@@ -88,7 +66,7 @@
                 <form @submit.prevent="updateProfile">
                   <div class="form-group">
                     <label class="control-label">คำนำหน้า</label>
-                    <select class="form-control form-control-alternative" v-model="user.data.title">
+                    <select v-model="user.data.title" class="form-control form-control-alternative">
                       <option value="นาย">นาย</option>
                       <option value="นาง">นาง</option>
                       <option value="นางสาว">นางสาว</option>
@@ -97,8 +75,8 @@
                   <div class="form-group">
                     <label class="control-label">ตำแหน่งทางวิชาการ</label>
                     <select
-                      class="form-control form-control-alternative"
                       v-model="user.data.academic"
+                      class="form-control form-control-alternative"
                     >
                       <option value="-">-</option>
                       <option value="ผู้ช่วยศาสตราจารย์">ผู้ช่วยศาสตราจารย์</option>
@@ -110,96 +88,96 @@
                   <div class="form-group">
                     <label for="firstname" class="col-md-4 control-label">ชื่อ</label>
                     <input
-                      type="text"
+                      v-model="user.data.firstname"
                       class="form-control form-control-alternative"
+                      type="text"
                       name="firstname"
                       required
-                      v-model="user.data.firstname"
                     >
                   </div>
 
                   <div class="form-group">
                     <label for="lastname" class="col-md-4 control-label">นามสกุล</label>
                     <input
-                      type="text"
+                      v-model="user.data.lastname"
                       class="form-control form-control-alternative"
+                      type="text"
                       name="lastname"
                       required
-                      v-model="user.data.lastname"
                     >
                   </div>
 
                   <div class="form-group">
                     <label for="education" class="col-md-4 control-label">วุฒิ</label>
                     <input
-                      type="text"
+                      v-model="user.data.education"
                       class="form-control form-control-alternative"
+                      type="text"
                       name="education"
                       required
-                      v-model="user.data.education"
                     >
                   </div>
 
                   <div class="form-group">
                     <label for="position" class="col-md-4 control-label">ตำแหน่ง</label>
                     <input
-                      type="text"
+                      v-model="user.data.position"
                       class="form-control form-control-alternative"
+                      type="text"
                       name="position"
                       required
-                      v-model="user.data.position"
                     >
                   </div>
 
                   <div class="form-group">
                     <label for="branch" class="col-md-4 control-label">สาขา</label>
                     <input
-                      type="text"
+                      v-model="user.data.branch"
                       class="form-control form-control-alternative"
+                      type="text"
                       name="branch"
                       required
-                      v-model="user.data.branch"
                     >
                   </div>
 
                   <div class="form-group">
                     <label for="faculty" class="col-md-4 control-label">คณะ</label>
                     <input
-                      type="text"
+                      v-model="user.data.faculty"
                       class="form-control form-control-alternative"
+                      type="text"
                       name="faculty"
                       required
-                      v-model="user.data.faculty"
                     >
                   </div>
                   <div class="form-group">
                     <label for="university" class="col-md-4 control-label">มหาวิทยาลัย</label>
                     <input
-                      type="text"
+                      v-model="user.data.university"
                       class="form-control form-control-alternative"
+                      type="text"
                       name="university"
                       required
-                      v-model="user.data.university"
                     >
                   </div>
                   <div class="form-group">
                     <label for="campus" class="col-md-4 control-label">วิทยาเขต</label>
                     <input
-                      type="text"
+                      v-model="user.data.campus"
                       class="form-control form-control-alternative"
+                      type="text"
                       name="campus"
                       required
-                      v-model="user.data.campus"
                     >
                   </div>
                   <div class="form-group">
                     <label for="number" class="col-md-4 control-label">เบอร์โทรศัพท์</label>
                     <input
-                      type="text"
+                      v-model="user.data.number"
                       class="form-control form-control-alternative"
+                      type="text"
                       name="number"
                       required
-                      v-model="user.data.number"
                     >
                   </div>
                   <div class="form-group">
@@ -219,9 +197,9 @@
 </template>
 
 <script>
-import Layout from "../../components/Layout";
+import Layout from '../../components/Layout'
 
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions } from 'vuex'
 export default {
   components: {
     Layout
@@ -229,63 +207,63 @@ export default {
   data() {
     return {
       profile: {}
-    };
+    }
   },
   methods: {
-    ...mapActions(["loading"]),
+    ...mapActions(['loading']),
     loadProfile() {
-      this.user.data = JSON.parse(localStorage.getItem("user"));
+      this.user.data = JSON.parse(localStorage.getItem('user'))
     },
     updateProfile() {
-      this.loading(true);
-      this.user.data._method = "put";
+      this.loading(true)
+      this.user.data._method = 'put'
       axios
         .post(`/user/profile/${this.user.data.id}`, this.user.data)
         .then(res => {
-          console.log(res, "updateProfile");
-          if (res.data.status === "success") {
+          // console.log(res, 'updateProfile')
+          if (res.data.status === 'success') {
             this.$notify({
-              type: "success",
-              text: "บันทึกข้อมูลเรียบร้อยแล้ว"
-            });
-            localStorage.setItem("user", JSON.stringify(res.data.data));
-            this.user.data = res.data.data;
+              type: 'success',
+              text: 'บันทึกข้อมูลเรียบร้อยแล้ว'
+            })
+            localStorage.setItem('user', JSON.stringify(res.data.data))
+            this.user.data = res.data.data
           } else {
             this.$notify({
-              type: "error",
-              text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
-            });
+              type: 'error',
+              text: 'มีข้อผิดผลาดในการบันทึกข้อมูล'
+            })
           }
-          this.loading(false);
-        });
+          this.loading(false)
+        })
     },
     updateImgProfile() {
-      this.loading(true);
-      let formData = new FormData();
-      formData.append("_method", "put");
-      formData.append("image", this.$refs.image.files[0]);
+      this.loading(true)
+      let formData = new FormData()
+      formData.append('_method', 'put')
+      formData.append('image', this.$refs.image.files[0])
 
       axios.post(`/user/profile/${this.user.data.id}`, formData).then(res => {
-        console.log(res, "updateImgProfile");
-        if (res.data.status === "success") {
+        // console.log(res, 'updateImgProfile')
+        if (res.data.status === 'success') {
           this.$notify({
-            type: "success",
-            text: "บันทึกข้อมูลเรียบร้อยแล้ว"
-          });
-          localStorage.setItem("user", JSON.stringify(res.data.data));
-          this.user.data = res.data.data;
+            type: 'success',
+            text: 'บันทึกข้อมูลเรียบร้อยแล้ว'
+          })
+          localStorage.setItem('user', JSON.stringify(res.data.data))
+          this.user.data = res.data.data
         } else {
           this.$notify({
-            type: "error",
-            text: "มีข้อผิดผลาดในการบันทึกข้อมูล"
-          });
+            type: 'error',
+            text: 'มีข้อผิดผลาดในการบันทึกข้อมูล'
+          })
         }
-        this.loading(false);
-      });
+        this.loading(false)
+      })
     }
   },
   computed: {
-    ...mapState(["user"])
+    ...mapState(['user'])
   }
-};
+}
 </script>

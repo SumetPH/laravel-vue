@@ -35,6 +35,7 @@ class DashboardController extends Controller
             ->where('posts.step1', '1')
             ->where('posts.step2', '1')
             ->where('posts.step3', '1')
+            ->where('posts.overall','1')
             ->orderBy('created_at')
             ->get();
 
